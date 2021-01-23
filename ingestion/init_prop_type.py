@@ -1,0 +1,1 @@
+# TOOD: add init script for property type population
