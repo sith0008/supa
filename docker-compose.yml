@@ -1,3 +1,5 @@
+# TODO: add volumes for mysql-prd and neo4j-prd
+
 version: '3.7'
 services:
   backend:
@@ -15,7 +17,7 @@ services:
     image: supa-ingestion:1.0
     ports:
       - "6000:6000"
-  mysql:
+  mysql-prd:
     image: mysql:8.0.23
     environment:
       MYSQL_USER: 'user'
@@ -24,7 +26,23 @@ services:
       MYSQL_DATABASE: 'supa'
     ports:
       - "3306:3306"
-  neo4j:
+  mysql-test:
+    image: mysql:8.0.23
+    environment:
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_DATABASE: 'supa'
+    ports:
+      - "3307:3307"
+  neo4j-prd:
+    image: neo4j:4.0.8
+    environment:
+      NEO4J_AUTH: 'none'
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+  neo4j-test:
     image: neo4j:4.0.8
     environment:
       NEO4J_AUTH: 'none'
