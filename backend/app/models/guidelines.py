@@ -1,12 +1,12 @@
-# TODO: add data model for guidelines here
-# use SQLAlchemy
-
-from backend.app.database import db
+from app.database import sql_db
 from sqlalchemy import (
     Column,
-    Text
+    Text,
+    Integer
 )
 
-class Guideline(db.Model):
-    # TODO: add other fields here
+
+class Guideline(sql_db.Model):
+    # TODO: change fields accordingly, placeholder for testing
+    id = Column(Integer,  primary_key=True)
     use_class = Column(Text)

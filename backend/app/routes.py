@@ -1,4 +1,5 @@
 from app import supa
+from app.services import cases_service
 from flask import request, jsonify
 
 @supa.route("/", methods=['GET'])

@@ -1,4 +1,3 @@
-# TODO: add volumes for mysql-prd and neo4j-prd
 version: '3.7'
 networks:
   supa-network:
@@ -13,16 +12,16 @@ services:
     environment:
       BACKEND_HOST: '0.0.0.0'
       BACKEND_PORT: 5000
-      GRAPH_DATABASE_URI: 'bolt://neo4j-prd:7687'
+      GRAPH_DATABASE_URI: 'bolt://neo4j-test:7687'
       GRAPH_DATABASE_PASSWORD: 'password'
-      SQL_DATABASE_URI: 'mysql://user:password@mysql-prd:3306/supa'
+      SQL_DATABASE_URI: 'mysql://user:password@mysql-test:3306/supa'
     depends_on:
-      - mysql-prd
-      - neo4j-prd
+      - mysql-test
+      - neo4j-test
     restart: on-failure
     networks:
       - supa-network
-  mysql-prd:
+  mysql-test:
     image: mysql:8.0.23
     command: mysqld --default-authentication-plugin=mysql_native_password
     environment:
@@ -39,7 +38,7 @@ services:
       retries: 5
     networks:
       - supa-network
-  neo4j-prd:
+  neo4j-test:
     image: neo4j:4.0.8
     environment:
       NEO4J_AUTH: 'neo4j/password'
@@ -53,7 +52,3 @@ services:
       retries: 5
     networks:
       - supa-network
-  admin:
-    image: adminer
-    ports:
-      - "8080:8080"
