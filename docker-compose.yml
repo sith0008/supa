@@ -25,6 +25,13 @@ services:
       MYSQL_DATABASE: 'supa'
     ports:
       - "3306:3306"
+  neo4j:
+    image: neo4j:4.0.8
+    environment:
+      NEO4J_AUTH: 'none'
+    ports:
+      - "7474:7474"
+      - "7687:7687"
   admin:
     image: adminer
     ports:
