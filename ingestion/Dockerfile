@@ -1,5 +1,3 @@
-# TODO: add dockerfile configs for ingestion
-
 FROM python:3.8
 WORKDIR /ingestion
 ADD . /ingestion

@@ -1,5 +1,3 @@
-# TODO: add dockerfile configs for backend
-
 FROM python:3.8
 WORKDIR /backend
 ADD . /backend
