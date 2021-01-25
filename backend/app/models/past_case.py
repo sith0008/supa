@@ -2,15 +2,17 @@ from py2neo.ogm import Model, Property, RelatedTo
 from app.models.use_class import SpecificUseClass # noqa
 from app.models.location import Location # noqa
 
-
-class PastCase(Model):
-    case_id = Property()
-    proposed_use_desc = Property()
-    gfa = Property()
-    decision = Property()
-    evaluation = Property()
-
-    __primarykey__ = "case_id"
-
-    has_use_class = RelatedTo(SpecificUseClass)
-    located_in = RelatedTo(Location)
+class PastCase:
+    def __init__(
+            self,
+            case_id: str = None,
+            proposed_use_desc: str = None,
+            gfa: float = None,
+            decision: str = None,
+            evaluation: str = None
+    ):
+        self.case_id = case_id
+        self.proposed_use_desc = proposed_use_desc
+        self.gfa = gfa
+        self.decision = decision
+        self.evaluation = evaluation

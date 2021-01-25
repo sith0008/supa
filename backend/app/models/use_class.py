@@ -104,7 +104,7 @@ use_class_map = {
     SpecificUseClassEnum.Showroom: GenericUseClassEnum.IndRelatedUse,
     SpecificUseClassEnum.EBusiness: GenericUseClassEnum.IndRelatedUse,
     SpecificUseClassEnum.CoreMediaActivities: GenericUseClassEnum.IndRelatedUse,
-    SpecificUseClassEnum.CommunityClub: GenericUseClassEnum.CoommunityRelatedUse,
+    SpecificUseClassEnum.CommunityClub: GenericUseClassEnum.CommunityRelatedUse,
     SpecificUseClassEnum.ReligiousActivities: GenericUseClassEnum.ReligiousUse,
     SpecificUseClassEnum.LimitedReligiousUse: GenericUseClassEnum.ReligiousUse,
 }

@@ -1,10 +1,10 @@
 from flask_sqlalchemy import SQLAlchemy
-from py2neo.ogm import Repository
+from py2neo import Graph
 import os
 
 
 sql_db = SQLAlchemy()
-graph_db = Repository(
+graph_db = Graph(
     os.environ.get("GRAPH_DATABASE_URI", "bolt://localhost:7687"),
     password=os.environ.get("GRAPH_DATABASE_PASSWORD", "password")
 )
