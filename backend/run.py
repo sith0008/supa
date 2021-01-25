@@ -2,6 +2,12 @@ from app import supa # noqa
 from app.routes import * # noqa
 from app.database import sql_db # noqa
 import os
+import logging
+from app.commons.custom_logging import CustomHandler # noqa
+
+log = logging.getLogger('root')
+log.setLevel('DEBUG')
+log.addHandler(CustomHandler())
 
 def init_sql_db(app):
     with app.app_context():
