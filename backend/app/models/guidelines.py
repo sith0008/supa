@@ -3,21 +3,15 @@ from sqlalchemy import (
     create_engine,
     Column,
     Text,
-<<<<<<< HEAD
     Integer
-=======
->>>>>>> init guidelines
 )
 from sqlalchemy.orm import sessionmaker
 import csv
 
-<<<<<<< HEAD
-
 class Guideline(sql_db.Model):
     # TODO: change fields accordingly, placeholder for testing
     id = Column(Integer,  primary_key=True)
-    use_class = Column(Text)
-=======
+
 outcome_priority = {
     'Not Allowed': 0,
     'Unlikely': 1,
@@ -97,4 +91,3 @@ results = sorted(list(session.query(Guideline).filter(
 
 for result in results:
     print(result)
->>>>>>> init guidelines
