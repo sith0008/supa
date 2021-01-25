@@ -6,7 +6,7 @@ from app import supa # noqa
 with supa.app_context():
     sql_engine = sql_db.engine
     neo4j_engine = graph_db
-    cases_service = cases_service.CasesService(sql_engine)
+    cases_service = cases_service.CasesService(neo4j_engine)
     conversation_service = conversation_service.ConversationService(neo4j_engine)
     guidelines_service = guidelines_service.GuidelinesService(sql_engine)
     resolution_service = resolution_service.ResolutionService(neo4j_engine)
