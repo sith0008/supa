@@ -62,7 +62,7 @@ class LocationAccessor:
             buiilding_name=location.buiilding_name
             ).evaluate()
         tx.commit()
-        log.info(f"Successfully updated case with location id {update_location_id}")
+        log.info(f"Successfully updated location with node id {update_location_id}")
         return update_location_id
 
     def delete(self, location_key: NamedTuple):
