@@ -1,0 +1,526 @@
+Business_Use_Type,Property_Type,Unit_Type,Condition,Outcome,Remarks
+Restaurant,Shophouses,,,Yes,
+Restaurant,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
+Restaurant,HDB Commercial Premises,,,No Planning Permission Required,Check with HDB to obtain their consent
+Restaurant,Commercial Buildings,,Authorisation Commercial,No Planning Permission Required,
+Restaurant,Commercial Buildings,,PTA,Unlikely,Traffic/parking problems
+Restaurant,Commercial Buildings,,,Submit Change Of Use Application,
+Restaurant,Mixed Commercial & Residential Developments,Commercial,,No Planning Permission Required,
+Restaurant,Mixed Commercial & Residential Developments,Residential,,Not Allowed,Not in line with the planning intention of the site
+Restaurant,Civic and Community Institution,,Lodgement,Instant Approval,Check with People's Association to obtain their consent
+Restaurant,Civic and Community Institution,,,Submit Change Of Use Application,
+Restaurant,Sports & Recreation Buildings,,,Submit Change Of Use Application,
+Restaurant,Buildings within Historic Conservation Areas,,,Yes,
+Restaurant,Industrial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Restaurant,Hotel,Commercial,,Not Planning Permission Required,
+Restaurant,Hotel,Hotel,,Submit Change Of Use Application,
+Restaurant,Business 1-White Buildings,Commercial,,Submit Change Of Use Application,
+Restaurant,Business 1-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Restaurant,Business 2-White Buildings,Commercial,,Submit Change Of Use Application,
+Restaurant,Business 2-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Bar/Pub,Shophouses,,,Yes,
+Bar/Pub,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
+Bar/Pub,HDB Commercial Premises,,,No Planning Permission Required,Check with HDB to obtain their consent
+Bar/Pub,Commercial Buildings,,Problematic Area,Not Allowed,Potential noise and social concerns
+Bar/Pub,Commercial Buildings,,AGU,Not Allowed,
+Bar/Pub,Commercial Buildings,,,Submit Change Of Use Application,
+Bar/Pub,Mixed Commercial & Residential Developments,Commercial,,Unlikely,Potential noise and social disamenities to the surrounding residents
+Bar/Pub,Mixed Commercial & Residential Developments,Residential,,Not Allowed,Not in line with the planning intention of the site
+Bar/Pub,Civic and Community Institution,,Lodgement,Instant Approval,Check with People's Association to obtain their consent
+Bar/Pub,Civic and Community Institution,,,Submit Change Of Use Application,
+Bar/Pub,Sports & Recreation Buildings,,,Submit Change Of Use Application,
+Bar/Pub,Buildings within Historic Conservation Areas,,,Not Allowed,Not in line with the planning intention of the site
+Bar/Pub,Industrial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Bar/Pub,Business Park,Commercial,AGU,Not Allowed,
+Bar/Pub,Business Park,Commercial,,Submit Change Of Use Application,
+Bar/Pub,Business Park,Business Park,,Not Allowed,
+Bar/Pub,Business 1-White Buildings,Commercial,,Submit Change Of Use Application,
+Bar/Pub,Business 1-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Bar/Pub,Business 2-White Buildings,Commercial,,Submit Change Of Use Application,
+Bar/Pub,Business 2-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Restaurant and Bar,Shophouses,,,Yes,
+Restaurant and Bar,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
+Restaurant and Bar,HDB Commercial Premises,,,No Planning Permission Required,Check with HDB to obtain their consent
+Restaurant and Bar,Commercial Buildings,,PTA,Unlikely,Traffic/parking problems
+Restaurant and Bar,Commercial Buildings,,Problematic Area,Not Allowed,Potential noise and social concerns
+Restaurant and Bar,Commercial Buildings,,,Submit Change Of Use Application,
+Restaurant and Bar,Mixed Commercial & Residential Developments,Commercial,,Unlikely,Potential noise and social disamenities to the surrounding residents
+Restaurant and Bar,Mixed Commercial & Residential Developments,Residential,,Not Allowed,Not in line with the planning intention of the site
+Restaurant and Bar,Civic and Community Institution,,Lodgement,Instant Approval,Check with People's Association to obtain their consent
+Restaurant and Bar,Civic and Community Institution,,,Submit Change Of Use Application,
+Restaurant and Bar,Sports & Recreation Buildings,,,Yes,
+Restaurant and Bar,Buildings within Historic Conservation Areas,,,Not Allowed,Not in line with the planning intention of the site
+Restaurant and Bar,Industrial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Restaurant and Bar,Hotel,,,Submit Change Of Use Application,
+Restaurant and Bar,Business 1-White Buildings,Commercial,,Submit Change Of Use Application,
+Restaurant and Bar,Business 1-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Restaurant and Bar,Business 2-White Buildings,Commercial,,Submit Change Of Use Application,
+Restaurant and Bar,Business 2-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Nightclub,Shophouses,,,Yes,
+Nightclub,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
+Nightclub,HDB Commercial Premises,,,No Planning Permission Required,Check with HDB to obtain their consent
+Nightclub,Commercial Buildings,,Problematic Area,Not Allowed,Potential noise and social concerns
+Nightclub,Commercial Buildings,,AGU,Not Allowed,
+Nightclub,Commercial Buildings,,,Submit Change Of Use Application,
+Nightclub,Mixed Commercial & Residential Developments,Commercial,,Unlikely,Potential noise and social disamenities to the surrounding residents
+Nightclub,Mixed Commercial & Residential Developments,Residential,,Not Allowed,Not in line with the planning intention of the site
+Nightclub,Civic and Community Institution,,Lodgement,Instant Approval,Check with People's Association to obtain their consent
+Nightclub,Civic and Community Institution,,,Submit Change Of Use Application,
+Nightclub,Sports & Recreation Buildings,,,Yes,
+Nightclub,Buildings within Historic Conservation Areas,,,Not Allowed,Not in line with the planning intention of the site
+Nightclub,Industrial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Nightclub,Business Park,Commercial,AGU,Not Allowed,
+Nightclub,Business Park,Commercial,,Submit Change Of Use Application,
+Nightclub,Business Park,Business Park,,Not Allowed,Not in line with the planning intention of the site
+Nightclub,Business 1-White Buildings,Commercial,,Submit Change Of Use Application,
+Nightclub,Business 1-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Nightclub,Business 2-White Buildings,Commercial,,Submit Change Of Use Application,
+Nightclub,Business 2-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Shop,Shophouses,,,Yes,
+Shop,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
+Shop,HDB Commercial Premises,,,No Planning Permission Required,Check with HDB to obtain their consent
+Shop,Commercial Buildings,,Authorisation Commercial,No Planning Permission Required,
+Shop,Commercial Buildings,,,Submit Change Of Use Application,
+Shop,Mixed Commercial & Residential Developments,Commercial,Authorisation Commercial,No Planning Permission Required,
+Shop,Mixed Commercial & Residential Developments,Commercial,,Submit Change Of Use Application,
+Shop,Mixed Commercial & Residential Developments,Residential,,Not Allowed,Not in line with the planning intention of the site
+Shop,Civic and Community Institution,,Lodgement,Instant Approval,Check with People's Association to obtain their consent
+Shop,Civic and Community Institution,,,Submit Change Of Use Application,
+Shop,Sports & Recreation Buildings,,,Submit Change Of Use Application,
+Shop,Buildings within Historic Conservation Areas,,,Yes,
+Shop,Industrial Buildings,,Minimart,Submit Change Of Use Application,Development charge at commercial rates may be levied
+Shop,Industrial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Shop,Hotel,Commercial,Authorisation Commercial,No Planning Permission Required,
+Shop,Hotel,Commercial,,Submit Change Of Use Application,
+Shop,Hotel,Hotel,,Submit Change Of Use Application,
+Shop,Business 1-White Buildings,Commercial,,No Planning Permission Required,
+Shop,Business 1-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Shop,Business 2-White Buildings,Commercial,,No Planning Permission Required,
+Shop,Business 2-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Laundromat,Shophouses,,,Yes,
+Laundromat,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
+Laundromat,HDB Commercial Premises,,,No Planning Permission Required,Check with HDB to obtain their consent
+Laundromat,Commercial Buildings,,,Submit Change Of Use Application,
+Laundromat,Mixed Commercial & Residential Developments,Commercial,,Submit Change Of Use Application,
+Laundromat,Mixed Commercial & Residential Developments,Residential,,Not Allowed,Not in line with the planning intention of the site
+Laundromat,Civic and Community Institution,,,Submit Change Of Use Application,
+Laundromat,Sports & Recreation Buildings,,,Submit Change Of Use Application,
+Laundromat,Buildings within Historic Conservation Areas,,,Yes,
+Laundromat,Industrial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Laundromat,Hotel,,,Submit Change Of Use Application,
+Laundromat,Business 1-White Buildings,Commercial,,Submit Change Of Use Application,
+Laundromat,Business 1-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Laundromat,Business 2-White Buildings,Commercial,,Submit Change Of Use Application,
+Laundromat,Business 2-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Office,Shophouses,,,Yes,
+Office,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
+Office,HDB Commercial Premises,,,No Planning Permission Required,Check with HDB to obtain their consent
+Office,Commercial Buildings,,Lodgement,Instant Approval,
+Office,Commercial Buildings,,AGU,Not Allowed,
+Office,Commercial Buildings,,,Submit Change Of Use Application,
+Office,Mixed Commercial & Residential Developments,Commercial,Lodgement,Instant Approval,
+Office,Mixed Commercial & Residential Developments,Commercial,AGU,Not Allowed,
+Office,Mixed Commercial & Residential Developments,Commercial,,Submit Change Of Use Application,
+Office,Mixed Commercial & Residential Developments,Residential,,Not Allowed,Not in line with the planning intention of the site
+Office,Civic and Community Institution,,Lodgement,Instant Approval,Check with People's Association to obtain their consent
+Office,Civic and Community Institution,,,Submit Change Of Use Application,
+Office,Sports & Recreation Buildings,,,Submit Change Of Use Application,
+Office,Buildings within Historic Conservation Areas,,,Yes,
+Office,Industrial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Office,Business Park,Commercial,Lodgement,Instant Approval,Check with landowner (e.g. JTC) to obtain their consent
+Office,Business Park,Commercial,AGU,Not Allowed,
+Office,Business Park,Commercial,,Submit Change Of Use Application,
+Office,Business Park,Business Park,,Not Allowed,Not in line with the planning intention of the site
+Office,Business 1-White Buildings,Commercial,,Submit Change Of Use Application,
+Office,Business 1-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Office,Business 2-White Buildings,Commercial,,Submit Change Of Use Application,
+Office,Business 2-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Massage Establishment,Shophouses,,,Yes,
+Massage Establishment,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
+Massage Establishment,HDB Commercial Premises,,,No Planning Permission Required,Check with HDB to obtain their consent
+Massage Establishment,Commercial Buildings,,Problematic Area,Not Allowed,
+Massage Establishment,Commercial Buildings,,AGU,Not Allowed,
+Massage Establishment,Commercial Buildings,,,Submit Change Of Use Application,
+Massage Establishment,Mixed Commercial & Residential Developments,Commercial,Problematic Area,Not Allowed,
+Massage Establishment,Mixed Commercial & Residential Developments,Commercial,AGU,Not Allowed,
+Massage Establishment,Mixed Commercial & Residential Developments,Commercial,,Submit Change Of Use Application,
+Massage Establishment,Mixed Commercial & Residential Developments,Residential,,Not Allowed,Not in line with the planning intention of the site
+Massage Establishment,Civic and Community Institution,,Lodgement,Instant Approval,Check with People's Association to obtain their consent
+Massage Establishment,Civic and Community Institution,,,Submit Change Of Use Application,
+Massage Establishment,Sports & Recreation Buildings,,,Submit Change Of Use Application,
+Massage Establishment,Buildings within Historic Conservation Areas,,,Not Allowed,Not in line with the planning intention of the site
+Massage Establishment,Industrial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Massage Establishment,Business Park,Commercial,AGU,Not Allowed,
+Massage Establishment,Business Park,Commercial,,Submit Change Of Use Application,
+Massage Establishment,Business Park,Business Park,,Not Allowed,Not in line with the planning intention of the site
+Massage Establishment,Business 1-White Buildings,Commercial,,Submit Change Of Use Application,
+Massage Establishment,Business 1-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Massage Establishment,Business 2-White Buildings,Commercial,,Submit Change Of Use Application,
+Massage Establishment,Business 2-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Medical Clinic,Shophouses,,,Yes,
+Medical Clinic,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
+Medical Clinic,HDB Commercial Premises,,,No Planning Permission Required,Check with HDB to obtain their consent
+Medical Clinic,Commercial Buildings,,Authorisation Medical,No Planning Permission Required,Check with MOH at MOH_Check_GFA@moh.gov.sg to verify if no planning permission is required
+Medical Clinic,Commercial Buildings,,,Submit Change Of Use Application,
+Medical Clinic,Mixed Commercial & Residential Developments,Commercial,Authorisation Medical,No Planning Permission Required,Check with MOH at MOH_Check_GFA@moh.gov.sg to verify if no planning permission is required
+Medical Clinic,Mixed Commercial & Residential Developments,Commercial,,Submit Change Of Use Application,
+Medical Clinic,Mixed Commercial & Residential Developments,Residential,,Not Allowed,Not in line with the planning intention of the site
+Medical Clinic,Civic and Community Institution,,,Submit Change Of Use Application,
+Medical Clinic,Sports & Recreation Buildings,,,Submit Change Of Use Application,
+Medical Clinic,Buildings within Historic Conservation Areas,,,Yes,
+Medical Clinic,Industrial Buildings,,Outlying Area (1st Storey),Submit Change Of Use Application,Development charge at commercial rates may be levied
+Medical Clinic,Industrial Buildings,,,Not Allowed,Not in outlying area on the 1st storey
+Medical Clinic,Business 1-White Buildings,Commercial,,Submit Change Of Use Application,
+Medical Clinic,Business 1-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Medical Clinic,Business 2-White Buildings,Commercial,,Submit Change Of Use Application,
+Medical Clinic,Business 2-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Pet Shop,Shophouses,,,Yes,
+Pet Shop,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
+Pet Shop,HDB Commercial Premises,,,No Planning Permission Required,Check with HDB to obtain their consent
+Pet Shop,Commercial Buildings,,,Submit Change Of Use Application,
+Pet Shop,Mixed Commercial & Residential Developments,Commercial,,Submit Change Of Use Application,
+Pet Shop,Mixed Commercial & Residential Developments,Residential,,Not Allowed,Not in line with the planning intention of the site
+Pet Shop,Civic and Community Institution,,Lodgement,Instant Approval,Check with People's Association to obtain their consent
+Pet Shop,Civic and Community Institution,,,Submit Change Of Use Application,
+Pet Shop,Sports & Recreation Buildings,,,Submit Change Of Use Application,
+Pet Shop,Buildings within Historic Conservation Areas,,,Yes,
+Pet Shop,Industrial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Pet Shop,Business 1-White Buildings,Commercial,,Submit Change Of Use Application,
+Pet Shop,Business 1-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Pet Shop,Business 2-White Buildings,Commercial,,Submit Change Of Use Application,
+Pet Shop,Business 2-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Pet Boarding,Shophouses,Residential,,Not Allowed,Noise disturbances caused to the surrounding residents
+Pet Boarding,Shophouses,Residential with Commercial at 1st storey,,Not Allowed,Noise disturbances caused to the surrounding residents
+Pet Boarding,Shophouses,Commercial & Residential,,Not Allowed,Noise disturbances caused to the surrounding residents
+Pet Boarding,Shophouses,Commercial,,Submit Change Of Use Application,
+Pet Boarding,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
+Pet Boarding,HDB Commercial Premises,,,No Planning Permission Required,Check with HDB to obtain their consent
+Pet Boarding,Commercial Buildings,,,Submit Change Of Use Application,
+Pet Boarding,Mixed Commercial & Residential Developments,Commercial,,Not Allowed,Noise disturbances caused to the surrounding residents
+Pet Boarding,Mixed Commercial & Residential Developments,Residential,,Not Allowed,Not in line with the planning intention of the site
+Pet Boarding,Civic and Community Institution,,,Not Allowed,Not in line with the planning intention of the site
+Pet Boarding,Sports & Recreation Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Pet Boarding,Buildings within Historic Conservation Areas,,,Submit Change Of Use Application,
+Pet Boarding,Industrial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Commercial School,Shophouses,,,Yes,
+Commercial School,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
+Commercial School,HDB Commercial Premises,,,No Planning Permission Required,Check with HDB to obtain their consent
+Commercial School,Commercial Buildings,,Lodgement,Instant Approval,
+Commercial School,Commercial Buildings,,AGU,Not Allowed,Not in line with the planning intention of the site
+Commercial School,Commercial Buildings,,,Submit Change Of Use Application,
+Commercial School,Mixed Commercial & Residential Developments,Commercial,Lodgement,Instant Approval,
+Commercial School,Mixed Commercial & Residential Developments,Commercial,AGU,Not Allowed,Not in line with the planning intention of the site
+Commercial School,Mixed Commercial & Residential Developments,Commercial,,Submit Change Of Use Application,
+Commercial School,Mixed Commercial & Residential Developments,Residential,,Not Allowed,Not in line with the planning intention of the site
+Commercial School,Civic and Community Institution,,Lodgement,Instant Approval,Check with People's Association to obtain their consent
+Commercial School,Civic and Community Institution,,,Submit Change Of Use Application,
+Commercial School,Sports & Recreation Buildings,,,Submit Change Of Use Application,
+Commercial School,Buildings within Historic Conservation Areas,,,Yes,
+Commercial School,Industrial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Commercial School,Business 1-White Buildings,Commercial,,Submit Change Of Use Application,
+Commercial School,Business 1-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Commercial School,Business 2-White Buildings,Commercial,,Submit Change Of Use Application,
+Commercial School,Business 2-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Childcare Centre,Shophouses,,,Yes,
+Childcare Centre,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
+Childcare Centre,HDB Commercial Premises,,,No Planning Permission Required,Check with HDB to obtain their consent
+Childcare Centre,Commercial Buildings,,Authorisation Childcare,No Planning Permission Required,
+Childcare Centre,Commercial Buildings,,AGU,Not Allowed,
+Childcare Centre,Commercial Buildings,,,Submit Change Of Use Application,
+Childcare Centre,Mixed Commercial & Residential Developments,Commercial,Authorisation Childcare,No Planning Permission Required,
+Childcare Centre,Mixed Commercial & Residential Developments,Commercial,AGU,Not Allowed,
+Childcare Centre,Mixed Commercial & Residential Developments,Commercial,,Submit Change Of Use Application,
+Childcare Centre,Mixed Commercial & Residential Developments,Residential,,Not Allowed,Not in line with the planning intention of the site
+Childcare Centre,Civic and Community Institution,,Authorisation Childcare,No Planning Permission Required,
+Childcare Centre,Civic and Community Institution,,,Submit Change Of Use Application,
+Childcare Centre,Sports & Recreation Buildings,,Authorisation Childcare,No Planning Permission Required,
+Childcare Centre,Sports & Recreation Buildings,,,Submit Change Of Use Application,
+Childcare Centre,Buildings within Historic Conservation Areas,,,Yes,
+Childcare Centre,Industrial Buildings,Business 1,,Submit Change Of Use Application,Check with NEA to obtain their clearance
+Childcare Centre,Industrial Buildings,Business 2,,Not Allowed,Potential health and safety concerns of the children
+Childcare Centre,Landed Houses,,,Submit Change Of Use Application,
+Childcare Centre,Place of Worship,,,Submit Change Of Use Application,
+Childcare Centre,Educational Institution,,Authorisation Childcare,No Planning Permission Required,
+Childcare Centre,Educational Institution,,,Submit Change Of Use Application,
+Childcare Centre,Medical and Healthcare,,Authorisation Childcare,No Planning Permission Required,
+Childcare Centre,Medical and Healthcare,,,Submit Change Of Use Application,
+Childcare Centre,Hotel,,Authorisation Childcare,No Planning Permission Required,
+Childcare Centre,Hotel,,,Submit Change Of Use Application,
+Childcare Centre,Business 1-White Buildings,Commercial,,Submit Change Of Use Application,
+Childcare Centre,Business 1-White Buildings,Industrial,,Submit Change Of Use Application,
+Childcare Centre,Business 2-White Buildings,Commercial,,Submit Change Of Use Application,
+Childcare Centre,Business 2-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Fitness Centre/Gymnasium,Shophouses,,,Yes,
+Fitness Centre/Gymnasium,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
+Fitness Centre/Gymnasium,HDB Commercial Premises,,,No Planning Permission Required,Check with HDB to obtain their consent
+Fitness Centre/Gymnasium,Commercial Buildings,,Lodgement,Instant Approval,
+Fitness Centre/Gymnasium,Commercial Buildings,,,Submit Change Of Use Application,
+Fitness Centre/Gymnasium,Mixed Commercial & Residential Developments,,Lodgement,Instant Approval,
+Fitness Centre/Gymnasium,Mixed Commercial & Residential Developments,Commercial,,Submit Change Of Use Application,
+Fitness Centre/Gymnasium,Mixed Commercial & Residential Developments,Residential,,Not Allowed,Not in line with the planning intention of the site
+Fitness Centre/Gymnasium,Civic and Community Institution,,Lodgement,Instant Approval,Check with People's Association to obtain their consent
+Fitness Centre/Gymnasium,Civic and Community Institution,,,Submit Change Of Use Application,
+Fitness Centre/Gymnasium,Sports & Recreation Buildings,,,No Planning Permission Required,
+Fitness Centre/Gymnasium,Buildings within Historic Conservation Areas,,,Yes,
+Fitness Centre/Gymnasium,Industrial Buildings,,Outlying Area (1st Storey),Submit Change Of Use Application,Development charge at commercial rates may be levied
+Fitness Centre/Gymnasium,Industrial Buildings,,,Not Allowed,Not in outlying area on the 1st storey
+Fitness Centre/Gymnasium,Business 1-White Buildings,Commercial,,Submit Change Of Use Application,
+Fitness Centre/Gymnasium,Business 1-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Fitness Centre/Gymnasium,Business 2-White Buildings,Commercial,,Submit Change Of Use Application,
+Fitness Centre/Gymnasium,Business 2-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Amusement Centre,Shophouses,,,Yes,
+Amusement Centre,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
+Amusement Centre,HDB Commercial Premises,,,No Planning Permission Required,Check with HDB to obtain their consent
+Amusement Centre,Commercial Buildings,,AGU,Not Allowed,
+Amusement Centre,Commercial Buildings,,,Submit Change Of Use Application,
+Amusement Centre,Mixed Commercial & Residential Developments,Commercial,AGU,Not Allowed,
+Amusement Centre,Mixed Commercial & Residential Developments,Commercial,,Submit Change Of Use Application,
+Amusement Centre,Mixed Commercial & Residential Developments,Residential,,Not Allowed,Not in line with the planning intention of the site
+Amusement Centre,Civic and Community Institution,,Lodgement,Instant Approval,Check with People's Association to obtain their consent
+Amusement Centre,Civic and Community Institution,,,Submit Change Of Use Application,
+Amusement Centre,Sports & Recreation Buildings,,,Submit Change Of Use Application,
+Amusement Centre,Buildings within Historic Conservation Areas,,,Not Allowed,Not in line with the planning intention of the site
+Amusement Centre,Industrial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Amusement Centre,Business 1-White Buildings,Commercial,,Submit Change Of Use Application,
+Amusement Centre,Business 1-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Amusement Centre,Business 2-White Buildings,Commercial,,Submit Change Of Use Application,
+Amusement Centre,Business 2-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Residential,Shophouses,,,Yes,
+Residential,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
+Residential,HDB Commercial Premises,,,Not Allowed,Not in line with the planning intention of the site
+Residential,Commercial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Residential,Mixed Commercial & Residential Developments,Commercial,,Not Allowed,Not in line with the planning intention of the site
+Residential,Mixed Commercial & Residential Developments,Residential,,Submit Change Of Use Application,
+Residential,Civic and Community Institution,,,Not Allowed,Not in line with the planning intention of the site
+Residential,Sports & Recreation Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Residential,Buildings within Historic Conservation Areas,,,Yes,
+Residential,Industrial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Residential,Business 1-White Buildings,Commercial,,Not Allowed,Not in line with the planning intention of the site
+Residential,Business 1-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Residential,Business 2-White Buildings,Commercial,,Not Allowed,Not in line with the planning intention of the site
+Residential,Business 2-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Backpackers' Hostel,Shophouses,,,Yes,
+Backpackers' Hostel,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
+Backpackers' Hostel,HDB Commercial Premises,,,Not Allowed,Not in line with the planning intention of the site
+Backpackers' Hostel,Commercial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Backpackers' Hostel,Mixed Commercial & Residential Developments,,,Not Allowed,Not in line with the planning intention of the site
+Backpackers' Hostel,Civic and Community Institution,,,Not Allowed,Not in line with the planning intention of the site
+Backpackers' Hostel,Sports & Recreation Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Backpackers' Hostel,Buildings within Historic Conservation Areas,,,Yes,
+Backpackers' Hostel,Industrial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Backpackers' Hostel,Hotel,,,Submit Change Of Use Application,
+Backpackers' Hostel,Business 1-White Buildings,Commercial,,Not Allowed,Not in line with the planning intention of the site
+Backpackers' Hostel,Business 1-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Backpackers' Hostel,Business 2-White Buildings,Commercial,,Not Allowed,Not in line with the planning intention of the site
+Backpackers' Hostel,Business 2-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Hotel,Shophouses,,,Yes,
+Hotel,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
+Hotel,HDB Commercial Premises,,,Not Allowed,Not in line with the planning intention of the site
+Hotel,Commercial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Hotel,Mixed Commercial & Residential Developments,,,Not Allowed,Not in line with the planning intention of the site
+Hotel,Civic and Community Institution,,,Not Allowed,Not in line with the planning intention of the site
+Hotel,Sports & Recreation Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Hotel,Buildings within Historic Conservation Areas,,,Yes,
+Hotel,Industrial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Hotel,Hotel,Commercial,,Submit Change Of Use Application,
+Hotel,Hotel,Hotel,,No Planning Permission Required,
+Hotel,Business 1-White Buildings,Commercial,,Not Allowed,Not in line with the planning intention of the site
+Hotel,Business 1-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Hotel,Business 2-White Buildings,Commercial,,Not Allowed,Not in line with the planning intention of the site
+Hotel,Business 2-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Students' Hostel,Shophouses,,,Yes,
+Students' Hostel,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
+Students' Hostel,HDB Commercial Premises,,,Not Allowed,Not in line with the planning intention of the site
+Students' Hostel,Commercial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Students' Hostel,Mixed Commercial & Residential Developments,Commercial,,Not Allowed,Not in line with the planning intention of the site
+Students' Hostel,Mixed Commercial & Residential Developments,Residential,,Submit Change Of Use Application,
+Students' Hostel,Civic and Community Institution,,,Not Allowed,Not in line with the planning intention of the site
+Students' Hostel,Sports & Recreation Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Students' Hostel,Buildings within Historic Conservation Areas,,,Yes,
+Students' Hostel,Industrial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Students' Hostel,Business 1-White Buildings,Commercial,,Not Allowed,Not in line with the planning intention of the site
+Students' Hostel,Business 1-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Students' Hostel,Business 2-White Buildings,Commercial,,Not Allowed,Not in line with the planning intention of the site
+Students' Hostel,Business 2-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Serviced Apartment,Shophouses,,,Yes,
+Serviced Apartment,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
+Serviced Apartment,HDB Commercial Premises,,,Not Allowed,Not in line with the planning intention of the site
+Serviced Apartment,Commercial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Serviced Apartment,Mixed Commercial & Residential Developments,Commercial,,Not Allowed,Not in line with the planning intention of the site
+Serviced Apartment,Mixed Commercial & Residential Developments,Residential,,Submit Change Of Use Application,
+Serviced Apartment,Civic and Community Institution,,,Not Allowed,Not in line with the planning intention of the site
+Serviced Apartment,Sports & Recreation Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Serviced Apartment,Buildings within Historic Conservation Areas,,,Yes,
+Serviced Apartment,Industrial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Serviced Apartment,Hotel,,,Submit Change Of Use Application,
+Serviced Apartment,Business 1-White Buildings,Commercial,,Not Allowed,Not in line with the planning intention of the site
+Serviced Apartment,Business 1-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Serviced Apartment,Business 2-White Buildings,Commercial,,Not Allowed,Not in line with the planning intention of the site
+Serviced Apartment,Business 2-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Workers' Dormitories,Shophouses,,,Not Allowed,Not in line with the planning intention of the site
+Workers' Dormitories,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
+Workers' Dormitories,HDB Commercial Premises,,,Not Allowed,Not in line with the planning intention of the site
+Workers' Dormitories,Commercial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Workers' Dormitories,Mixed Commercial & Residential Developments,,,Not Allowed,Not in line with the planning intention of the site
+Workers' Dormitories,Civic and Community Institution,,,Not Allowed,Not in line with the planning intention of the site
+Workers' Dormitories,Sports & Recreation Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Workers' Dormitories,Buildings within Historic Conservation Areas,,,Not Allowed,Not in line with the planning intention of the site
+Workers' Dormitories,Industrial Buildings,,Temporary Workers’ Dormitories,Not Allowed,Minimise increasing pressure on existing infrastructure in industrial areas where there are large numbers of temporary workers’ dormitories
+Workers' Dormitories,Industrial Buildings,,,Submit Change Of Use Application,
+Workers' Dormitories,Business 1-White Buildings,Commercial,,Not Allowed,Not in line with the planning intention of the site
+Workers' Dormitories,Business 1-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Workers' Dormitories,Business 2-White Buildings,Commercial,,Not Allowed,Not in line with the planning intention of the site
+Workers' Dormitories,Business 2-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Light Industrial Use,Shophouses,,,Not Allowed,Not in line with the planning intention of the site
+Light Industrial Use,State Property on Interim Tenancy,,,Submit Change Of Use Application,Check with SLA to obtain their consent
+Light Industrial Use,HDB Commercial Premises,,,Not Allowed,Not in line with the planning intention of the site
+Light Industrial Use,Commercial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Light Industrial Use,Mixed Commercial & Residential Developments,,,Not Allowed,Not in line with the planning intention of the site
+Light Industrial Use,Civic and Community Institution,,,Not Allowed,Not in line with the planning intention of the site
+Light Industrial Use,Sports & Recreation Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Light Industrial Use,Buildings within Historic Conservation Areas,,Traditional Trades and Services,Submit Change Of Use Application,"May be considered on a case by case basis, subject to detailed evaluation in consultation with the relevant technical agencies"
+Light Industrial Use,Buildings within Historic Conservation Areas,,,Not Allowed,Not in line with the planning intention of the site
+Light Industrial Use,Industrial Buildings,,,No Planning Permission Required,Check with NEA to obtain their clearance
+Light Industrial Use,Business 1-White Buildings,Commercial,,Not Allowed,Not in line with the planning intention of the site
+Light Industrial Use,Business 1-White Buildings,Industrial,,No Planning Permission Required,Check with NEA to obtain their clearance
+Light Industrial Use,Business 2-White Buildings,Commercial,,Not Allowed,Not in line with the planning intention of the site
+Light Industrial Use,Business 2-White Buildings,Industrial,,No Planning Permission Required,Check with NEA to obtain their clearance
+General Industrial Use,Shophouses,,,Not Allowed,Not in line with the planning intention of the site
+General Industrial Use,State Property on Interim Tenancy,,,Submit Change Of Use Application,Check with SLA to obtain their consent
+General Industrial Use,HDB Commercial Premises,,,Not Allowed,Not in line with the planning intention of the site
+General Industrial Use,Commercial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+General Industrial Use,Mixed Commercial & Residential Developments,,,Not Allowed,Not in line with the planning intention of the site
+General Industrial Use,Civic and Community Institution,,,Not Allowed,Not in line with the planning intention of the site
+General Industrial Use,Sports & Recreation Buildings,,,Not Allowed,Not in line with the planning intention of the site
+General Industrial Use,Buildings within Historic Conservation Areas,,Traditional Trades and Services,Submit Change Of Use Application,"May be considered on a case by case basis, subject to detailed evaluation in consultation with the relevant technical agencies"
+General Industrial Use,Buildings within Historic Conservation Areas,,,Not Allowed,Not in line with the planning intention of the site
+General Industrial Use,Industrial Buildings,Business 1,,Not Allowed,Not in line with the planning intention of the site
+General Industrial Use,Industrial Buildings,Business 2,,No Planning Permission Required,Check with NEA to obtain their clearance
+General Industrial Use,Business 1-White Buildings,Commercial,,Not Allowed,Not in line with the planning intention of the site
+General Industrial Use,Business 1-White Buildings,Industrial,,No Planning Permission Required,Check with NEA to obtain their clearance
+General Industrial Use,Business 2-White Buildings,Commercial,,Not Allowed,Not in line with the planning intention of the site
+General Industrial Use,Business 2-White Buildings,Industrial,,No Planning Permission Required,Check with NEA to obtain their clearance
+Industrial Training,Shophouses,,,Not Allowed,Not in line with the planning intention of the site
+Industrial Training,State Property on Interim Tenancy,,,Submit Change Of Use Application,
+Industrial Training,HDB Commercial Premises,,,Not Allowed,Not in line with the planning intention of the site
+Industrial Training,Commercial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Industrial Training,Mixed Commercial & Residential Developments,,,Not Allowed,Not in line with the planning intention of the site
+Industrial Training,Civic and Community Institution,,,Not Allowed,Not in line with the planning intention of the site
+Industrial Training,Sports & Recreation Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Industrial Training,Buildings within Historic Conservation Areas,,,Not Allowed,Not in line with the planning intention of the site
+Industrial Training,Industrial Buildings,,,Submit Change Of Use Application,
+Industrial Training,Business 1-White Buildings,Commercial,,Not Allowed,Not in line with the planning intention of the site
+Industrial Training,Business 1-White Buildings,Industrial,,Submit Change Of Use Application,
+Industrial Training,Business 2-White Buildings,Commercial,,Not Allowed,Not in line with the planning intention of the site
+Industrial Training,Business 2-White Buildings,Industrial,,Submit Change Of Use Application,
+Warehouse,Shophouses,,,Not Allowed,Not in line with the planning intention of the site
+Warehouse,State Property on Interim Tenancy,,,Submit Change Of Use Application,
+Warehouse,HDB Commercial Premises,,,Not Allowed,Not in line with the planning intention of the site
+Warehouse,Commercial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Warehouse,Mixed Commercial & Residential Developments,,,Not Allowed,Not in line with the planning intention of the site
+Warehouse,Civic and Community Institution,,,Not Allowed,Not in line with the planning intention of the site
+Warehouse,Sports & Recreation Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Warehouse,Buildings within Historic Conservation Areas,,,Not Allowed,Not in line with the planning intention of the site
+Warehouse,Industrial Buildings,,,Submit Change Of Use Application,
+Warehouse,Business 1-White Buildings,Commercial,,Not Allowed,Not in line with the planning intention of the site
+Warehouse,Business 1-White Buildings,Industrial,,Submit Change Of Use Application,
+Warehouse,Business 2-White Buildings,Commercial,,Not Allowed,Not in line with the planning intention of the site
+Warehouse,Business 2-White Buildings,Industrial,,Submit Change Of Use Application,
+Industrial Canteen,Shophouses,,,Not Allowed,Not in line with the planning intention of the site
+Industrial Canteen,State Property on Interim Tenancy,,,Submit Change Of Use Application,Check with SLA to obtain their consent
+Industrial Canteen,HDB Commercial Premises,,,Not Allowed,Not in line with the planning intention of the site
+Industrial Canteen,Commercial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Industrial Canteen,Mixed Commercial & Residential Developments,,,Not Allowed,Not in line with the planning intention of the site
+Industrial Canteen,Civic and Community Institution,,,Not Allowed,Not in line with the planning intention of the site
+Industrial Canteen,Sports & Recreation Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Industrial Canteen,Buildings within Historic Conservation Areas,,,Not Allowed,Not in line with the planning intention of the site
+Industrial Canteen,Industrial Buildings,,,Submit Change Of Use Application,
+Industrial Canteen,Business 1-White Buildings,Commercial,,Submit Change Of Use Application,
+Industrial Canteen,Business 1-White Buildings,Industrial,,Submit Change Of Use Application,
+Industrial Canteen,Business 2-White Buildings,Commercial,,Submit Change Of Use Application,
+Industrial Canteen,Business 2-White Buildings,Industrial,,Submit Change Of Use Application,
+Showroom,Shophouses,,,Yes,
+Showroom,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
+Showroom,HDB Commercial Premises,,,No Planning Permission Required,Check with HDB to obtain their consent
+Showroom,Commercial Buildings,,Authorisation Commercial,No Planning Permission Required,
+Showroom,Commercial Buildings,,,Submit Change Of Use Application,
+Showroom,Mixed Commercial & Residential Developments,Commercial,Authorisation Commercial,No Planning Permission Required,
+Showroom,Mixed Commercial & Residential Developments,Commercial,,Submit Change Of Use Application,
+Showroom,Mixed Commercial & Residential Developments,Residential,,Not Allowed,Not in line with the planning intention of the site
+Showroom,Civic and Community Institution,,Lodgement,Instant Approval,Check with People's Association to obtain their consent
+Showroom,Civic and Community Institution,,,Submit Change Of Use Application,
+Showroom,Sports & Recreation Buildings,,,Submit Change Of Use Application,
+Showroom,Buildings within Historic Conservation Areas,,,Yes,
+Showroom,Industrial Buildings,,1st Storey,Submit Change Of Use Application,Development charge at commercial rates may be levied
+Showroom,Industrial Buildings,Others,,Not Allowed,Not on 1st storey
+Showroom,Hotel,Commercial,Authorisation Commercial,No Planning Permission Required,
+Showroom,Hotel,Commercial,,Submit Change Of Use Application,
+Showroom,Hotel,Hotel,,Submit Change Of Use Application,
+Showroom,Business 1-White Buildings,Commercial,,Submit Change Of Use Application,
+Showroom,Business 1-White Buildings,Industrial,,Submit Change Of Use Application,
+Showroom,Business 2-White Buildings,Commercial,,Submit Change Of Use Application,
+Showroom,Business 2-White Buildings,Industrial,,Submit Change Of Use Application,
+E-business,Shophouses,,,Not Allowed,Not in line with the planning intention of the site
+E-business,State Property on Interim Tenancy,,,Not Allowed,Not in line with the planning intention of the site
+E-business,HDB Commercial Premises,,,Not Allowed,Not in line with the planning intention of the site
+E-business,Commercial Buildings,,,Submit Change Of Use Application,
+E-business,Mixed Commercial & Residential Developments,,,Not Allowed,Not in line with the planning intention of the site
+E-business,Civic and Community Institution,,,Not Allowed,Not in line with the planning intention of the site
+E-business,Sports & Recreation Buildings,,,Not Allowed,Not in line with the planning intention of the site
+E-business,Buildings within Historic Conservation Areas,,,Yes,
+E-business,Industrial Buildings,,,Submit Change Of Use Application,
+E-business,Business 1-White Buildings,Commercial,,Submit Change Of Use Application,
+E-business,Business 1-White Buildings,Industrial,,Submit Change Of Use Application,
+E-business,Business 2-White Buildings,Commercial,,Submit Change Of Use Application,
+E-business,Business 2-White Buildings,Industrial,,Submit Change Of Use Application,
+Core Media Activities,Shophouses,,,Not Allowed,Not in line with the planning intention of the site
+Core Media Activities,State Property on Interim Tenancy,,,Not Allowed,Not in line with the planning intention of the site
+Core Media Activities,HDB Commercial Premises,,,Not Allowed,Not in line with the planning intention of the site
+Core Media Activities,Commercial Buildings,,,Submit Change Of Use Application,
+Core Media Activities,Mixed Commercial & Residential Developments,,,Not Allowed,Not in line with the planning intention of the site
+Core Media Activities,Civic and Community Institution,,,Not Allowed,Not in line with the planning intention of the site
+Core Media Activities,Sports & Recreation Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Core Media Activities,Buildings within Historic Conservation Areas,,,Yes,
+Core Media Activities,Industrial Buildings,,,Submit Change Of Use Application,
+Core Media Activities,Business 1-White Buildings,Commercial,,Submit Change Of Use Application,
+Core Media Activities,Business 1-White Buildings,Industrial,,Submit Change Of Use Application,
+Core Media Activities,Business 2-White Buildings,Commercial,,Submit Change Of Use Application,
+Core Media Activities,Business 2-White Buildings,Industrial,,Submit Change Of Use Application,
+Association/Community Club/Family Service Centre,Shophouses,,,Yes,
+Association/Community Club/Family Service Centre,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
+Association/Community Club/Family Service Centre,HDB Commercial Premises,,,No Planning Permission Required,Check with HDB to obtain their consent
+Association/Community Club/Family Service Centre,Commercial Buildings,,Lodgement,Instant Approval,
+Association/Community Club/Family Service Centre,Commercial Buildings,,AGU,Not Allowed,
+Association/Community Club/Family Service Centre,Commercial Buildings,,,Submit Change Of Use Application,
+Association/Community Club/Family Service Centre,Mixed Commercial & Residential Developments,Commercial,Lodgement,Instant Approval,
+Association/Community Club/Family Service Centre,Mixed Commercial & Residential Developments,Commercial,AGU,Not Allowed,
+Association/Community Club/Family Service Centre,Mixed Commercial & Residential Developments,Commercial,,Submit Change Of Use Application,
+Association/Community Club/Family Service Centre,Mixed Commercial & Residential Developments,Residential,,Not Allowed,Not in line with the planning intention of the site
+Association/Community Club/Family Service Centre,Civic and Community Institution,,,No Planning Permission Required,Check with People's Association to obtain their consent
+Association/Community Club/Family Service Centre,Sports & Recreation Buildings,,,Submit Change Of Use Application,
+Association/Community Club/Family Service Centre,Buildings within Historic Conservation Areas,,,Yes,
+Association/Community Club/Family Service Centre,Industrial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Association/Community Club/Family Service Centre,Business 1-White Buildings,Commercial,,Submit Change Of Use Application,
+Association/Community Club/Family Service Centre,Business 1-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Association/Community Club/Family Service Centre,Business 2-White Buildings,Commercial,,Submit Change Of Use Application,
+Association/Community Club/Family Service Centre,Business 2-White Buildings,Industrial,,Not Allowed,Not in line with the planning intention of the site
+Religious Activities,Shophouses,,,Not Allowed,Not in line with the planning intention of the site
+Religious Activities,State Property on Interim Tenancy,,,Not Allowed,Not in line with the planning intention of the site
+Religious Activities,HDB Commercial Premises,,,Not Allowed,Not in line with the planning intention of the site
+Religious Activities,Commercial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Religious Activities,Mixed Commercial & Residential Developments,,,Not Allowed,Not in line with the planning intention of the site
+Religious Activities,Civic and Community Institution,,,Not Allowed,Not in line with the planning intention of the site
+Religious Activities,Sports & Recreation Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Religious Activities,Buildings within Historic Conservation Areas,,,Not Allowed,Not in line with the planning intention of the site
+Religious Activities,Industrial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Limited & Non-Exclusive Religious Use,Shophouses,,,Not Allowed,Not in line with the planning intention of the site
+Limited & Non-Exclusive Religious Use,State Property on Interim Tenancy,,,Not Allowed,Not in line with the planning intention of the site
+Limited & Non-Exclusive Religious Use,HDB Commercial Premises,,,Not Allowed,Not in line with the planning intention of the site
+Limited & Non-Exclusive Religious Use,Commercial Buildings,,Commercial spaces for Religious Purposes,Submit Change Of Use Application,
+Limited & Non-Exclusive Religious Use,Commercial Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Limited & Non-Exclusive Religious Use,Mixed Commercial & Residential Developments,,,Not Allowed,Not in line with the planning intention of the site
+Limited & Non-Exclusive Religious Use,Civic and Community Institution,,,Not Allowed,Not in line with the planning intention of the site
+Limited & Non-Exclusive Religious Use,Sports & Recreation Buildings,,,Not Allowed,Not in line with the planning intention of the site
+Limited & Non-Exclusive Religious Use,Buildings within Historic Conservation Areas,,,Not Allowed,Not in line with the planning intention of the site
+Limited & Non-Exclusive Religious Use,Industrial Buildings,,Industrial Spaces for Religious Purposes,Yes,
+Limited & Non-Exclusive Religious Use,Industrial Buildings,,,Not Allowed,Not in line with the planning intention of the site
