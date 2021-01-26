@@ -9,6 +9,9 @@ class SpecificUseClass:
     def __init__(self, name: str = None):
         self.name = name
 
+class UseClassType(Enum):
+    Generic = "Generic"
+    Specific = "Specific"
 
 class GenericUseClassEnum(Enum):
     FoodBev = "FoodBev"
