@@ -5,13 +5,6 @@ import logging
 
 log = logging.getLogger('root')
 
-@supa.route("/", methods=['GET'])
-def test():
-    log.info("Received request")
-    log.info("Processing request")
-    log.info("Processed request")
-    return "hello world."
-
 @supa.route("/case", methods=['GET'])
 def get_case():
     filter_map = dict(request.args.items())
@@ -36,10 +29,3 @@ def delete_case():
     case_id = dict(request.get_json())["case_id"]
     cases_service.delete_case(case_id)
     return f"deleted case with case id {case_id}"
-
-# TODO: add more routes here when business logic is done
-# EXAMPLE
-# @supa.route("/cases", methods=['GET'])
-# def get_cases():
-#     cases = cases_service.get_cases()
-#     return jsonify(cases)

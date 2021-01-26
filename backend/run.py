@@ -1,5 +1,7 @@
 from app import supa # noqa
-from app.routes import * # noqa
+# add routes import here
+from app.routes.test_routes import * # noqa
+from app.routes.case_routes import * # noqa
 from app.database import sql_db # noqa
 import os
 import logging
