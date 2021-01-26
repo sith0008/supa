@@ -1,5 +1,6 @@
-from app import supa # noqa
-from app.services import cases_service # noqa
+from app import supa  # noqa
+from app.services import cases_service  # noqa
+from app.services import guidelines_service  # noqa
 from flask import request, jsonify
 import logging
 
@@ -10,6 +11,7 @@ def get_case():
     filter_map = dict(request.args.items())
     return jsonify(cases_service.get_case(filter_map))
 
+
 @supa.route("/case", methods=['PUT'])
 def insert_case():
     fields = dict(request.get_json())
@@ -17,12 +19,14 @@ def insert_case():
     print(insert_case_id)
     return f"inserted case with node id {insert_case_id}"
 
+
 @supa.route("/case", methods=['POST'])
 def update_case():
     fields = dict(request.get_json())
     update_case_id = cases_service.update_case(fields)
     print(update_case_id)
     return f"updated case with node id {update_case_id}"
+
 
 @supa.route("/case", methods=['DELETE'])
 def delete_case():
