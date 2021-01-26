@@ -13,15 +13,27 @@ class GuidelinesService:
         self.engine = engine
         # self.accessor = GuidelinesAccessor(session)
 
+    def insert_guideline(self, fields_map: Dict):
+        Session = sessionmaker(bind=self.engine)
+        session = Session()
+        accessor = GuidelinesAccessor(session)
+
+        new_guideline = Guideline()
+        for k, v in fields_map.items():
+            setattr(new_guideline, k, v)
+        accessor.create(new_guideline)
+
+        session.close()
+
     def get_guideline(self, filter_map: Dict):
         Session = sessionmaker(bind=self.engine)
         session = Session()
         accessor = GuidelinesAccessor(session)
-        guidelines = accessor.get_guidelines(filter_map)
-        # session.commit()
+
+        guideline = accessor.read(filter_map)
+
         session.close()
-        log.info(guidelines, type(guidelines))
-        return guidelines
+        return guideline
 
     # def get_guideline(self, filter_map: Dict):
     #     if 'business_use_type' in filter_map and 'property_type' in filter_map:
@@ -60,12 +72,26 @@ class GuidelinesService:
     def is_pta(self, location=123456):
         return True
 
-    def insert_guideline(self, fields_map: Dict):
+    def update_guideline(self, fields_map: Dict):
         Session = sessionmaker(bind=self.engine)
         session = Session()
         accessor = GuidelinesAccessor(session)
-        new_guideline = Guideline()
-        for k, v in fields_map.items():
-            setattr(new_guideline, k, v)
-        return accessor.create(new_guideline)
 
+        fields_map['unit_type'] = 'Normal' if 'unit_type' not in fields_map else fields_map['unit_type']
+        fields_map['conditions'] = 'Normal' if 'conditions' not in fields_map else fields_map['conditions']
+        pri_map = {x: fields_map[x] for x in ['business_use_type', 'property_type', 'unit_type', 'conditions']}
+        upd_map = {x: fields_map[x] for x in ['outcome', 'remarks']}
+        accessor.update(pri_map, upd_map)
+
+        session.close()
+
+    def delete_guideline(self, fields_map: Dict):
+        Session = sessionmaker(bind=self.engine)
+        session = Session()
+        accessor = GuidelinesAccessor(session)
+
+        fields_map['unit_type'] = 'Normal' if 'unit_type' not in fields_map else fields_map['unit_type']
+        pri_map = {x: fields_map[x] for x in ['business_use_type', 'property_type', 'unit_type', 'conditions']}
+        accessor.delete(pri_map)
+
+        session.close()

@@ -17,14 +17,6 @@ OutcomePriority = {
     'No Planning Permission Required': 4,
 }
 
-# Connecting
-# # mysqlclient (a maintained fork of MySQL-Python)
-# engine = create_engine('mysql+mysqldb://user:password@localhost/supa')
-# # PyMySQL
-# engine = create_engine('mysql+pymysql://scott:tiger@localhost/foo')
-# engine = create_engine('sqlite:///:memory:', echo=True)
-# connection = engine.connect()
-
 
 # Declare Mapping
 class Guideline(sql_db.Model):
@@ -56,38 +48,3 @@ class Guideline(sql_db.Model):
     conditions = Column(VARCHAR(100), primary_key=True, default='Normal')
     outcome = Column(Text)
     remarks = Column(Text, default='No Remarks')
-
-
-# # Create Schema
-# sql_db.Model.metadata.create_all(engine)
-#
-# # Create Session
-# Session = sessionmaker(bind=engine)
-# session = Session()
-#
-# # Read CSV
-# with open('app/models/Guidelines_Criteria.csv') as f:
-#     reader = csv.reader(f)
-#     data = list(reader)
-# i = 0
-# for (Business_Use_Type, Property_Type, Unit_Type, Condition, Outcome, Remarks) in data:
-#     Unit_Type = 'Normal' if not Unit_Type else Unit_Type
-#     Conditions = 'Normal' if not Conditions else Conditions
-#     guide = Guideline(
-#         business_use_type=Business_Use_Type,
-#         property_type=Property_Type,
-#         unit_type=Unit_Type,
-#         conditions=Conditions,
-#         outcome=Outcome,
-#         remarks=Remarks
-#     )
-#     # Add Object
-#     session.add(guide)
-#
-# results = sorted(list(session.query(Guideline).filter(
-#         Guideline.business_use_type == 'Restaurant and Bar',
-#         Guideline.property_type == 'Commercial Buildings'
-# )), key=lambda x: OutcomePriority[x.outcome])
-#
-# for result in results:
-#     print(result)
