@@ -10,6 +10,9 @@ class SpecificPropType:
     def __init__(self, name: str = None):
         self.name = name
 
+class PropTypeEnum(Enum):
+    Generic = "Generic"
+    Specific = "Specific"
 
 class GenericPropTypeEnum(Enum):
     Business = "Business"
