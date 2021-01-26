@@ -29,3 +29,4 @@ def delete_case():
     case_id = dict(request.get_json())["case_id"]
     cases_service.delete_case(case_id)
     return f"deleted case with case id {case_id}"
+

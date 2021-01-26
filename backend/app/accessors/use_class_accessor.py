@@ -24,7 +24,7 @@ class UseClassAccessor:
         log.debug(use_classes)
         return use_classes
 
-    def get_specific_by_generic(self, generic_use_class: GenericUseClassEnum):
+    def get_specific_by_generic(self, generic_use_class: str):
         log.info(f"Retrieving all specific use classes for {generic_use_class}")
         tx = self.graph.begin()
         use_classes = tx.run("MATCH (:GenericUseClass {name: $generic_use_class})--(su: SpecificUseClass) RETURN su", generic_use_class=generic_use_class).evaluate()
@@ -32,7 +32,7 @@ class UseClassAccessor:
         log.debug(use_classes)
         return use_classes
 
-    def get_specific_by_name(self, use_class_name: SpecificUseClassEnum):
+    def get_specific_by_name(self, use_class_name: str):
         log.info(f"Retrieving specific use class {use_class_name}")
         tx = self.graph.begin()
         use_class = tx.run("MATCH (u: SpecificUseClass) WHERE u.name=$name RETURN u", name=use_class_name).evaluate()
@@ -40,7 +40,7 @@ class UseClassAccessor:
         log.debug(use_class)
         return use_class
 
-    def get_generic_by_name(self, use_class_name: GenericUseClassEnum):
+    def get_generic_by_name(self, use_class_name: str):
         log.info(f"Retrieving generic use class {use_class_name}")
         tx = self.graph.begin()
         use_class = tx.run("MATCH (u: GenericUseClass) WHERE u.name=$name RETURN u", name=use_class_name).evaluate()
@@ -69,7 +69,7 @@ class UseClassAccessor:
         log.info(f"Created generic use class {use_class.name} with node id {use_class_node_id}")
         return use_class_node_id
 
-    def create_is_a_relation(self, specific: SpecificUseClassEnum, generic: GenericUseClassEnum):
+    def create_is_a_relation(self, specific: str, generic: str):
             # "MATCH (c:Case),(l:Location) WHERE id(c) = $caseId AND id(l) = $locationId CREATE (c)-[r:LOCATED_IN]->(l) RETURN id(r)",
         log.info(f"Creating IS_A relation between {specific} and {generic}")
         tx = self.graph.begin()
@@ -107,7 +107,7 @@ class UseClassAccessor:
         log.info(f"Updated generic use class {use_class.name}, node id {use_class_node_id}")
         return use_class_node_id
 
-    def delete_specific(self, name: SpecificUseClassEnum):
+    def delete_specific(self, name: str):
         if self.get_specific_by_name(name) is None:
             raise Exception(f"Specific use class {name} does not exist.")
         log.info(f"Deleting specific use class{name}")
@@ -116,7 +116,7 @@ class UseClassAccessor:
         log.info(f"Successfully deleted specific use class {name}")
         tx.commit()
 
-    def delete_generic(self, name: GenericUseClassEnum):
+    def delete_generic(self, name: str):
         if self.get_generic_by_name(name) is None:
             raise Exception(f"Generic use class {name} does not exist.")
         log.info(f"Deleting generic use class{name}")
