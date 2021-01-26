@@ -1,4 +1,3 @@
-from py2neo.ogm import Model, Property, RelatedTo
 from enum import Enum
 
 
