@@ -2,15 +2,13 @@ from py2neo.ogm import Model, Property, RelatedTo
 from enum import Enum
 
 
-class GenericUseClass(Model):
-    name = Property()
-    __primarykey__ = "name"
+class GenericUseClass:
+    def __init__(self, name: str = None):
+        self.name = name
 
-
-class SpecificUseClass(Model):
-    name = Property()
-    __primarykey__ = "name"
-    is_a = RelatedTo(GenericUseClass)
+class SpecificUseClass:
+    def __init__(self, name: str = None):
+        self.name = name
 
 
 class GenericUseClassEnum(Enum):
