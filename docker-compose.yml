@@ -22,6 +22,15 @@ services:
     restart: on-failure
     networks:
       - supa-network
+  ingestion:
+    build: ./ingestion
+    container_name: supa-ingestion
+    ports:
+      - "6000:6000"
+    environment:
+      BACKEND_HOST: 'http://backend:5000'
+    networks:
+      - supa-network
   mysql-prd:
     image: mysql:8.0.23
     command: mysqld --default-authentication-plugin=mysql_native_password
