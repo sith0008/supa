@@ -1,22 +1,25 @@
-from app import supa # noqa
+from app import supa  # noqa
 # add routes import here
 from app.routes.test_routes import * # noqa
 from app.routes.case_routes import * # noqa
+from app.routes.guideline_routes import *  # noqa
 from app.routes.use_class_routes import * # noqa
 from app.routes.property_type_routes import * # noqa
 from app.database import sql_db # noqa
 import os
 import logging
-from app.commons.custom_logging import CustomHandler # noqa
+from app.commons.custom_logging import CustomHandler  # noqa
 
 log = logging.getLogger('root')
 log.setLevel('DEBUG')
 log.addHandler(CustomHandler())
 
+
 def init_sql_db(app):
     with app.app_context():
         sql_db.drop_all()
         sql_db.create_all()
+
 
 if __name__ == "__main__":
     init_sql_db(supa)
