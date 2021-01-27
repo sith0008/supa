@@ -1,17 +1,18 @@
-from py2neo.ogm import Model, Property, RelatedTo
 from enum import Enum
 
 
-class GenericPropType(Model):
-    name = Property()
-    __primarykey__ = "name"
+class GenericPropType:
+    def __init__(self, name: str = None):
+        self.name = name
 
 
-class SpecificPropType(Model):
-    name = Property()
-    __primarykey__ = "name"
-    is_a = RelatedTo(GenericPropType)
+class SpecificPropType:
+    def __init__(self, name: str = None):
+        self.name = name
 
+class PropTypeEnum(Enum):
+    Generic = "Generic"
+    Specific = "Specific"
 
 class GenericPropTypeEnum(Enum):
     Business = "Business"
