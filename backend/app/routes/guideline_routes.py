@@ -7,9 +7,9 @@ log = logging.getLogger('root')
 
 
 @supa.route("/guideline", methods=['GET'])
-def get_guideline():
+def get_guidelines():
     filter_map = dict(request.args.items())
-    guideline = guidelines_service.get_guideline(filter_map)
+    guideline = guidelines_service.get_guidelines(filter_map)
     return jsonify(guideline)
 
 
