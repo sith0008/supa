@@ -1,4 +1,4 @@
-Business_Use_Type,Property_Type,Unit_Type,Condition,Outcome,Remarks
+Business_Use_Type,Property_Type,Unit_Type,Conditions,Outcome,Remarks
 Restaurant,Shophouses,,,Yes,
 Restaurant,State Property on Interim Tenancy,,,No Planning Permission Required,Check with SLA to obtain their consent
 Restaurant,HDB Commercial Premises,,,No Planning Permission Required,Check with HDB to obtain their consent
