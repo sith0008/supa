@@ -1,28 +1,27 @@
-import argparse
+import os
+import logging
+from commons.custom_logging import CustomHandler  # noqa
 
-def main(init_sql, init_graph):
-    if init_sql:
+log = logging.getLogger('root')
+log.setLevel('DEBUG')
+log.addHandler(CustomHandler())
+
+
+def main():
+    GUIDELINES_CSV_FILE = os.environ.get("INPUT_CSV")
+    CASES_DATA_DIRECTORY = os.environ.get("INPUT_DATA_DIR")
+
+    if os.environ.get("INIT_SQL", "true").lower() == "true":
         # TODO: run init guideline method
+        log.info("initialising guidelines database")
         raise NotImplementedError
 
-    if init_graph:
+    if os.environ.get("INIT_GRAPH", "true").lower() == "true":
         # TODO: run init graph nodes methods
+        log.info("initialising graph database")
         raise NotImplementedError
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "-s",
-        "--sql",
-        action='store_true',
-        help="whether to initialise the MySQL database"
-    )
-    parser.add_argument(
-        "-g",
-        "--graph",
-        action='store_true',
-        help="whether to initialise the neo4j database"
-    )
-    args = parser.parse_args()
-    main(args.sql, args.graph)
+    log.info("starting ingestion")
+    main()
