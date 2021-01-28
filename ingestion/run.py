@@ -29,10 +29,10 @@ def main():
         log.info("initialising guidelines database")
         guidelines_ingestor.ingest(GUIDELINES_CSV_FILE)
 
-    # if os.environ.get("INIT_GRAPH", "true").lower() == "true":
-    #     # TODO: call methdos from prop_type_ingestor, use_class_ingestor, past_case_ingestor, entity_pop_ingestor
-    #     log.info("initialising graph database")
-    #     raise NotImplementedError
+    if os.environ.get("INIT_GRAPH", "true").lower() == "true":
+        # TODO: call methdos from prop_type_ingestor, use_class_ingestor, past_case_ingestor, entity_pop_ingestor
+        log.info("initialising graph database")
+        raise NotImplementedError
 
 
 if __name__ == "__main__":
