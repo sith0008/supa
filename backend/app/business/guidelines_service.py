@@ -12,12 +12,18 @@ class GuidelinesService:
     def __init__(self, engine):
         self.engine = engine
 
+    def fill_default(self, fields_map):
+        fields_map['unit_type'] = 'Normal' if 'unit_type' not in fields_map else fields_map['unit_type']
+        fields_map['conditions'] = 'Normal' if 'conditions' not in fields_map else fields_map['conditions']
+        return fields_map
+
     def insert_guideline(self, fields_map: Dict):
         Session = sessionmaker(bind=self.engine)
         session = Session()
         accessor = GuidelinesAccessor(session)
 
         new_guideline = Guideline()
+        fields_map = self.fill_default(fields_map)
         for k, v in fields_map.items():
             setattr(new_guideline, k, v)
         accessor.create(new_guideline)
@@ -40,8 +46,7 @@ class GuidelinesService:
         session = Session()
         accessor = GuidelinesAccessor(session)
 
-        fields_map['unit_type'] = 'Normal' if 'unit_type' not in fields_map else fields_map['unit_type']
-        fields_map['conditions'] = 'Normal' if 'conditions' not in fields_map else fields_map['conditions']
+        fields_map = self.fill_default(fields_map)
         pri_map = {x: fields_map[x] for x in ['business_use_type', 'property_type', 'unit_type', 'conditions']}
         upd_map = {x: fields_map[x] for x in ['outcome', 'remarks']}
         accessor.update(pri_map, upd_map)
@@ -53,7 +58,7 @@ class GuidelinesService:
         session = Session()
         accessor = GuidelinesAccessor(session)
 
-        fields_map['unit_type'] = 'Normal' if 'unit_type' not in fields_map else fields_map['unit_type']
+        fields_map = self.fill_default(fields_map)
         pri_map = {x: fields_map[x] for x in ['business_use_type', 'property_type', 'unit_type', 'conditions']}
         accessor.delete(pri_map)
 
