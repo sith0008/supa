@@ -1,7 +1,9 @@
 import requests
 import json
 from ingestors.property_type import generic_property_types, specific_property_type_map # noqa
+import logging
 
+log = logging.getLogger('root')
 
 class PropertyTypeIngestor:
     def __init__(self, host, endpoint):
@@ -9,17 +11,27 @@ class PropertyTypeIngestor:
 
     def insert_generic(self):
         for generic_property_type in generic_property_types:
+            headers = {
+                'content-type':'application/json'
+            }
             data = {
                 "type": "Generic",
                 "name": generic_property_type
             }
-            _ = requests.post(self.url, data=json.dumps(data))
+            res = requests.put(self.url, headers=headers, data=json.dumps(data))
+            log.debug(f"status code: {res.status_code}")
+            log.debug(f"request body: {res.request.body}")
 
     def insert_specific(self):
         for specific, generic in specific_property_type_map.items():
+            headers = {
+                'content-type': 'application/json'
+            }
             data = {
                 "type": "Specific",
                 "name": specific,
                 "generic": generic
             }
-            _ = requests.post(self.url, data=json.dumps(data))
+            res = requests.put(self.url, headers=headers, data=json.dumps(data))
+            log.debug(f"status code: {res.status_code}")
+            log.debug(f"request body: {res.request.body}")
