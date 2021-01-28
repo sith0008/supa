@@ -26,6 +26,12 @@ def init_use_class():
     log.info("Initialising specific use classes")
     use_class_ingestor.insert_specific()
 
+def init_prop_type():
+    log.info("Initialising generic property type")
+    prop_type_ingestor.insert_generic()
+    log.info("Initialising specific property type")
+    prop_type_ingestor.insert_specific()
+
 def main():
     GUIDELINES_CSV_FILE = os.environ.get("GUIDELINES_CSV_FILE")
     CASES_DATA_DIRECTORY = os.environ.get("INPUT_DATA_DIR")
@@ -37,6 +43,7 @@ def main():
         # TODO: call methdos from prop_type_ingestor, use_class_ingestor, past_case_ingestor, entity_pop_ingestor
         log.info("initialising graph database")
         init_use_class()
+        init_prop_type()
 
 
 if __name__ == "__main__":
