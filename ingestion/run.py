@@ -20,19 +20,23 @@ past_case_ingestor = PastCaseIngestor(BACKEND_HOST, "/case")
 entity_pop_ingestor = EntityPopIngestor(BACKEND_HOST, "/entitypop")
 guidelines_ingestor = GuidelinesIngestor(BACKEND_HOST, "/guideline")
 
+def init_use_class():
+    log.info("Initialising generic use classes")
+    use_class_ingestor.insert_generic()
+    log.info("Initialising specific use classes")
+    use_class_ingestor.insert_specific()
 
 def main():
     GUIDELINES_CSV_FILE = os.environ.get("GUIDELINES_CSV_FILE")
     CASES_DATA_DIRECTORY = os.environ.get("INPUT_DATA_DIR")
     if os.environ.get("INIT_SQL", "true").lower() == "true":
-        # TODO: call methods from guidelines_ingestor
         log.info("initialising guidelines database")
         guidelines_ingestor.ingest(GUIDELINES_CSV_FILE)
 
     if os.environ.get("INIT_GRAPH", "true").lower() == "true":
         # TODO: call methdos from prop_type_ingestor, use_class_ingestor, past_case_ingestor, entity_pop_ingestor
         log.info("initialising graph database")
-        raise NotImplementedError
+        init_use_class()
 
 
 if __name__ == "__main__":
