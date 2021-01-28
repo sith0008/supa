@@ -26,12 +26,19 @@ services:
   ingestion:
     build: ./ingestion
     container_name: supa-ingestion
+    image: supa-ingestion:1.0
     ports:
       - "6000:6000"
     environment:
       BACKEND_HOST: 'http://backend:5000'
+      INIT_SQL: "true"
+      INIT_GRAPH: "true"
+      GUIDELINES_CSV_FILE: "Guidelines_Criteria.csv"
+      CASES_DATA_DIRECTORY: ""
     networks:
       - supa-network
+    command: ["./wait-for-it.sh", "backend:5000", "--", "python", "run.py"]
+
   mysql-test:
     image: mysql:8.0.23
     command: mysqld --default-authentication-plugin=mysql_native_password
