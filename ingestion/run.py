@@ -32,6 +32,10 @@ def init_prop_type():
     log.info("Initialising specific property type")
     prop_type_ingestor.insert_specific()
 
+def init_past_cases(cases_directory):
+    log.info("Initialising past cases")
+    past_case_ingestor.ingest_all(cases_directory)
+
 def main():
     GUIDELINES_CSV_FILE = os.environ.get("GUIDELINES_CSV_FILE")
     CASES_DATA_DIRECTORY = os.environ.get("INPUT_DATA_DIR")
@@ -44,6 +48,7 @@ def main():
         log.info("initialising graph database")
         init_use_class()
         init_prop_type()
+        init_past_cases(CASES_DATA_DIRECTORY)
 
 
 if __name__ == "__main__":
