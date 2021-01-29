@@ -1,5 +1,6 @@
 # from py2neo.ogm import Model, Property, RelatedTo
 from app.models.property_type import SpecificPropType # noqa
+from collections import namedtuple
 
 
 class Location:
@@ -16,3 +17,6 @@ class Location:
         self.unit = unit
         self.lot_number = lot_number
         self.building_name = building_name
+
+
+LocationKey = namedtuple("LocationKey", ['postal_code', 'floor', 'unit'])
