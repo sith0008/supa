@@ -1,4 +1,3 @@
-from ingestors.use_class import generic_use_classes, specific_use_class_map  # noqa
 import requests
 import json
 import logging
@@ -6,7 +5,7 @@ import logging
 log = logging.getLogger('root')
 
 
-class UseClassIngestor:
+class LocationIngestor:
     def __init__(self, host, endpoint):
         self.url = host + endpoint
 
