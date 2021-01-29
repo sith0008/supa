@@ -1,5 +1,5 @@
 from typing import NamedTuple
-from app.models.location import Location # noqa
+from app.models.location import Location, LocationKey # noqa
 from app.models.property_type import SpecificPropTypeEnum # noqa
 from collections import namedtuple
 import logging
@@ -11,7 +11,7 @@ class LocationAccessor:
     def __init__(self, graph):
         self.graph = graph
     # location_key is defined by namedtuple('LocationKey', ['postal_code', 'floor', 'unit'])
-    def get_location_by_key(self, location_key: NamedTuple):
+    def get_location_by_key(self, location_key: LocationKey):
         tx = self.graph.begin()
         log.info(f"Retrieving location with location key {location_key}")
         location = tx.run("MATCH (l: Location) WHERE l.postal_code=$postal_code, l.floor=$floor, l.unit=$unit RETURN l",
@@ -45,6 +45,25 @@ class LocationAccessor:
         tx.commit()
         log.info(f"Successfully inserted location with node id {insert_location_id}")
         return insert_location_id
+
+    def insert_has_prop_type_relation(self, location_key: LocationKey, prop_type_name: str):
+        if self.get_location_by_key(location_key) is None:
+            raise Exception(f"Location {location_key} does not exist.")
+        log.info(f"Inserting HAS_PROP_TYPE relation for location {location_key} and property type {prop_type_name}")
+        tx = self.graph.begin()
+        insert_has_prop_type_relation_id = tx.run("MATCH (l: Location), (p: SpecificPropType) "
+                                                  "WHERE l.postal_code=$postal_code AND l.floor=$floor AND l.unit=$unit AND p.name=$name "
+                                                  "CREATE (l)-[r: HAS_PROP_TYPE]->(p) "
+                                                  "RETURN id(r)",
+                                                  postal_code=location_key.postal_code,
+                                                  floor=location_key.floor,
+                                                  unit=location_key.unit,
+                                                  name=prop_type_name).evaluate()
+
+        tx.commit()
+        log.info(f"Successfully inserted HAS_PROP_TYPE relation for location {location_key} and property type {prop_type_name}")
+        return insert_has_prop_type_relation_id
+
 
     def update(self, location: Location):
         location_key = namedtuple('LocationKey', location.postal_code, location.floor, location.unit)
