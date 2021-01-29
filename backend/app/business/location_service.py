@@ -20,10 +20,23 @@ class LocationService:
             raise NotImplementedError
 
     def insert_location(self, fields_map: Dict):
-        new_location = Location()
-        for k, v in fields_map.items():
-            setattr(new_location, k, v)
-        return self.location_accessor.insert(new_location)
+        if "property_type" in fields_map:
+            prop_type_name = fields_map["property_type"]["name"]
+            location_fields = fields_map["location"]
+            new_location = Location()
+            for k, v in location_fields.items():
+                setattr(new_location, k, v)
+            insert_location_id = self.location_accessor.insert(new_location)
+            location_key = LocationKey(new_location.postal_code, new_location.floor, new_location.unit)
+            insert_has_prop_type_relation_id = self.location_accessor.insert_has_prop_type_relation(location_key, prop_type_name)
+            return insert_location_id
+        else:
+            new_location = Location()
+            for k, v in fields_map.items():
+                setattr(new_location, k, v)
+            return self.location_accessor.insert(new_location)
+
+
 
     def update_location(self, fields_map: Dict):
         new_location = Location()
