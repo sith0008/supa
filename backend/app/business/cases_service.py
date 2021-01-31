@@ -36,7 +36,7 @@ class CasesService:
         )
 
         if not self.location_accessor.get_location_by_key(location_key):
-            log.error(f"Location {location_key} does not exist in database. Creating now")
+            log.error(f"Location {location_key} does not exist in database.")
             raise Exception("Location does not exist")
 
         new_case = PastCase()
