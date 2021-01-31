@@ -14,7 +14,9 @@ def get_case():
 @supa.route("/case", methods=['PUT'])
 def insert_case():
     fields = dict(request.get_json())
-    insert_case_id = cases_service.insert_case(fields)
+    case_fields = fields["case"]
+    location_fields = fields["location"]
+    insert_case_id = cases_service.insert_case_with_location(case_fields, location_fields)
     print(insert_case_id)
     return f"inserted case with node id {insert_case_id}"
 
