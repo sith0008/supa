@@ -28,12 +28,13 @@ class CasesService:
         log.info(f"Retrieving past cases with use class {use_class} and property type {property_type}")
         tx = self.graph.begin()
         similar_cases_results = tx.run("MATCH (c:PastCase)--(l:Location)--(p:SpecificPropType), "
-               "(c:PastCase)--(u:SpecificUseClass)"
-               "WHERE p.name=$property_type AND u.name=$use_class"
-               "RETURN c, l",
-               property_type=property_type,
-               use_class=use_class
-               ).evaluate()
+                                       "(c:PastCase)--(u:SpecificUseClass) "
+                                       "WHERE p.name=$property_type AND u.name=$use_class "
+                                       "LIMIT 5 "
+                                       "RETURN c, l",
+                                       property_type=property_type,
+                                       use_class=use_class
+                                       ).evaluate()
         log.info(f"Retrieved {len(similar_cases_results)} past cases with use class {use_class} and property type {property_type}")
         return similar_cases_results
 
@@ -41,20 +42,21 @@ class CasesService:
                                   specific_use_class,
                                   generic_use_class,
                                   specific_property_type,
-                                  generic_property_type
+                                  generic_property_type,
                                   ):
         log.info(f"Retrieving past cases with generic use class {generic_use_class} and generic property type {generic_property_type}")
         tx = self.graph.begin()
         similar_cases_results= tx.run("MATCH (c:PastCase)--(l:Location)--(sp:SpecificPropType)--(gp:GenericPropType), "
-               "(c:PastCase)--(su:SpecificUseClass)--(gu:GenericUseClass)"
-               "WHERE NOT (sp.name=$specific_property_type AND su.name=$specific_use_class) "
-               "AND (gp.name=$generic_property_type AND gu.name=$generic_use_class)"
-               "RETURN c, l, sp, gp, su, gu",
-               specific_property_type=specific_property_type,
-               generic_property_type=generic_property_type,
-               specific_use_class=specific_use_class,
-               generic_use_class=generic_use_class
-               ).evaluate()
+                                      "(c:PastCase)--(su:SpecificUseClass)--(gu:GenericUseClass) "
+                                      "WHERE NOT (sp.name=$specific_property_type AND su.name=$specific_use_class) "
+                                      "AND (gp.name=$generic_property_type AND gu.name=$generic_use_class) "
+                                      "LIMIT 5"
+                                      "RETURN c, l, sp, gp, su, gu",
+                                      specific_property_type=specific_property_type,
+                                      generic_property_type=generic_property_type,
+                                      specific_use_class=specific_use_class,
+                                      generic_use_class=generic_use_class,
+                                      ).evaluate()
         log.info(f"Retrieved {len(similar_cases_results)} past cases with generic use class {generic_use_class} and generic property type {generic_property_type}")
         return similar_cases_results
 
