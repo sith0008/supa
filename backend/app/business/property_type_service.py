@@ -1,5 +1,6 @@
 from app.accessors.property_type_accessor import PropertyTypeAccessor # noqa
 from app.models.property_type import SpecificPropType, GenericPropType, SpecificPropTypeEnum, GenericPropTypeEnum, PropTypeEnum # noqa
+from app.models.location import LocationKey # noqa
 from typing import Union, Dict
 import logging
 
@@ -42,6 +43,12 @@ class PropertyTypeService:
 
     def get_specific_by_generic(self, generic_property_type_name: str):
         return self.accessor.get_specific_by_generic(generic_property_type_name)
+
+    def get_generic_by_specific(self, specific_property_type_name: str):
+
+
+    def get_specific_by_location(self, location_key: LocationKey):
+        raise NotImplementedError
 
     def create(self, fields_map: Dict):
         property_type_enum = fields_map["type"]
