@@ -5,6 +5,8 @@ from app.routes.case_routes import * # noqa
 from app.routes.guideline_routes import *  # noqa
 from app.routes.use_class_routes import * # noqa
 from app.routes.land_use_type_routes import * # noqa
+from app.routes.location_routes import * # noqa
+from app.routes.kg_chatbot_routes import * # noqa
 from app.database import sql_db # noqa
 import os
 import logging
