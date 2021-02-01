@@ -30,12 +30,15 @@ class CasesService:
         similar_cases_results = tx.run("MATCH (c:PastCase)--(l:Location)--(p:SpecificPropType), "
                                        "(c:PastCase)--(u:SpecificUseClass) "
                                        "WHERE p.name=$property_type AND u.name=$use_class "
-                                       "LIMIT 5 "
-                                       "RETURN c, l",
+                                       "RETURN c, l "
+                                       "LIMIT 5",
                                        property_type=property_type,
                                        use_class=use_class
                                        ).evaluate()
-        log.info(f"Retrieved {len(similar_cases_results)} past cases with use class {use_class} and property type {property_type}")
+        if similar_cases_results:
+            log.info(f"Retrieved {len(similar_cases_results)} past cases with use class {use_class} and property type {property_type}")
+        else:
+            log.info(f"No similar cases found.")
         return similar_cases_results
 
     def get_similar_case_extended(self,
@@ -50,14 +53,17 @@ class CasesService:
                                       "(c:PastCase)--(su:SpecificUseClass)--(gu:GenericUseClass) "
                                       "WHERE NOT (sp.name=$specific_property_type AND su.name=$specific_use_class) "
                                       "AND (gp.name=$generic_property_type AND gu.name=$generic_use_class) "
-                                      "LIMIT 5"
-                                      "RETURN c, l, sp, gp, su, gu",
+                                      "RETURN c, l, sp, gp, su, gu "
+                                      "LIMIT 5",
                                       specific_property_type=specific_property_type,
                                       generic_property_type=generic_property_type,
                                       specific_use_class=specific_use_class,
                                       generic_use_class=generic_use_class,
                                       ).evaluate()
-        log.info(f"Retrieved {len(similar_cases_results)} past cases with generic use class {generic_use_class} and generic property type {generic_property_type}")
+        if similar_cases_results:
+            log.info(f"Retrieved {len(similar_cases_results)} past cases with generic use class {generic_use_class} and generic property type {generic_property_type}")
+        else:
+            log.info(f"No similar cases found.")
         return similar_cases_results
 
 
