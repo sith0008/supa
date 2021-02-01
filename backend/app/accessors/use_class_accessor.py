@@ -48,6 +48,18 @@ class UseClassAccessor:
         log.debug(use_class)
         return use_class
 
+    def get_generic_by_specific(self, specific_use_class_name: str):
+        log.info(f"Retrieving parent of {specific_use_class_name}")
+        tx = self.graph.begin()
+        generic_use_class_name = tx.run("MATCH (gu: GenericUseClass)--(su: SpecificUseClass) "
+                                        "WHERE su.name=$name "
+                                        "RETURN gu.name",
+                                        name=specific_use_class_name
+                                        ).evaluate()
+        log.info(f"Retrieved parent of {specific_use_class_name}")
+        log.debug(generic_use_class_name)
+        return generic_use_class_name
+
     def create_specific(self, use_class: SpecificUseClass):
         if self.get_specific_by_name(use_class.name) is not None:
             raise Exception(f"Specific use class {use_class} already exists.")

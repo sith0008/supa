@@ -43,6 +43,9 @@ class UseClassService:
     def get_specific_by_generic(self, generic_use_class_name: str):
         return self.accessor.get_specific_by_generic(generic_use_class_name)
 
+    def get_generic_by_specific(self, specific_use_class_name: str):
+        return self.accessor.get_generic_by_specific(specific_use_class_name)
+
     def create(self, fields_map: Dict):
         use_class_type = fields_map["type"]
         del fields_map["type"]
