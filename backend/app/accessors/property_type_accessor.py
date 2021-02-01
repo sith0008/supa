@@ -1,4 +1,5 @@
 from app.models.property_type import GenericPropType, SpecificPropType, GenericPropTypeEnum, SpecificPropTypeEnum # noqa
+from app.models.location import LocationKey # noqa
 import logging
 
 log = logging.getLogger('root')
@@ -47,6 +48,32 @@ class PropertyTypeAccessor:
         log.info(f"Retrieved generic property type {property_type_name}")
         log.debug(property_type)
         return property_type
+
+    def get_generic_by_specific(self, specific_property_type_name: str):
+        log.info(f"Retrieving parent of {specific_property_type_name}")
+        tx = self.graph.begin()
+        generic_property_type_name = tx.run("MATCH (gp: GenericPropType)--(sp: SpecificPropType) "
+                                            "WHERE sp.name=$name "
+                                            "RETURN gp.name",
+                                            name=specific_property_type_name
+                                            ).evaluate()
+        log.info(f"Retrieved parent of {specific_property_type_name}")
+        log.debug(generic_property_type_name)
+        return generic_property_type_name
+
+    def get_specific_by_location(self, location_key: LocationKey):
+        log.info(f"Retrieving property type of {location_key}")
+        tx = self.graph.begin()
+        specific_property_type_name = tx.run("MATCH (l: Location)--(p: SpecificPropType) "
+                                             "WHERE l.postal_code=$postal_code AND l.floor=$floor AND l.unit=$unit"
+                                             "RETURN p.name",
+                                             postal_code=location_key.postal_code,
+                                             floor=location_key.floor,
+                                             unit=location_key.unit
+                                             ).evaluate()
+        log.info(f"Retrieved property type of {location_key}")
+        log.debug(specific_property_type_name)
+        return specific_property_type_name
 
     def create_specific(self, property_type: SpecificPropType):
         if self.get_specific_by_name(property_type.name) is not None:
