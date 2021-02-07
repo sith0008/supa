@@ -540,6 +540,10 @@ nlu:
     - got a question
     - can help pls
     - can you help me?
+    - what can you do?
+    - how can you help me?
+    - tell me what you can do
+    - I don't know what to do
 - intent: restart
   examples: |
     - i want to restart the application
@@ -586,4 +590,3 @@ nlu:
     - edit proposal
     - amend proposal
     - make changes
-
