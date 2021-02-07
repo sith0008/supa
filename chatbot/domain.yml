@@ -20,8 +20,31 @@ intents:
   - submit_proposal
 
 entities:
+- use_class
 
 slots:
+  use_class:
+    type: text
+  use_desc:
+    type: text
+  gfa:
+    type: text
+  lot_number:
+    type: text
+  postal_code:
+    type: float
+  floor:
+    type: float
+  unit:
+    type: float
+  opening_hours:
+    type: text
+  live_music:
+    type: text
+  music_details:
+    type: text
+  noise_mitigation:
+    type: text
 
 
 responses:
@@ -103,13 +126,14 @@ responses:
 
 
 actions:
+  - action_show_all_use_classes
   - action_validate_use_class
   - action_validate_postal_code
   - action_validate_floor
   - action_validate_unit
   - action_verify_proposal
-  - action_show_similar
-  - action_show_more_similar
+  - action_get_similar_cases
+  - action_get_more_similar_cases
   - action_explain_outcome
 
 
