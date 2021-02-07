@@ -1,0 +1,87 @@
+version: "2.0"
+nlu:
+- intent: verify_proposal
+  examples: |
+    - can you help me check my proposal?
+    - check my prposal pls
+    - verify proposal
+    - verify my application please
+    - verify
+    - I have a proposal in mind, can you help to check?
+    - check proposal
+    - Verify pls
+    - Verify proposal
+    - verify change of use
+    - I'd like you to evaluate my proposal
+    - I would like you to help verify my proposal
+    - evaluate proposal
+    - help me verify proposal
+    - help to verify
+    - Help verify application
+    - need evaluate proposal
+    - Pls evaluate my proposal
+    - Please verify my proposal
+- intent: view_similar
+  examples: |
+    - View similar [cases]
+    - See similar
+    - Can i see the [past cases] that are similar to mine?
+    - Show me some of [precedent cases] similar to mine
+    - Show me some of the [past cases] with the same [use class]
+    - Show me some of the [past cases] with the same [property type]
+    - i want to see [cases] similar to mine
+    - show similar cases pls
+    - Show similar
+    - I would like to view some similar [cases]
+    - Can you show me some similar [applications]?
+    - show [cases] with same [use class]
+    - show [past cases] with same [property type]
+    - give me similar [cases]
+    - please show me similar [cases]
+    - show some [precedent cases] pls
+    - Show [past cases] please
+    - Please show me some [cases]
+    - Can you show some [references]?
+    - I need some [references]
+    - could you provide me with some similar [cases]?
+    - Could you provide me with some similar [past cases]?
+    - give me some [reference cases]
+    - show some [reference cases] please
+- intent: ask_reason
+  examples: |
+    - Why is my [application] not approved?
+    - why is the first [case] not approved?
+    - why is case [case id] approved?
+    - why is case [case id] rejected?
+    - Why is the second [case] rejected?
+    - explain my [proposal] outcome please
+    - explain outcome
+    - the first [case] is accpeted, why is that so?
+    - i don't understand the outcome
+    - can you explain why my [submission] is rejected?
+    - How come the first [case] is rejected?
+    - how come the second [case] is approved?
+    - why is the outcome like that?
+    - can explain?
+    - explain the outcome please
+    - the 1st [case] is approved, why?
+    - why is the third [case] approved?
+    - why is the 4th [case] approved?
+    - why is the 5th [case] rejected?
+    - can you explain why the 2nd [case] is accepted?
+    - Could you explain why the 1st [case] is rejected?
+    - can explain the outcome of the first one?
+- intent: submit_proposal
+  examples: |
+    - submit [proposal]
+    - Submit [application]
+    - i want to submit
+    - submit pls
+    - Submit please
+    - can I submit?
+    - Can I submit my [proposal]?
+    - I want to submit my [application]
+    - I would like to submit
+    - i'd like to proceed with submission
+
+
