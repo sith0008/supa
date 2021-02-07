@@ -1,34 +1,141 @@
 version: "2.0"
 
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
 intents:
   - greet
   - goodbye
   - affirm
   - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
+  - restart
+  - help
+  - out_of_scope
+  - cancel
+  - edit_form
+  - verify_proposal
+  - view_similar
+  - ask_reason
+  - submit_proposal
+
+entities:
+
+slots:
+
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
+  - text: "Hey! I am Supa! I can help evaluate your Change of Use proposal or clarify your doubts regarding the DC handbooks! How can I help you?"
   utter_goodbye:
-  - text: "Bye"
+  - text: "It was my pleasure helping you, see you again!"
+  utter_affirm:
+  - text: "Thanks for confirming!"
+  utter_ask_cancel:
+  - text: "Are you sure you want to end here?"
+  utter_ask_after_cancel:
+  - text: "How can I help you now?"
+  utter_ask_restart:
+  - text: "Are you sure you want to restart?"
+  utter_out_of_scope:
+  - text: "I can't help you with that, I'm sorry! I am limited to the following, please bear with me while I continue to learn!"
+    buttons:
+      - title: "Verify Proposal"
+        payload: "/verify"
+      - title: "Clarify Doubts"
+        payload: "/clarify"
+  utter_ask_edit_form:
+  - text: "Which field do you want to edit?"
+  utter_ask_use_class:
+  - text: "What will be the proposed use class?"
+  utter_ask_use_desc:
+  - text: "What is the proposed use description?"
+  utter_ask_gfa:
+  - text: "What's the gross floor area?"
+  utter_ask_postal_code:
+  - text: "What is the postal code for your location?"
+  utter_ask_lot_number:
+  - text: "What is the lot number?"
+  utter_ask_floor:
+  - text: "Which floor is it on?"
+  utter_ask_unit:
+  - text: "What is the unit number?"
+  utter_invalid_use_class:
+  - text: "Oops, I didn't recognise that use class! URA uses the following list, please choose the most appropriate one for your use case."
+  utter_similar_use_class:
+  - text: "Did you mean '{use_class}'?"
+  utter_invalid_postal_code:
+  - text: "Oops, I didn't recognise that postal code! Are you sure you entered it correctly?"
+  utter_invalid_floor_number:
+  - text: "Oops, I didn't recognise the floor number! Note that it must be a number!"
+  utter_invalid_unit_number:
+  - text: "Oops, I didn't recognise the unit number! Note that it must be a number!"
+  utter_invalid_gfa:
+  - text: "Oops, I didn't recognise the GFA! Note that it must be numeric!"
+  utter_ask_review:
+  - text: "Can you review the following details you've submitted? Do they look correct?"
+  utter_verifying:
+  - text: "Thanks for the information! Give me a moment while I evaluate your proposal!"
+  utter_verified:
+  - text: "Thanks for waiting! Here's the evaluation outcome!"
+  utter_ask_similar:
+  - text: "Would you like to view some precedent cases similar to yours?"
+  utter_affirm_similar:
+  - text: "Sure, give me a moment while I retrieve them!"
+  utter_deny_similar:
+  - text: "No worries, just let me know when you want to view them later on!"
+  utter_restaurant_before_submit:
+  - text: "Sure, but before that, I will need you to provide more details to improve your chances of approval!"
+  utter_others_before_submit:
+  - text: "Sure, your proposal looks good for now! I'll proceed to submit your application!"
+  utter_ask_opening_hours:
+  - text: "What are the opening hours for your restaurant?"
+  utter_ask_live_music:
+  - text: "Will there be live music?"
+  utter_ask_music_details:
+  - text: "What is the genre and the frequency?"
+  utter_ask_noise_mitigation:
+  - text: "What are the proposed noise mitigating measures?"
+  utter_ask_continue_verify:
+  - text: "Would you like to continue with the process?"
+  utter_ask_end_convo:
+  - text: "Hope I'd been a great help, is there anything else I can help you with?"
 
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
 
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+actions:
+  - action_validate_use_class
+  - action_validate_postal_code
+  - action_validate_floor
+  - action_validate_unit
+  - action_verify_proposal
+  - action_show_similar
+  - action_show_more_similar
+  - action_explain_outcome
+
+
+forms:
+  verify_form:
+    use_class:
+      - type: from_text
+    use_desc:
+      - type: from_text
+    gfa:
+      - type: from_text
+    postal_code:
+      - type: from_text
+    lot_number:
+      - type: from_text
+    floor:
+      - type: from_text
+    unit:
+      - type: from_text
+  restaurant_form:
+    opening_hours:
+      - type: from_text
+    live_music:
+      - type: from_text
+  live_music_form:
+    music_details:
+      - type: from_text
+    noise_mitigation:
+      - type: from_text
