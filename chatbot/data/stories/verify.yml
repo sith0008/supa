@@ -1,0 +1,85 @@
+version: "2.0"
+stories:
+  - story: verify_basic
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: verify_proposal
+    - action: utter_verify
+    - action: verify_form
+    - active_loop: verify_form
+    - active_loop: null
+    - action: utter_ask_review
+    - intent: affirm
+    - action: utter_verifying
+    - action: action_verify_proposal
+    - action: utter_ask_similar
+    - intent: deny
+    - action: utter_deny_similar
+    - intent: submit_proposal
+    - action: action_submit_proposal
+  - story: verify_view_similar
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: verify_proposal
+    - action: utter_verify
+    - action: verify_form
+    - active_loop: verify_form
+    - active_loop: null
+    - action: utter_ask_review
+    - intent: affirm
+    - action: utter_verifying
+    - action: action_verify_proposal
+    - action: utter_ask_similar
+    - intent: affirm
+    - action: utter_affirm_similar
+    - action: action_get_similar_cases
+    - intent: submit_proposal
+    - action: action_submit_proposal
+  - story: verify_basic_explain
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: verify_proposal
+    - action: utter_verify
+    - action: verify_form
+    - active_loop: verify_form
+    - active_loop: null
+    - action: utter_ask_review
+    - intent: affirm
+    - action: utter_verifying
+    - action: action_verify_proposal
+    - action: utter_ask_similar
+    - intent: deny
+    - action: utter_deny_similar
+    - intent: ask_reason
+    - action: action_explain_outcome
+    - intent: submit_proposal
+    - action: action_submit_proposal
+
+#  - story: verify_review_deny_1
+#
+#  - story: verify_review_deny_2
+#
+#
+#
+#  - story: verify_restart
+#    steps:
+#    - intent: greet
+#    - action: utter_greet
+#    - intent: verify_proposal
+#    - action: utter_verify
+#    - action: verify_form
+#    - active_loop: verify_form
+#    - active_loop: null
+#
+#  - story: verify_edit_1
+#  - story: verify_edit_2
+#  - story: verify_edit_3
+#
+#  - story: verify_out_of_scope
+#  - story: verify_cancel
+#  - story: verify_similar_explain
+#  - story: verify_restaurant_no_live
+#  - story: verify_restaurant_live
