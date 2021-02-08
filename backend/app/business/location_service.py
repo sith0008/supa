@@ -41,8 +41,9 @@ class LocationService:
             location_key = LocationKey(
                 filter_map["block"],
                 filter_map["road"],
-                filter_map["building"],
-                filter_map["postal_code"]
+                filter_map["postal_code"],
+                filter_map["floor"],
+                filter_map["unit"]
             )
             location = self.location_accessor.get_location_by_key(location_key)
             return location

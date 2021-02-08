@@ -9,22 +9,24 @@ class LocationAccessor:
     def __init__(self, graph):
         self.graph = graph
 
-    # location_key is defined by namedtuple('LocationKey', ['block', 'road'', 'building', 'postal_code])
+    # location_key is defined by namedtuple('LocationKey', ['block', 'road'', 'postal_code, 'floor', 'unit'])
     def get_location_by_key(self, location_key: LocationKey):
         log.info(f"Retrieving location with location key {location_key}")
 
         tx = self.graph.begin()
         location = tx.run(
             "MATCH  (l: Location) "
-            "WHERE  l.block=block "
-            "AND    l.road=road "
-            "AND    l.building=building "
-            "AND    l.postal_code=postal_code "
+            "WHERE  l.block         =   $block "
+            "AND    l.road          =   $road "
+            "AND    l.postal_code   =   $postal_code "
+            "AND    l.floor         =   $floor "
+            "AND    l.unit          =   $unit "
             "RETURN l",
             block=location_key.block,
             road=location_key.road,
-            building=location_key.building,
-            postal_code=location_key.postal_code
+            postal_code=location_key.postal_code,
+            floor=location_key.floor,
+            unit=location_key.unit
         ).evaluate()
 
         if location is None:
@@ -55,20 +57,24 @@ class LocationAccessor:
         tx = self.graph.begin()
         insert_location_id = tx.run(
             "CREATE (l: Location) "
-            "SET    l.block=$block, "
-            "       l.road=road, "
-            "       l.building=building, "
-            "       l.postal_code=postal_code, "
-            "       l.latitude=latitude, "
-            "       l.longitude=longitude, "
-            "       l.lot_number=lot_number, "
-            "       l.is_shophouse=is_shophouse, "
-            "       l.is_hdb_commercial=is_hdb_commercial "
+            "SET    l.block             =   $block, "
+            "       l.road              =   $road, "
+            "       l.postal_code       =   $postal_code, "
+            "       l.floor             =   $floor, "
+            "       l.unit              =   $unit, "
+            "       l.building          =   $building, "
+            "       l.latitude          =   $latitude, "
+            "       l.longitude         =   $longitude, "
+            "       l.lot_number        =   $lot_number, "
+            "       l.is_shophouse      =   $is_shophouse, "
+            "       l.is_hdb_commercial =   $is_hdb_commercial "
             "RETURN id(l)",
             block=location.block,
             road=location.road,
-            building=location.building,
             postal_code=location.postal_code,
+            floor=location.floor,
+            unit=location.unit,
+            building=location.building,
             latitude=location.latitude,
             longitude=location.longitude,
             lot_number=location.lot_number,
@@ -116,20 +122,24 @@ class LocationAccessor:
         tx = self.graph.begin()
         update_location_id = tx.run(
             "MATCH  (l: Location) "
-            "WHERE  l.block=block, "
-            "       l.road=road, "
-            "       l.building=building, "
-            "       l.postal_code=postal_code, "
-            "SET    l.latitude=latitude, "
-            "       l.longitude=longitude, "
-            "       l.lot_number=lot_number, "
-            "       l.is_shophouse=is_shophouse, "
-            "       l.is_hdb_commercial=is_hdb_commercial "
+            "WHERE  l.block             =   $block, "
+            "       l.road              =   $road, "
+            "       l.postal_code       =   $postal_code "
+            "       l.floor             =   $floor "
+            "       l.unit              =   $unit "
+            "SET    l.building          =   $building, "
+            "       l.latitude          =   $latitude, "
+            "       l.longitude         =   $longitude, "
+            "       l.lot_number        =   $lot_number, "
+            "       l.is_shophouse      =   $is_shophouse, "
+            "       l.is_hdb_commercial =   $is_hdb_commercial "
             "RETURN id(l)",
             block=location.block,
             road=location.road,
-            building=location.building,
             postal_code=location.postal_code,
+            floor=location.floor,
+            unit=location.unit,
+            building=location.building,
             latitude=location.latitude,
             longitude=location.longitude,
             lot_number=location.lot_number,
@@ -151,11 +161,11 @@ class LocationAccessor:
         tx = self.graph.begin()
         tx.run(
             "MATCH  (l: Location) "
-            "WHERE  l.block=block, "
-            "       l.road=road, "
-            "       l.postal_code=postal_code, "
-            "       l.floor=$floor, "
-            "       l.unit=$unit "
+            "WHERE  l.block         =$block, "
+            "       l.road          =$road, "
+            "       l.postal_code   =$postal_code, "
+            "       l.floor         =$floor, "
+            "       l.unit          =$unit "
             "DETACH DELETE l",
             block=location_key.block,
             road=location_key.road,
