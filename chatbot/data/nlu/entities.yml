@@ -15,7 +15,7 @@ nlu:
   examples: |
     - unit number
 - synonym: use class
-  exapmles: |
+  examples: |
     - useclass
     - business use
     - business use type
