@@ -26,3 +26,71 @@
 #
 #         return []
 # TODO: add actions here, instantiate the 3 classes in the api folder
+import logging
+import json
+import requests
+from rasa_sdk import Action, Tracker
+from rasa_sdk.forms import FormValidationAction
+from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import (
+    SlotSet,
+    UserUtteranceReverted,
+    ConversationPaused,
+    EventType,
+    FollowupAction,
+)
+from actions.api.knowledge_graph import KnowledgeGraphAPI
+
+
+class ValidateVerifyForm(FormValidationAction):
+    '''
+    validate all form fields
+    '''
+    raise NotImplementedError
+
+
+class ActionShowUseClasses(Action):
+    '''
+    Retrieve all specific use class from KG
+    '''
+    raise NotImplementedError
+
+class ActionGetSimilarCases(Action):
+    '''
+    Retrieve similar cases based on use class and prop type
+    '''
+    raise NotImplementedError
+
+
+class ActionGetAddresses(Action):
+    '''
+    Retrieve addresses based on postal code
+    Sets address_list slot to contain retrieved addresses
+    '''
+    raise NotImplementedError
+
+
+class ActionVerifyProposal(Action):
+    '''
+    Using filled slots, query guideline DB to get outcome
+    '''
+    raise NotImplementedError
+
+
+class ActionExplainOutcome(Action):
+    '''
+    Using filled slots, query guideline DB to get outcome
+    vary reply for similar case vs user case
+    '''
+    raise NotImplementedError
+
+
+class ActionSubmitProposal(Action):
+    '''
+
+    '''
+
+class ActionSetLiveMusic(Action):
+    '''
+    set live music slot to true/false
+    '''
