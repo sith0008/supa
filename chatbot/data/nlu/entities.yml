@@ -1,0 +1,27 @@
+nlu:
+- synonym: postal code
+  examples: |
+    - postal
+    - postalcode
+    - post code
+- synonym: floor
+  examples: |
+    - storey
+    - level
+    - floor number
+    - level number
+- synonym: unit
+  examples: |
+    - unit number
+- synonym: use class
+  exapmles: |
+    - useclass
+    - business use
+    - business use type
+    - business use class
+    - uses
+
+- lookup: use class
+  examples: |
+    - Restaurant
+#    - add on
