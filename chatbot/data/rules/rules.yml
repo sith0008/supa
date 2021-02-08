@@ -4,6 +4,7 @@ rules:
 - rule: activate_verify_form
   steps:
   - intent: verify_proposal
+  - action: utter_verify
   - action: verify_form
   - active_loop: verify_form
 

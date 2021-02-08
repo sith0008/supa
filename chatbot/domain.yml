@@ -53,6 +53,13 @@ slots:
 responses:
   utter_greet:
   - text: "Hey! I am Supa! I can help evaluate your Change of Use proposal or clarify your doubts regarding the DC handbooks! How can I help you?"
+  utter_help:
+  - text: "I can help you with the following! Please select."
+    buttons:
+      - title: "Verify Proposal"
+        payload: "/verify_proposal"
+      - title: "Clarify Doubts"
+        payload: "/clarify"
   utter_goodbye:
   - text: "It was my pleasure helping you, see you again!"
   utter_affirm:
