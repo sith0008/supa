@@ -6,6 +6,12 @@ import logging
 log = logging.getLogger('root')
 
 
+@supa.route("/location/address", methods=['GET'])
+def get_location():
+    filter_map = dict(request.args.items())
+    return location_service.get_address(filter_map)
+
+
 @supa.route("/location", methods=['GET'])
 def get_location():
     filter_map = dict(request.args.items())
