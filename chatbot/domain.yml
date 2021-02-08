@@ -40,6 +40,14 @@ slots:
     type: float
   unit:
     type: float
+  block:
+    type: float
+  road:
+    type: text
+  address_list:
+    type: list
+  address_mention:
+    type: text
   opening_hours:
     type: text
   live_music:
@@ -97,6 +105,8 @@ responses:
   - text: "Which floor is it on?"
   utter_ask_unit:
   - text: "What is the unit number?"
+  utter_multiple_address:
+  - text: "Hmm, I've found the following address(es) for the given postal code. Can you tell me which one are you referring to?"
   utter_invalid_use_class:
   - text: "Oops, I didn't recognise that use class! URA uses the following list, please choose the most appropriate one for your use case."
   utter_similar_use_class:
@@ -148,6 +158,7 @@ actions:
   - action_validate_postal_code # to be deprecated
   - action_validate_floor # to be deprecated
   - action_validate_unit # to be deprecated
+  - action_get_addresses
   - action_verify_proposal
   - action_get_similar_cases
   - action_get_more_similar_cases
