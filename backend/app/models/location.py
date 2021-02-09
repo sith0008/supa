@@ -31,4 +31,12 @@ class Location:
         self.is_hdb_commercial = is_hdb_commercial
 
 
-LocationKey = namedtuple("LocationKey", ['block', 'road', 'building', 'postal_code'])
+LocationKey = namedtuple(
+    "LocationKey", [
+        'block',
+        'road',
+        'postal_code',
+        'floor',
+        'unit'
+    ]
+)

@@ -40,14 +40,7 @@ class LocationAccessor:
         # MATCH ( (p: SpecificPropType) {name: $prop_type})--(l: Location) RETURN l
         raise NotImplementedError
 
-    def insert(self, location: Location):
-        location_key = LocationKey(
-            location.block,
-            location.road,
-            location.building,
-            location.postal_code
-        )
-
+    def insert(self, location: Location, location_key: LocationKey):
         if self.get_location_by_key(location_key) is not None:
             raise Exception(f"Location key {location_key} already exists.")
 
@@ -105,14 +98,7 @@ class LocationAccessor:
         log.info(f"Successfully inserted HAS_PROP_TYPE relation for location {location_key} and property type {prop_type_name}")
         return insert_has_prop_type_relation_id
 
-    def update(self, location: Location):
-        location_key = LocationKey(
-            location.block,
-            location.road,
-            location.building,
-            location.postal_code
-        )
-
+    def update(self, location: Location, location_key: LocationKey):
         if self.get_location_by_key(location_key) is None:
             raise Exception(f"Location key {location_key} does not exist.")
 
