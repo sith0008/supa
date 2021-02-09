@@ -2,7 +2,7 @@ import os
 import logging
 from commons.custom_logging import CustomHandler  # noqa
 
-from ingestors.prop_type_ingestor import PropertyTypeIngestor # noqa
+from ingestors.land_use_type_ingestor import PropertyTypeIngestor # noqa
 from ingestors.use_class_ingestor import UseClassIngestor # noqa
 from ingestors.past_case_ingestor import PastCaseIngestor # noqa
 from ingestors.entity_pop_ingestor import EntityPopIngestor # noqa
