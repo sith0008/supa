@@ -1,5 +1,5 @@
 from app.models.guidelines import Guideline  # noqa
-from typing import NamedTuple, Dict
+from typing import Dict
 import logging
 
 log = logging.getLogger('root')
