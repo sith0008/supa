@@ -12,6 +12,10 @@ from typing import Text, Dict, Any, List
 from actions.api.knowledge_graph import KnowledgeGraphAPI # noqa
 from actions.api.location import LocationAPI # noqa
 from actions.api.validator import GeneralValidator # noqa
+import os
+
+knowledge_graph_api = KnowledgeGraphAPI(os.environ.get("BACKEND_HOST", "http://localhost:5000"))
+location_api = LocationAPI(os.environ.get("BACKEND_HOST", "http://localhost:5000"))
 
 class ValidateVerifyForm(FormValidationAction):
     '''
@@ -26,7 +30,7 @@ class ValidateVerifyForm(FormValidationAction):
                            tracker: Tracker,
                            domain: Dict[Text, Any]
                            ):
-        if KnowledgeGraphAPI.is_valid_use_class(value):
+        if knowledge_graph_api.is_valid_use_class(value):
             return {"use_class": value}
         else:
             dispatcher.utter_message(template="utter_invalid_use_class")
@@ -86,7 +90,7 @@ class ActionShowUseClasses(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]
             ) -> List[EventType]:
-        use_class_list = KnowledgeGraphAPI.get_all_use_classes()
+        use_class_list = knowledge_graph_api.get_all_use_classes()
         dispatcher.utter_message(
             text=f"These are the use classes that we use: \n {use_class_list}"
         )
@@ -101,7 +105,7 @@ class ActionGetSimilarCases(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]
             ) -> List[EventType]:
-        similar_cases_list = KnowledgeGraphAPI.get_similar_cases()
+        similar_cases_list = knowledge_graph_api.get_similar_cases()
         processed_similar_cases_list = self.process_similar_cases_list(similar_cases_list)
         dispatcher.utter_message(
             text=f"These are the past cases similar to your application: \n {processed_similar_cases_list}"
@@ -124,7 +128,7 @@ class ActionGetAddresses(Action):
             domain: Dict[Text, Any]
             ) -> List[EventType]:
         postal_code = tracker.get_slot("postal_code")
-        address_list = LocationAPI.get_addresses_from_postal_code(postal_code)
+        address_list = location_api.get_addresses_from_postal_code(postal_code)
         if len(address_list) >= 1:
             dispatcher.utter_message(
                 text=f"I found {len(address_list)} addresses for this postal code. "

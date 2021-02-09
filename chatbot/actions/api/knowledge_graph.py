@@ -16,6 +16,7 @@ class KnowledgeGraphAPI:
             "land_use_type": "",
             "use_class": ""
         }
+        endpoint = ""
         return ""
 
     @staticmethod
@@ -27,7 +28,8 @@ class KnowledgeGraphAPI:
             "type": "multiple",
             "query": "Specific"
         }
-        res = requests.get(url=self.url, headers=headers, data=json.dumps(data))
+        endpoint = "/useclass"
+        res = requests.get(url=self.url+endpoint, headers=headers, data=json.dumps(data))
         # TODO: add processing, format to a readable list
         return res
 
@@ -40,7 +42,8 @@ class KnowledgeGraphAPI:
             "type": "single",
             "query": use_class
         }
-        res = requests.get(url=self.url, headers=headers, data=json.dumps(data))
+        endpoint = "/useclass"
+        res = requests.get(url=self.url+endpoint, headers=headers, data=json.dumps(data))
         return res is not None
 
     @staticmethod
