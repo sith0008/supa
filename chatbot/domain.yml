@@ -48,6 +48,8 @@ slots:
     type: list
   address_mention:
     type: text
+  similar_cases_list:
+    type: list
   opening_hours:
     type: text
   live_music:
