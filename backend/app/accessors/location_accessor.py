@@ -1,5 +1,5 @@
 from app.models.location import Location, LocationKey # noqa
-from app.models.property_type import SpecificPropTypeEnum # noqa
+from app.models.land_use_type import SpecificLandUseTypeEnum # noqa
 import logging
 
 log = logging.getLogger('root')
