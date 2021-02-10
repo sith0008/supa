@@ -11,6 +11,8 @@ def get_similar_cases():
 
     return jsonify(kg_chatbot_service.get_similar_cases(
         args["specific_use_class"],
+        args["block"],
+        args["road"],
         args["postal_code"],
         args["floor"],
         args["unit"])
