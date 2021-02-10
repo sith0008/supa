@@ -25,17 +25,13 @@ class KnowledgeGraphChatbotService:
     def get_similar_cases(self, params: Dict):
         try:
             specific_use_class = params["specific_use_class"]
-            block = params["block"]
-            road = params["road"]
             postal_code = params["postal_code"]
-            floor = params["floor"]
-            unit = params["unit"]
         except KeyError:
             raise Exception("Incomplete query, expected the following params: "
-                            "specific_use_class, block, road, postal_code, floor and unit")
+                            "specific_use_class and postal_code")
         log.info("Retrieving past cases similar to application")
         # get land use type from location
-        specific_land_use_type = self.land_use_type_service.get_specific_by_location(block, road, postal_code, floor, unit)
+        specific_land_use_type = self.land_use_type_service.get_specific_by_location(postal_code)
         # get generics from specifics
         generic_land_use_type = self.land_use_type_service.get_generic_by_specific(specific_land_use_type)
         log.info(f"Address provided maps to specific land use type {specific_land_use_type} and generic land use type {generic_land_use_type}")
@@ -58,27 +54,34 @@ class KnowledgeGraphChatbotService:
         # retrieve clarifications from use class
         raise NotImplementedError
 
-    # TODO: to review this method, specifically return type
-    def get_submission_classification(self,
-                                      use_class: str,
-                                      postal_code: int,
-                                      floor: int,
-                                      unit: int
-                                      ):
-        location_key = LocationKey(postal_code, floor, unit)
-        land_use_type = self.land_use_type_service.get_specific_by_location(location_key)
-        location = self.location_service.get_location({
-            "postal_code": postal_code,
-            "floor": floor,
-            "unit": unit
-        })
-        guidelines = self.guidelines_service.get_guidelines({
-            "business_use_type": use_class,
-            "property_type": land_use_type,
-            "unit_type": location["unit_type"],
-            "conditions": location["condition"]
-        })
-        return guidelines
+    '''
+    TODO: to review this method, to consider the following:
+    1. unit type. is it a user input? 
+    2. condition. get lat, lng from location node and do point in polygon for AGU, PTA, PA
+    '''
+    # def get_submission_classification(self,
+    #                                   use_class: str,
+    #                                   block: str,
+    #                                   road: str,
+    #                                   postal_code: int,
+    #                                   floor: int,
+    #                                   unit: int
+    #                                   ):
+    #     land_use_type = self.land_use_type_service.get_specific_by_location(postal_code)
+    #     location = self.location_service.get_location({
+    #         "block": block,
+    #         "road": road,
+    #         "postal_code": postal_code,
+    #         "floor": floor,
+    #         "unit": unit
+    #     })
+    #     guidelines = self.guidelines_service.get_guidelines({
+    #         "business_use_type": use_class,
+    #         "property_type": land_use_type,
+    #         "unit_type": location["unit_type"],
+    #         "conditions": location["condition"]
+    #     })
+    #     return guidelines
 
     # conversation caching: insert conversation
     def submit_proposal(self):

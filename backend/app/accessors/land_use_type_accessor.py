@@ -61,23 +61,16 @@ class LandUseTypeAccessor:
         log.debug(generic_land_use_type_name)
         return generic_land_use_type_name
 
-    def get_specific_by_location(self, location_key: LocationKey):
-        log.info(f"Retrieving land use type of {location_key}")
+    def get_specific_by_location(self, postal_code: int):
+        log.info(f"Retrieving land use type of postal code {postal_code}")
         tx = self.graph.begin()
         specific_land_use_type_name = tx.run("MATCH (l: Location)--(p: SpecificLandUseType) "
                                              "WHERE l.postal_code=$postal_code "
-                                             "AND l.floor=$floor "
-                                             "AND l.unit=$unit "
-                                             "AND l.block=$block "
-                                             "AND l.road=$road "
-                                             "RETURN p.name",
-                                             postal_code=location_key.postal_code,
-                                             floor=location_key.floor,
-                                             unit=location_key.unit,
-                                             block=location_key.block,
-                                             road=location_key.road
+                                             "RETURN p.name "
+                                             "LIMIT 1",
+                                             postal_code=postal_code,
                                              ).evaluate()
-        log.info(f"Retrieved land use type of {location_key}")
+        log.info(f"Retrieved land use type of postal code {postal_code}")
         log.debug(specific_land_use_type_name)
         return specific_land_use_type_name
 

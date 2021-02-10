@@ -47,15 +47,8 @@ class LandUseTypeService:
     def get_generic_by_specific(self, specific_land_use_type_name: str):
         return self.accessor.get_generic_by_specific(specific_land_use_type_name)
 
-    def get_specific_by_location(self,
-                                 block: str,
-                                 road: str,
-                                 postal_code: int,
-                                 floor: int,
-                                 unit: int
-                                 ):
-        location_key = LocationKey(block, road, postal_code, floor, unit)
-        return self.accessor.get_specific_by_location(location_key)
+    def get_specific_by_location(self, postal_code: int):
+        return self.accessor.get_specific_by_location(postal_code)
 
     def create(self, fields_map: Dict):
         land_use_type_enum = fields_map["type"]
