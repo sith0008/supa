@@ -11,20 +11,23 @@ class UseClassService:
         self.accessor = UseClassAccessor(graph)
 
     def get(self, filter_map: Dict):
+        log.debug(filter_map)
         query_type, query_param = filter_map["type"], filter_map["query"]
         if query_type == "single":
             return self.get_by_name(query_param)
         elif query_type == "multiple":
-            if query_param in GenericUseClassEnum.__members__:
+            if query_param in GenericUseClassEnum:
                 return self.get_specific_by_generic(query_param)
             else:
                 return self.get_all_by_type(query_param)
 
+            SpecificUseClassEnum._member_names_
+
     def get_by_name(self, use_class_name: str):
         log.debug(f"Use class name: {use_class_name}")
-        if use_class_name in SpecificUseClassEnum.__members__:
+        if use_class_name in SpecificUseClassEnum:
             use_class = self.accessor.get_specific_by_name(use_class_name)
-        elif use_class_name in GenericUseClassEnum.__members__:
+        elif use_class_name in GenericUseClassEnum:
             use_class = self.accessor.get_generic_by_name(use_class_name)
         else:
             raise Exception("Invalid use class name")
