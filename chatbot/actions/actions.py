@@ -85,6 +85,9 @@ class ActionShowUseClasses(Action):
     '''
     Retrieve all specific use class from KG
     '''
+    def name(self):
+        return "action_show_all_use_classes"
+
     def run(self,
             dispatcher: CollectingDispatcher,
             tracker: Tracker,
@@ -100,6 +103,9 @@ class ActionGetSimilarCases(Action):
     '''
     Retrieve similar cases based on use class and prop type
     '''
+    def name(self):
+        return "action_get_similar_cases"
+
     def run(self,
             dispatcher: CollectingDispatcher,
             tracker: Tracker,
@@ -130,6 +136,9 @@ class ActionGetAddresses(Action):
     Retrieve addresses based on postal code
     Sets address_list slot to contain retrieved addresses
     '''
+    def name(self):
+        return "action_get_addresses"
+
     def run(self,
             dispatcher: CollectingDispatcher,
             tracker: Tracker,
@@ -150,27 +159,27 @@ class ActionGetAddresses(Action):
         return [SlotSet("address_list"), address_list]
 
 
-class ActionVerifyProposal(Action):
-    '''
-    Using filled slots, query guideline DB to get outcome
-    '''
-    raise NotImplementedError
-
-
-class ActionExplainOutcome(Action):
-    '''
-    Using filled slots, query guideline DB to get outcome
-    vary reply for similar case vs user case
-    '''
-    raise NotImplementedError
-
-
-class ActionSubmitProposal(Action):
-    '''
-
-    '''
-
-class ActionSetLiveMusic(Action):
-    '''
-    set live music slot to true/false
-    '''
+# class ActionVerifyProposal(Action):
+#     '''
+#     Using filled slots, query guideline DB to get outcome
+#     '''
+#     raise NotImplementedError
+#
+#
+# class ActionExplainOutcome(Action):
+#     '''
+#     Using filled slots, query guideline DB to get outcome
+#     vary reply for similar case vs user case
+#     '''
+#     raise NotImplementedError
+#
+#
+# class ActionSubmitProposal(Action):
+#     '''
+#
+#     '''
+#
+# class ActionSetLiveMusic(Action):
+#     '''
+#     set live music slot to true/false
+#     '''
