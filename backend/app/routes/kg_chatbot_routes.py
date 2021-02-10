@@ -7,15 +7,7 @@ log = logging.getLogger('root')
 
 @supa.route("/kg/chatbot/similar_cases", methods=['GET'])
 def get_similar_cases():
-    args = dict(request.args.items())
-
-    return jsonify(kg_chatbot_service.get_similar_cases(
-        args["specific_use_class"],
-        args["block"],
-        args["road"],
-        args["postal_code"],
-        args["floor"],
-        args["unit"])
-    )
+    params = dict(request.args.items())
+    return jsonify(kg_chatbot_service.get_similar_cases(params))
 
 
