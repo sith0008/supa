@@ -105,7 +105,27 @@ class ActionGetSimilarCases(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]
             ) -> List[EventType]:
-        similar_cases_list = knowledge_graph_api.get_similar_cases()
+
+        block = tracker.get_slot("block")
+        road = tracker.get_slot("road")
+        postal_code = tracker.get_slot("postal_code")
+        floor = tracker.get_slot("floor")
+        unit = tracker.get_slot("unit")
+        use_class = tracker.get_slot("use_class")
+
+        land_use_type = location_api.get_land_use_type_from_addr(
+            block=block,
+            road=road,
+            postal_code=postal_code,
+            floor=floor,
+            unit=unit
+        )
+
+        similar_cases_list = knowledge_graph_api.get_similar_cases(
+            use_class=use_class,
+            land_use_type=land_use_type
+        )
+
         processed_similar_cases_list = self.process_similar_cases_list(similar_cases_list)
         dispatcher.utter_message(
             text=f"These are the past cases similar to your application: \n {processed_similar_cases_list}"
