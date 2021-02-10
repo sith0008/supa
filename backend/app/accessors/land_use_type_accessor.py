@@ -65,11 +65,17 @@ class LandUseTypeAccessor:
         log.info(f"Retrieving land use type of {location_key}")
         tx = self.graph.begin()
         specific_land_use_type_name = tx.run("MATCH (l: Location)--(p: SpecificLandUseType) "
-                                             "WHERE l.postal_code=$postal_code AND l.floor=$floor AND l.unit=$unit"
+                                             "WHERE l.postal_code=$postal_code "
+                                             "AND l.floor=$floor "
+                                             "AND l.unit=$unit "
+                                             "AND l.block=$block "
+                                             "AND l.road=$road "
                                              "RETURN p.name",
                                              postal_code=location_key.postal_code,
                                              floor=location_key.floor,
-                                             unit=location_key.unit
+                                             unit=location_key.unit,
+                                             block=location_key.block,
+                                             road=location_key.road
                                              ).evaluate()
         log.info(f"Retrieved land use type of {location_key}")
         log.debug(specific_land_use_type_name)

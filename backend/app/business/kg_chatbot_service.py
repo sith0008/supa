@@ -10,7 +10,7 @@ class KnowledgeGraphChatbotService:
                  cases_service,
                  location_service,
                  use_class_service,
-                 property_type_service,
+                 land_use_type_service,
                  guidelines_service
                  ):
         self.graph = graph
@@ -18,24 +18,26 @@ class KnowledgeGraphChatbotService:
         self.cases_service = cases_service
         self.location_service = location_service
         self.use_class_service = use_class_service
-        self.property_type_service = property_type_service
+        self.land_use_type_service = land_use_type_service
         self.guidelines_service = guidelines_service
 
     def get_similar_cases(self,
                           specific_use_class: str,
+                          block: str,
+                          road: str,
                           postal_code: int,
                           floor: int,
                           unit: int
                           ):
         tx = self.graph.begin()
-        # get prop type from location
-        specific_property_type = self.property_type_service.get_specific_by_location(postal_code, floor, unit)
+        # get land use type from location
+        specific_land_use_type = self.land_use_type_service.get_specific_by_location(block, road, postal_code, floor, unit)
         # get generics from specifics
-        generic_property_type = self.property_type_service.get_generic_by_specific(specific_property_type)
+        generic_land_use_type = self.land_use_type_service.get_generic_by_specific(specific_land_use_type)
         generic_use_class = self.use_class_service.get_generic_by_specific(specific_use_class)
         # get similar cases
-        exact_similar_cases_result = self.cases_service.get_similar_case_exact(specific_use_class, specific_property_type)
-        extended_similar_cases_result = self.cases_service.get_similar_case_extended(specific_use_class, generic_use_class, specific_property_type, generic_property_type)
+        exact_similar_cases_result = self.cases_service.get_similar_case_exact(specific_use_class, specific_land_use_type)
+        extended_similar_cases_result = self.cases_service.get_similar_case_extended(specific_use_class, generic_use_class, specific_land_use_type, generic_land_use_type)
         if not exact_similar_cases_result:
             return extended_similar_cases_result
         elif not extended_similar_cases_result:
@@ -55,7 +57,7 @@ class KnowledgeGraphChatbotService:
                                       unit: int
                                       ):
         location_key = LocationKey(postal_code, floor, unit)
-        property_type = self.property_type_service.get_specific_by_location(location_key)
+        land_use_type = self.land_use_type_service.get_specific_by_location(location_key)
         location = self.location_service.get_location({
             "postal_code": postal_code,
             "floor": floor,
@@ -63,7 +65,7 @@ class KnowledgeGraphChatbotService:
         })
         guidelines = self.guidelines_service.get_guidelines({
             "business_use_type": use_class,
-            "property_type": property_type,
+            "property_type": land_use_type,
             "unit_type": location["unit_type"],
             "conditions": location["condition"]
         })
