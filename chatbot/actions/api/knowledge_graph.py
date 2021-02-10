@@ -6,20 +6,22 @@ class KnowledgeGraphAPI:
     def __init__(self, url):
         self.url = url
 
-    @staticmethod
-    def get_similar_cases(self, use_class: str, land_use_type: str):
+    def get_similar_cases(self,
+                          use_class: str,
+                          postal_code: int,
+                          ):
         # TODO: implement after kg chatbot service branch is merged
         headers = {
             'content-type': 'application/json'
         }
         data = {
-            "land_use_type": "",
-            "use_class": ""
+            "specific_use_class": use_class,
+            "postal_code": postal_code,
         }
-        endpoint = ""
-        return ""
+        endpoint = "/kg/chatbot/similar_cases"
+        res = requests.get(url=self.url+endpoint, headers=headers, data=json.dumps(data))
+        return res
 
-    @staticmethod
     def get_all_use_classes(self):
         headers = {
             'content-type': 'application/json'
@@ -33,7 +35,6 @@ class KnowledgeGraphAPI:
         # TODO: add processing, format to a readable list
         return res
 
-    @staticmethod
     def is_valid_use_class(self, use_class: str):
         headers = {
             'content-type': 'application/json'
@@ -46,11 +47,9 @@ class KnowledgeGraphAPI:
         res = requests.get(url=self.url+endpoint, headers=headers, data=json.dumps(data))
         return res is not None
 
-    @staticmethod
     def get_locations(self, postal_code: int, floor: int, unit: int):
         raise NotImplementedError
 
-    @staticmethod
     def get_property_type(self, postal_code: int, floor: int, unit: int, block: int, road: str):
         # query location DB, check booleans + land_use_type (rs)
         # create in-memory map here
