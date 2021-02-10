@@ -50,6 +50,7 @@ class KnowledgeGraphChatbotService:
         # retrieve clarifications from use class
         raise NotImplementedError
 
+    # TODO: to review this method, specifically return type
     def get_submission_classification(self,
                                       use_class: str,
                                       postal_code: int,
