@@ -58,30 +58,30 @@ class KnowledgeGraphChatbotService:
     TODO: to review this method, to consider the following:
     1. unit type. is it a user input? 
     2. condition. get lat, lng from location node and do point in polygon for AGU, PTA, PA
+    
+    For now, we return all guidelines for the use_class and property_type given
     '''
-    # def get_submission_classification(self,
-    #                                   use_class: str,
-    #                                   block: str,
-    #                                   road: str,
-    #                                   postal_code: int,
-    #                                   floor: int,
-    #                                   unit: int
-    #                                   ):
-    #     land_use_type = self.land_use_type_service.get_specific_by_location(postal_code)
-    #     location = self.location_service.get_location({
-    #         "block": block,
-    #         "road": road,
-    #         "postal_code": postal_code,
-    #         "floor": floor,
-    #         "unit": unit
-    #     })
-    #     guidelines = self.guidelines_service.get_guidelines({
-    #         "business_use_type": use_class,
-    #         "property_type": land_use_type,
-    #         "unit_type": location["unit_type"],
-    #         "conditions": location["condition"]
-    #     })
-    #     return guidelines
+    def get_submission_classification(self,
+                                      use_class: str,
+                                      block: str,
+                                      road: str,
+                                      postal_code: int,
+                                      floor: int,
+                                      unit: int
+                                      ):
+        land_use_type = self.land_use_type_service.get_specific_by_location(postal_code)
+        location = self.location_service.get_location({
+            "block": block,
+            "road": road,
+            "postal_code": postal_code,
+            "floor": floor,
+            "unit": unit
+        })
+        guidelines = self.guidelines_service.get_guidelines({
+            "business_use_type": use_class,
+            "property_type": land_use_type,
+        })
+        return guidelines
 
     # conversation caching: insert conversation
     def submit_proposal(self):
