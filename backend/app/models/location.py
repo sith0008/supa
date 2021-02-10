@@ -1,5 +1,4 @@
 # from py2neo.ogm import Model, Property, RelatedTo
-from app.models.property_type import SpecificPropType # noqa
 from collections import namedtuple
 
 
