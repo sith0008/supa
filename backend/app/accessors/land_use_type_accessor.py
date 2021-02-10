@@ -61,7 +61,7 @@ class LandUseTypeAccessor:
         log.debug(generic_land_use_type_name)
         return generic_land_use_type_name
 
-    def get_specific_by_location(self, postal_code: int):
+    def get_specific_by_location(self, postal_code: str):
         log.info(f"Retrieving land use type of postal code {postal_code}")
         tx = self.graph.begin()
         specific_land_use_type_name = tx.run("MATCH (l: Location)--(p: SpecificLandUseType) "

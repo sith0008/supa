@@ -65,7 +65,7 @@ class KnowledgeGraphChatbotService:
                                       use_class: str,
                                       block: str,
                                       road: str,
-                                      postal_code: int,
+                                      postal_code: str,
                                       floor: int,
                                       unit: int
                                       ):

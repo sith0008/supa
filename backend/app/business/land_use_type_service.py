@@ -47,7 +47,7 @@ class LandUseTypeService:
     def get_generic_by_specific(self, specific_land_use_type_name: str):
         return self.accessor.get_generic_by_specific(specific_land_use_type_name)
 
-    def get_specific_by_location(self, postal_code: int):
+    def get_specific_by_location(self, postal_code: str):
         return self.accessor.get_specific_by_location(postal_code)
 
     def create(self, fields_map: Dict):
