@@ -7,7 +7,8 @@ from app.business import (
     use_class_service,
     land_use_type_service,
     location_service,
-    kg_chatbot_service
+    kg_chatbot_service,
+    property_type_service
 ) # noqa
 from app.database import sql_db, graph_db # noqa
 from app import supa # noqa

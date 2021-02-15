@@ -17,7 +17,7 @@ log.addHandler(CustomHandler())
 
 BACKEND_HOST = os.environ.get("BACKEND_HOST", "backend:5000")
 
-# prop_type_ingestor = PropertyTypeIngestor(BACKEND_HOST, "/proptype")  # Need to convert to land use
+land_use_type_ingestor = LandUseTypeIngestor(BACKEND_HOST, "/landuse")
 use_class_ingestor = UseClassIngestor(BACKEND_HOST, "/useclass")
 past_case_ingestor = PastCaseIngestor(BACKEND_HOST, "/case")
 location_ingestor = LocationIngestor(BACKEND_HOST, "/location")
@@ -34,11 +34,11 @@ def init_use_class():
     use_class_ingestor.insert_specific()
 
 
-# def init_prop_type():
-#     log.info("Initialising generic property type")
-#     prop_type_ingestor.insert_generic()
-#     log.info("Initialising specific property type")
-#     prop_type_ingestor.insert_specific()
+def init_prop_type():
+    log.info("Initialising generic land use type")
+    land_use_type_ingestor.insert_generic()
+    log.info("Initialising specific land use type")
+    land_use_type_ingestor.insert_specific()
 
 
 def init_past_cases(cases_directory):
@@ -48,10 +48,19 @@ def init_past_cases(cases_directory):
 
 def main():
     GUIDELINES_CSV_FILE = os.environ.get("GUIDELINES_CSV_FILE")
+    POSTAL_CODE_JSON_FILE = os.environ.get("POSTAL_CODE_JSON_FILE")
+    HDB_COMMERCIAL_JSON_FILE = os.environ.get("HDB_COMMERCIAL_JSON_FILE")
+    SHOPHOUSE_JSON_FILE = os.environ.get("SHOPHOUSE_JSON_FILE")
+    LAND_USE_JSON_FILE = os.environ.get("LAND_USE_JSON_FILE")
+
     CASES_DATA_DIRECTORY = os.environ.get("INPUT_DATA_DIR")
+
     if os.environ.get("INIT_SQL", "true").lower() == "true":
         log.info("initialising guidelines database")
         guidelines_ingestor.ingest(GUIDELINES_CSV_FILE)
+        property_type_ingestor.ingest(
+            POSTAL_CODE_JSON_FILE, HDB_COMMERCIAL_JSON_FILE, SHOPHOUSE_JSON_FILE, LAND_USE_JSON_FILE
+        )
 
     if os.environ.get("INIT_GRAPH", "true").lower() == "true":
         # TODO: call methdos from prop_type_ingestor, use_class_ingestor, past_case_ingestor, entity_pop_ingestor

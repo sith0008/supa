@@ -14,6 +14,6 @@ class PropertyType(sql_db.Model):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
     block = Column(VARCHAR(20), primary_key=True)
-    road = Column(VARCHAR(20), primary_key=True)
+    road = Column(VARCHAR(50), primary_key=True)
     postal_code = Column(VARCHAR(6), primary_key=True)
     property_type = Column(VARCHAR(50))
