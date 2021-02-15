@@ -1,4 +1,4 @@
-from enum import Enum
+from enum import Enum, EnumMeta
 
 
 class GenericUseClass:
@@ -13,7 +13,25 @@ class UseClassType(Enum):
     Generic = "Generic"
     Specific = "Specific"
 
-class GenericUseClassEnum(Enum):
+class MetaEnum(EnumMeta):
+    def __contains__(cls, item):
+        try:
+            cls(item)
+        except ValueError:
+            return False
+        return True
+
+class BaseEnum(Enum, metaclass=MetaEnum):
+    pass
+
+class GenericUseClassEnum(BaseEnum):
+    def __contains__(cls, item):
+        try:
+            cls(item)
+        except ValueError:
+            return False
+        return True
+
     FoodBev = "FoodBev"
     ShopOfficeSvc = "ShopOfficeSvc"
     Education = "Education"
@@ -24,7 +42,14 @@ class GenericUseClassEnum(Enum):
     ReligiousUse = "ReligiousUse"
 
 
-class SpecificUseClassEnum(Enum):
+class SpecificUseClassEnum(BaseEnum):
+    def __contains__(cls, item):
+        try:
+            cls(item)
+        except ValueError:
+            return False
+        return True
+
     # Food and Beverage
     Restaurant = "Restaurant"
     BarPub = "Bar/Pub"
