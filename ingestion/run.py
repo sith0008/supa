@@ -33,7 +33,7 @@ def init_guidelines(guidelines_csv):
 
 
 def init_property_type(postal_code_json, hdb_commercial_json, shophouse_json, land_use_json):
-    log.info("Initialising generic use classes")
+    log.info("Initialising property types")
     property_type_ingestor.ingest(postal_code_json, hdb_commercial_json, shophouse_json, land_use_json)
 
 
