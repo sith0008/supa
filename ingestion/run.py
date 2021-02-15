@@ -27,6 +27,16 @@ guidelines_ingestor = GuidelinesIngestor(BACKEND_HOST, "/guideline")
 property_type_ingestor = PropertyTypeIngestor(BACKEND_HOST, "/property_type")
 
 
+def init_guidelines(guidelines_csv):
+    log.info("Initialising guidelines")
+    guidelines_ingestor.ingest(guidelines_csv)
+
+
+def init_property_type(postal_code_json, hdb_commercial_json, shophouse_json, land_use_json):
+    log.info("Initialising generic use classes")
+    property_type_ingestor.ingest(postal_code_json, hdb_commercial_json, shophouse_json, land_use_json)
+
+
 def init_use_class():
     log.info("Initialising generic use classes")
     use_class_ingestor.insert_generic()
@@ -34,7 +44,7 @@ def init_use_class():
     use_class_ingestor.insert_specific()
 
 
-def init_prop_type():
+def init_land_use():
     log.info("Initialising generic land use type")
     land_use_type_ingestor.insert_generic()
     log.info("Initialising specific land use type")
@@ -56,17 +66,15 @@ def main():
     CASES_DATA_DIRECTORY = os.environ.get("INPUT_DATA_DIR")
 
     if os.environ.get("INIT_SQL", "true").lower() == "true":
-        log.info("initialising guidelines database")
-        guidelines_ingestor.ingest(GUIDELINES_CSV_FILE)
-        property_type_ingestor.ingest(
-            POSTAL_CODE_JSON_FILE, HDB_COMMERCIAL_JSON_FILE, SHOPHOUSE_JSON_FILE, LAND_USE_JSON_FILE
-        )
+        log.info("initialising sql database")
+        init_guidelines(GUIDELINES_CSV_FILE)
+        init_property_type(POSTAL_CODE_JSON_FILE, HDB_COMMERCIAL_JSON_FILE, SHOPHOUSE_JSON_FILE, LAND_USE_JSON_FILE)
 
     if os.environ.get("INIT_GRAPH", "true").lower() == "true":
         # TODO: call methdos from prop_type_ingestor, use_class_ingestor, past_case_ingestor, entity_pop_ingestor
         log.info("initialising graph database")
         init_use_class()
-        # init_prop_type()
+        init_land_use()
         init_past_cases(CASES_DATA_DIRECTORY)
 
 
