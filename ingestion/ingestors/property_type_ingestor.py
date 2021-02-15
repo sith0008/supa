@@ -52,7 +52,7 @@ class PropertyTypeIngestor:
                     property_type = 'HDB Commercial Premises'
 
                 # Check if shophouse
-                elif postal_code in data_shophouse and data_shophouse[postal_code] == address:
+                elif postal_code in data_shophouse and [block, road] in data_shophouse[postal_code]:
                     property_type = 'Shophouses'
 
                 else:
