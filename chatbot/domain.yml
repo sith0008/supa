@@ -5,19 +5,19 @@ session_config:
   carry_over_slots_to_new_session: true
 
 intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - restart
-  - help
-  - out_of_scope
-  - cancel
-  - edit_form
-  - verify_proposal
-  - view_similar
-  - ask_reason
-  - submit_proposal
+- greet
+- goodbye
+- affirm
+- deny
+- restart
+- help
+- out_of_scope
+- cancel
+- edit_form
+- verify_proposal
+- view_similar
+- ask_reason
+- submit_proposal
 
 entities:
 - use_class
@@ -84,7 +84,7 @@ responses:
   - text: "I can't help you with that, I'm sorry! I am limited to the following, please bear with me while I continue to learn!"
     buttons:
       - title: "Verify Proposal"
-        payload: "/verify"
+        payload: "/verify_proposal"
       - title: "Clarify Doubts"
         payload: "/clarify"
   utter_ask_edit_form:
@@ -127,6 +127,8 @@ responses:
   - text: "Can you tell me which fields need amendments?"
   utter_verifying:
   - text: "Thanks for the information! Give me a moment while I evaluate your proposal!"
+  utter_verify_form_inputs:
+  - text: "Could you review the following details?\n\n{form_inputs}"
   utter_verified:
   - text: "Thanks for waiting! Here's the evaluation outcome!"
   utter_ask_similar:
@@ -156,11 +158,8 @@ responses:
 actions:
   - action_show_all_use_classes
   - validate_verify_form
-  - action_validate_use_class # to be deprecated
-  - action_validate_postal_code # to be deprecated
-  - action_validate_floor # to be deprecated
-  - action_validate_unit # to be deprecated
   - action_get_addresses
+  - action_review_verify_form
   - action_verify_proposal
   - action_get_similar_cases
   - action_get_more_similar_cases
