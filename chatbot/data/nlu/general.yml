@@ -44,6 +44,8 @@ nlu:
     - Yep!
     - Yepp
     - Yes
+    - yes
+    - yess
     - Yes I do
     - Yes please
     - Yes please!
@@ -206,7 +208,6 @@ nlu:
     - yes,i am
     - yes.
     - yesh
-    - yess
     - yessoo
     - yesss
     - yesssss

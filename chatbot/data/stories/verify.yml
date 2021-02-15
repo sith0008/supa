@@ -9,7 +9,7 @@ stories:
     - action: verify_form
     - active_loop: verify_form
     - active_loop: null
-    - action: utter_ask_review
+    - action: action_review_verify_form
     - intent: affirm
     - action: utter_verifying
     - action: action_verify_proposal
@@ -27,7 +27,7 @@ stories:
     - action: verify_form
     - active_loop: verify_form
     - active_loop: null
-    - action: utter_ask_review
+    - action: action_review_verify_form
     - intent: affirm
     - action: utter_verifying
     - action: action_verify_proposal
@@ -37,26 +37,43 @@ stories:
     - action: action_get_similar_cases
     - intent: submit_proposal
     - action: action_submit_proposal
-  - story: verify_basic_explain
+  - story: chatbot ask view similar cases (affirm)
     steps:
-    - intent: greet
-    - action: utter_greet
-    - intent: verify_proposal
-    - action: utter_verify
-    - action: verify_form
-    - active_loop: verify_form
-    - active_loop: null
-    - action: utter_ask_review
+    - action: utter_ask_similar
     - intent: affirm
-    - action: utter_verifying
-    - action: action_verify_proposal
+    - action: utter_affirm_similar
+    - action: action_get_similar_cases
+  - story: chatbot ask view similar cases (deny)
+    steps:
     - action: utter_ask_similar
     - intent: deny
     - action: utter_deny_similar
-    - intent: ask_reason
-    - action: action_explain_outcome
-    - intent: submit_proposal
-    - action: action_submit_proposal
+  - story: user view similar cases
+    steps:
+    - intent: view_similar
+    - action: utter_affirm_similar
+    - action: action_get_similar_cases
+#  - story: verify_basic_explain
+#    steps:
+#    - intent: greet
+#    - action: utter_greet
+#    - intent: verify_proposal
+#    - action: utter_verify
+#    - action: verify_form
+#    - active_loop: verify_form
+#    - active_loop: null
+#    - action: utter_ask_review
+#    - intent: affirm
+#    - action: utter_verifying
+#    - action: action_review_verify_form
+#    - action: action_verify_proposal
+#    - action: utter_ask_similar
+#    - intent: deny
+#    - action: utter_deny_similar
+#    - intent: ask_reason
+#    - action: action_explain_outcome
+#    - intent: submit_proposal
+#    - action: action_submit_proposal
 
 #  - story: verify_review_deny_1
 #

@@ -8,45 +8,45 @@ rules:
   - action: verify_form
   - active_loop: verify_form
 
-- rule: activate_restaurant_form
-  steps:
-  - slot_was_set:
-    - use_class: Restaurant
-  - intent: submit_proposal
-  - action: utter_restaurant_before_submit
-  - action: restaurant_form
-  - active_loop: restaurant_form
-
-- rule: activate_restaurant_form
-  steps:
-  - slot_was_set:
-    - use_class: Bar/Pub
-  - intent: submit_proposal
-  - action: utter_restaurant_before_submit
-  - action: restaurant_form
-  - active_loop: restaurant_form
-
-- rule: activate_restaurant_form
-  steps:
-  - slot_was_set:
-    - use_class: Restaurant and Bar
-  - intent: submit_proposal
-  - action: utter_restaurant_before_submit
-  - action: restaurant_form
-  - active_loop: restaurant_form
-
-- rule: activate_restaurant_form
-  steps:
-  - slot_was_set:
-    - use_class: Nightclub
-  - intent: submit_proposal
-  - action: utter_restaurant_before_submit
-  - action: restaurant_form
-  - active_loop: restaurant_form
-
-- rule: activate_live_music_form
-  steps:
-  - slot_was_set:
-    - live_music: true
-  - action: live_music_form
-  - active_loop: live_music_form
+#- rule: activate_restaurant_form
+#  steps:
+#  - slot_was_set:
+#    - use_class: Restaurant
+#  - intent: submit_proposal
+#  - action: utter_restaurant_before_submit
+#  - action: restaurant_form
+#  - active_loop: restaurant_form
+#
+#- rule: activate_restaurant_form
+#  steps:
+#  - slot_was_set:
+#    - use_class: Bar/Pub
+#  - intent: submit_proposal
+#  - action: utter_restaurant_before_submit
+#  - action: restaurant_form
+#  - active_loop: restaurant_form
+#
+#- rule: activate_restaurant_form
+#  steps:
+#  - slot_was_set:
+#    - use_class: Restaurant and Bar
+#  - intent: submit_proposal
+#  - action: utter_restaurant_before_submit
+#  - action: restaurant_form
+#  - active_loop: restaurant_form
+#
+#- rule: activate_restaurant_form
+#  steps:
+#  - slot_was_set:
+#    - use_class: Nightclub
+#  - intent: submit_proposal
+#  - action: utter_restaurant_before_submit
+#  - action: restaurant_form
+#  - active_loop: restaurant_form
+#
+#- rule: activate_live_music_form
+#  steps:
+#  - slot_was_set:
+#    - live_music: true
+#  - action: live_music_form
+#  - active_loop: live_music_form
