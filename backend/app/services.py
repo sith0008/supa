@@ -7,7 +7,8 @@ from app.business import (
     use_class_service,
     land_use_type_service,
     location_service,
-    kg_chatbot_service
+    kg_chatbot_service,
+    property_type_service
 ) # noqa
 from app.database import sql_db, graph_db # noqa
 from app import supa # noqa
@@ -19,6 +20,7 @@ with supa.app_context():
     cases_service = cases_service.CasesService(neo4j_engine)
     conversation_service = conversation_service.ConversationService(neo4j_engine)
     guidelines_service = guidelines_service.GuidelinesService(sql_engine)
+    property_type_service = property_type_service.PropertyTypeService(sql_engine)
     resolution_service = resolution_service.ResolutionService(neo4j_engine)
     validation_service = validation_service.ValidationService(neo4j_engine)
     use_class_service = use_class_service.UseClassService(neo4j_engine)

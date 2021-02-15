@@ -36,9 +36,9 @@ class LocationAccessor:
 
         return location
 
-    def get_locations_related_to_prop_type(self, prop_type: SpecificPropTypeEnum):
-        # MATCH ( (p: SpecificPropType) {name: $prop_type})--(l: Location) RETURN l
-        raise NotImplementedError
+    # def get_locations_related_to_prop_type(self, prop_type: SpecificPropTypeEnum):
+    #     # MATCH ( (p: SpecificPropType) {name: $prop_type})--(l: Location) RETURN l
+    #     raise NotImplementedError
 
     def insert(self, location: Location, location_key: LocationKey):
         if self.get_location_by_key(location_key) is not None:
