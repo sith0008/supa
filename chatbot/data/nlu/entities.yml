@@ -5,15 +5,18 @@ nlu:
     - postal
     - postalcode
     - post code
+    - postal code
 - synonym: floor
   examples: |
     - storey
     - level
     - floor number
     - level number
+    - floor
 - synonym: unit
   examples: |
     - unit number
+    - unit
 - synonym: use class
   examples: |
     - useclass
@@ -21,6 +24,8 @@ nlu:
     - business use type
     - business use class
     - uses
+    - proposed use class
+    - use class
 
 - lookup: use class
   examples: |

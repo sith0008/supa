@@ -203,18 +203,47 @@ class ActionVerifyProposal(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]
             ) -> List[EventType]:
+        # TODO: add verification logic here
         print("verifying proposal")
+        outcome = "APPROVED!!!"
+        dispatcher.utter_message(template="utter_verified", outcome=outcome)
         return []
 
 
-# class ActionExplainOutcome(Action):
-#     '''
-#     Using filled slots, query guideline DB to get outcome
-#     vary reply for similar case vs user case
-#     '''
-#     raise NotImplementedError
-#
-#
+class ActionExplainOutcome(Action):
+    '''
+    Using filled slots, query guideline DB to get outcome
+    vary reply for similar case vs user case
+    '''
+    def name(self):
+        return "action_explain_outcome"
+
+    def run(self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]
+            ) -> List[EventType]:
+        # TODO: add explain logic here
+        print("explaining outcome")
+        explanation = "I CANNOT EXPAIN YET!!!"
+        dispatcher.utter_message(template="utter_explain_outcome", explanation=explanation)
+        return []
+
+class ActionResetSlots(Action):
+    def name(self) -> Text:
+        return "action_reset_slots"
+
+    def run(
+        self,
+        dispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> List[Dict[Text, Any]]:
+        data = tracker.latest_message["text"]
+        print(f"resetting slot {data}")
+        return [SlotSet(data), None]
+
+
 # class ActionSubmitProposal(Action):
 #     '''
 #

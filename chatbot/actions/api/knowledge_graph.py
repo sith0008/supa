@@ -10,7 +10,7 @@ class KnowledgeGraphAPI:
                           use_class: str,
                           postal_code: int,
                           ):
-        return "[TESTING]: similar cases here"
+        return [{"Case 1": "ABC"}, {"Case 2": "XYZ"}]
         # TODO: implement after kg chatbot service branch is merged
         headers = {
             'content-type': 'application/json'
@@ -24,7 +24,7 @@ class KnowledgeGraphAPI:
         return res
 
     def get_all_use_classes(self):
-        return "[TESTING]: all use classes here"
+        return [{"Use class 1": "ABC"}, {"Use class 2": "XYZ"}]
         headers = {
             'content-type': 'application/json'
         }

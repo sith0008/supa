@@ -83,5 +83,34 @@ nlu:
     - I want to submit my [application]
     - I would like to submit
     - i'd like to proceed with submission
-
+- intent: enter_data
+  examples: |
+    - postal code
+    - postal
+    - use class
+    - proposed use class
+    - description
+    - use description
+    - proposed use description
+    - unit number
+    - floor number
+    - unit
+    - floor
+    - level
+    - lot
+    - lot number
+    - unit no.
+    - unit no
+    - lot no
+    - lot no.
+    - floor no.
+    - gfa
+    - gross floor area
+    - Gross Floor Area
+    - GFA
+    - Use Class
+    - Postal
+    - Use description
+    - Unit
+    - Floor
 

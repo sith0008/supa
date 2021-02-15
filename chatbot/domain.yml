@@ -18,6 +18,8 @@ intents:
 - view_similar
 - ask_reason
 - submit_proposal
+- thanks
+- enter_data
 
 entities:
 - use_class
@@ -74,6 +76,8 @@ responses:
   - text: "It was my pleasure helping you, see you again!"
   utter_affirm:
   - text: "Thanks for confirming!"
+  utter_apologise:
+  - text: "Sorry that I didn't help you. You may refer to the URA website for more information."
   utter_ask_cancel:
   - text: "Are you sure you want to end here?"
   utter_ask_after_cancel:
@@ -130,13 +134,19 @@ responses:
   utter_verify_form_inputs:
   - text: "Could you review the following details?\n\n{form_inputs}"
   utter_verified:
-  - text: "Thanks for waiting! Here's the evaluation outcome!"
+  - text: "Thanks for waiting! Here's the evaluation outcome! \n\n {outcome}"
   utter_ask_similar:
   - text: "Would you like to view some precedent cases similar to yours?"
   utter_affirm_similar:
   - text: "Sure, give me a moment while I retrieve them!"
   utter_deny_similar:
   - text: "No worries, just let me know when you want to view them later on!"
+  utter_ask_feedback:
+  - text: "Did that help you?"
+  utter_explain_outcome:
+  - text: "Here's the explanation \n\n {explanation}"
+  utter_ask_submit:
+  - text: "Let me know if you would like to submit your application!"
   utter_restaurant_before_submit:
   - text: "Sure, but before that, I will need you to provide more details to improve your chances of approval!"
   utter_others_before_submit:
