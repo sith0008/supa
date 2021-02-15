@@ -34,6 +34,7 @@ class ValidateVerifyForm(FormValidationAction):
             return {"use_class": value}
         else:
             dispatcher.utter_message(template="utter_invalid_use_class")
+            return {"use_class": None}
 
     # TODO: uncomment after GeneralValidator is implemented
     def validate_gfa(self,
@@ -46,6 +47,7 @@ class ValidateVerifyForm(FormValidationAction):
             return {"gfa": value}
         else:
             dispatcher.utter_message(template="utter_invalid_gfa")
+            return {"gfa": None}
     # TODO: uncomment after location DB is implemented
     # def validate_postal_code(self,
     #                        value: Text,
@@ -68,7 +70,7 @@ class ValidateVerifyForm(FormValidationAction):
             return {"floor": value}
         else:
             dispatcher.utter_message(template="utter_invalid_floor")
-
+            return {"floor": None}
     def validate_unit(self,
                            value: Text,
                            dispatcher: CollectingDispatcher,
@@ -79,7 +81,7 @@ class ValidateVerifyForm(FormValidationAction):
             return {"unit": value}
         else:
             dispatcher.utter_message(template="utter_invalid_unit")
-
+            return {"unit": None}
 
 class ActionShowUseClasses(Action):
     '''
@@ -158,14 +160,53 @@ class ActionGetAddresses(Action):
             )
         return [SlotSet("address_list"), address_list]
 
+class ActionReviewVerifyForm(Action):
+    '''
+    Display filled slots to user
+    '''
+    def name(self):
+        return "action_review_verify_form"
 
-# class ActionVerifyProposal(Action):
-#     '''
-#     Using filled slots, query guideline DB to get outcome
-#     '''
-#     raise NotImplementedError
-#
-#
+    def run(self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]
+            ) -> List[EventType]:
+        print("displaying slots")
+        proposed_use_class = tracker.get_slot("use_class")
+        proposed_use_desc = tracker.get_slot("use_desc")
+        postal_code = tracker.get_slot("postal_code")
+        floor = tracker.get_slot("floor")
+        unit = tracker.get_slot("unit")
+        gfa = tracker.get_slot("gfa")
+        response = f"Proposed use class:  {proposed_use_class} \n" \
+                   f"Proposed use description: {proposed_use_desc} \n" \
+                   f"Postal code: {postal_code} \n" \
+                   f"Floor: {floor} \n" \
+                   f"Unit: {unit} \n" \
+                   f"GFA: {gfa}"
+        print(response)
+        dispatcher.utter_message(template="utter_verify_form_inputs", form_inputs=response)
+        return []
+
+
+class ActionVerifyProposal(Action):
+    '''
+    Using filled slots, query guideline DB to get outcome
+    '''
+
+    def name(self):
+        return "action_verify_proposal"
+
+    def run(self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]
+            ) -> List[EventType]:
+        print("verifying proposal")
+        return []
+
+
 # class ActionExplainOutcome(Action):
 #     '''
 #     Using filled slots, query guideline DB to get outcome
