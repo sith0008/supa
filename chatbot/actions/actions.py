@@ -59,29 +59,29 @@ class ValidateVerifyForm(FormValidationAction):
     #         return {"postal_code": value}
     #     else:
     #         dispatcher.utter_message(template="utter_invalid_postal_code")
-    # TODO: uncomment after GeneralValidator is implemented
-    def validate_floor(self,
-                           value: Text,
-                           dispatcher: CollectingDispatcher,
-                           tracker: Tracker,
-                           domain: Dict[Text, Any]
-                           ):
-        if GeneralValidator.is_valid_integer(value):
-            return {"floor": value}
-        else:
-            dispatcher.utter_message(template="utter_invalid_floor")
-            return {"floor": None}
-    def validate_unit(self,
-                           value: Text,
-                           dispatcher: CollectingDispatcher,
-                           tracker: Tracker,
-                           domain: Dict[Text, Any]
-                           ):
-        if GeneralValidator.is_valid_integer(value):
-            return {"unit": value}
-        else:
-            dispatcher.utter_message(template="utter_invalid_unit")
-            return {"unit": None}
+    # # TODO: uncomment after GeneralValidator is implemented
+    # def validate_floor(self,
+    #                        value: Text,
+    #                        dispatcher: CollectingDispatcher,
+    #                        tracker: Tracker,
+    #                        domain: Dict[Text, Any]
+    #                        ):
+    #     if GeneralValidator.is_valid_integer(value):
+    #         return {"floor": value}
+    #     else:
+    #         dispatcher.utter_message(template="utter_invalid_floor")
+    #         return {"floor": None}
+    # def validate_unit(self,
+    #                        value: Text,
+    #                        dispatcher: CollectingDispatcher,
+    #                        tracker: Tracker,
+    #                        domain: Dict[Text, Any]
+    #                        ):
+    #     if GeneralValidator.is_valid_integer(value):
+    #         return {"unit": value}
+    #     else:
+    #         dispatcher.utter_message(template="utter_invalid_unit")
+    #         return {"unit": None}
 
 class ActionShowUseClasses(Action):
     '''

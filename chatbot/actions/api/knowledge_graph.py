@@ -55,10 +55,10 @@ class KnowledgeGraphAPI:
         res = requests.get(url=self.url+endpoint, headers=headers, data=json.dumps(data))
         return res is not None
 
-    def get_locations(self, postal_code: int, floor: int, unit: int):
+    def get_locations(self, postal_code: int, floor: str, unit: str):
         raise NotImplementedError
 
-    def get_property_type(self, postal_code: int, floor: int, unit: int, block: int, road: str):
+    def get_property_type(self, postal_code: int, floor: str, unit: str, block: str, road: str):
         # query location DB, check booleans + land_use_type (rs)
         # create in-memory map here
         raise NotImplementedError

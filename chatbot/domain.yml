@@ -42,9 +42,9 @@ slots:
   postal_code:
     type: float
   floor:
-    type: float
+    type: text
   unit:
-    type: float
+    type: text
   block:
     type: float
   road:
