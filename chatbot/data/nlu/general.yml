@@ -44,6 +44,8 @@ nlu:
     - Yep!
     - Yepp
     - Yes
+    - yes
+    - yess
     - Yes I do
     - Yes please
     - Yes please!
@@ -206,7 +208,6 @@ nlu:
     - yes,i am
     - yes.
     - yesh
-    - yess
     - yessoo
     - yesss
     - yesssss
@@ -590,3 +591,20 @@ nlu:
     - edit proposal
     - amend proposal
     - make changes
+- intent: thanks
+  examples: |
+    - thanks
+    - ty
+    - thank you
+    - thankss
+    - thanks so much
+    - thank you so much
+    - tyvm
+    - thanks very much
+    - much thanks
+    - thx
+    - thx man
+    - thanks man
+    - thank you for your help
+    - thanks for ur help
+    - thank u

@@ -1,0 +1,170 @@
+version: "2.0"
+stories:
+  - story: verify basic
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: verify_proposal
+    - action: utter_verify
+    - action: verify_form
+    - active_loop: verify_form
+    - active_loop: null
+    - action: action_review_verify_form
+    - intent: affirm
+    - action: utter_verifying
+    - action: action_verify_proposal
+    - intent: thanks
+    - action: utter_ask_end_convo
+    - intent: deny
+    - action: utter_goodbye
+  - story: verify deny similar bye
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: verify_proposal
+    - action: utter_verify
+    - action: verify_form
+    - active_loop: verify_form
+    - active_loop: null
+    - action: action_review_verify_form
+    - intent: affirm
+    - action: utter_verifying
+    - action: action_verify_proposal
+    - action: utter_ask_similar
+    - intent: deny
+    - action: utter_deny_similar
+    - intent: thanks
+    - action: utter_ask_end_convo
+    - intent: deny
+    - action: utter_goodbye
+  - story: verify deny similar submit
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: verify_proposal
+    - action: utter_verify
+    - action: verify_form
+    - active_loop: verify_form
+    - active_loop: null
+    - action: action_review_verify_form
+    - intent: affirm
+    - action: utter_verifying
+    - action: action_verify_proposal
+    - action: utter_ask_similar
+    - intent: deny
+    - action: utter_deny_similar
+    - intent: submit_proposal
+    - action: action_submit_proposal
+  - story: verify view similar
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: verify_proposal
+    - action: utter_verify
+    - action: verify_form
+    - active_loop: verify_form
+    - active_loop: null
+    - action: action_review_verify_form
+    - intent: affirm
+    - action: utter_verifying
+    - action: action_verify_proposal
+    - action: utter_ask_similar
+    - intent: affirm
+    - action: utter_affirm_similar
+    - action: action_get_similar_cases
+    - intent: submit_proposal
+    - action: action_submit_proposal
+  - story: chatbot ask view similar cases (affirm)
+    steps:
+    - action: utter_ask_similar
+    - intent: affirm
+    - action: utter_affirm_similar
+    - action: action_get_similar_cases
+  - story: chatbot ask view similar cases (deny)
+    steps:
+    - action: utter_ask_similar
+    - intent: deny
+    - action: utter_deny_similar
+  - story: user view similar cases
+    steps:
+    - intent: view_similar
+    - action: utter_affirm_similar
+    - action: action_get_similar_cases
+  - story: ask end convo deny
+    steps:
+     - action: utter_ask_end_convo
+     - intent: deny
+     - action: utter_goodbye
+  - story: ask end convo affirm view similar
+    steps:
+     - action: utter_ask_end_convo
+     - intent: affirm
+     - action: utter_ask_after_cancel
+     - intent: view_similar
+     - action: action_get_similar_cases
+  - story: ask end convo affirm submit
+    steps:
+    - action: utter_ask_end_convo
+    - intent: affirm
+    - action: utter_ask_after_cancel
+    - intent: submit_proposal
+    - action: action_submit_proposal
+  - story: verify basic explain
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: verify_proposal
+    - action: utter_verify
+    - action: verify_form
+    - active_loop: verify_form
+    - active_loop: null
+    - action: action_review_verify_form
+    - intent: affirm
+    - action: utter_verifying
+    - action: action_verify_proposal
+    - intent: ask_reason
+    - action: action_explain_outcome
+    - action: utter_ask_feedback
+  - story: affirm feedback
+    steps:
+    - action: utter_ask_feedback
+    - intent: affirm
+    - action: utter_ask_end_convo
+  - story: deny feedback
+    steps:
+    - action: utter_ask_feedback
+    - intent: deny
+    - action: utter_apologise
+    - action: utter_ask_end_convo
+  - story: deny review
+    steps:
+    - action: action_review_verify_form
+    - intent: deny
+    - action: utter_review_deny
+    - intent: enter_data
+    - action: action_reset_slots
+    - action: verify_form
+    - active_loop: verify_form
+    - active_loop: null
+    - action: action_review_verify_form
+
+
+#  - story: verify_restart
+#    steps:
+#    - intent: greet
+#    - action: utter_greet
+#    - intent: verify_proposal
+#    - action: utter_verify
+#    - action: verify_form
+#    - active_loop: verify_form
+#    - active_loop: null
+#
+#  - story: verify_edit_1
+#  - story: verify_edit_2
+#  - story: verify_edit_3
+#
+#  - story: verify_out_of_scope
+#  - story: verify_cancel
+#  - story: verify_similar_explain
+#  - story: verify_restaurant_no_live
+#  - story: verify_restaurant_live

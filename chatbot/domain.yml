@@ -1,34 +1,209 @@
 version: "2.0"
 
-intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-
-responses:
-  utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
-  utter_goodbye:
-  - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+
+intents:
+- greet
+- goodbye
+- affirm
+- deny
+- restart
+- help
+- out_of_scope
+- cancel
+- edit_form
+- verify_proposal
+- view_similar
+- ask_reason
+- submit_proposal
+- thanks
+- enter_data
+
+entities:
+- use_class
+- postal_code
+- floor
+- unit
+- lot_number
+- gross_floor_area
+- use_description
+
+slots:
+  use_class:
+    type: text
+  use_description:
+    type: text
+  gross_floor_area:
+    type: text
+  lot_number:
+    type: text
+  postal_code:
+    type: float
+  floor:
+    type: text
+  unit:
+    type: text
+  block:
+    type: float
+  road:
+    type: text
+  address_list:
+    type: list
+  address_mention:
+    type: text
+  similar_cases_list:
+    type: list
+  opening_hours:
+    type: text
+  live_music:
+    type: text
+  music_details:
+    type: text
+  noise_mitigation:
+    type: text
+
+
+responses:
+  utter_greet:
+  - text: "Hey! I am Supa! I can help evaluate your Change of Use proposal or clarify your doubts regarding the DC handbooks! How can I help you?"
+  utter_help:
+  - text: "I can help you with the following! Please select."
+    buttons:
+      - title: "Verify Proposal"
+        payload: "/verify_proposal"
+      - title: "Clarify Doubts"
+        payload: "/clarify"
+  utter_goodbye:
+  - text: "It was my pleasure helping you, see you again!"
+  utter_affirm:
+  - text: "Thanks for confirming!"
+  utter_apologise:
+  - text: "Sorry that I didn't help you. You may refer to the URA website for more information."
+  utter_ask_cancel:
+  - text: "Are you sure you want to end here?"
+  utter_ask_after_cancel:
+  - text: "How can I help you now?"
+  utter_ask_restart:
+  - text: "Are you sure you want to restart?"
+  utter_out_of_scope:
+  - text: "I can't help you with that, I'm sorry! I am limited to the following, please bear with me while I continue to learn!"
+    buttons:
+      - title: "Verify Proposal"
+        payload: "/verify_proposal"
+      - title: "Clarify Doubts"
+        payload: "/clarify"
+  utter_ask_edit_form:
+  - text: "Which field do you want to edit?"
+  utter_verify:
+  - text: "Sure, let me help you with that! I will first need some information from you."
+  utter_clarify:
+  - text: "Sure, what would you like to clarify?"
+  utter_ask_use_class:
+  - text: "What will be the proposed use class?"
+  utter_ask_use_description:
+  - text: "What is the proposed use description?"
+  utter_ask_gross_floor_area:
+  - text: "What's the gross floor area?"
+  utter_ask_postal_code:
+  - text: "What is the postal code for your location?"
+  utter_ask_lot_number:
+  - text: "What is the lot number?"
+  utter_ask_floor:
+  - text: "Which floor is it on?"
+  utter_ask_unit:
+  - text: "What is the unit number?"
+  utter_multiple_address:
+  - text: "Hmm, I've found the following address(es) for the given postal code. Can you tell me which one are you referring to?"
+  utter_invalid_use_class:
+  - text: "Oops, I didn't recognise that use class! URA uses the following list, please choose the most appropriate one for your use case."
+  utter_similar_use_class:
+  - text: "Did you mean '{use_class}'?"
+  utter_invalid_postal_code:
+  - text: "Oops, I didn't recognise that postal code! Are you sure you entered it correctly?"
+  utter_invalid_floor_number:
+  - text: "Oops, I didn't recognise the floor number! Note that it must be a number!"
+  utter_invalid_unit_number:
+  - text: "Oops, I didn't recognise the unit number! Note that it must be a number!"
+  utter_invalid_gfa:
+  - text: "Oops, I didn't recognise the GFA! Note that it must be numeric!"
+  utter_ask_review:
+  - text: "Can you review the following details you've submitted? Do they look correct?"
+  utter_review_deny:
+  - text: "Can you tell me which fields need amendments?"
+  utter_verifying:
+  - text: "Thanks for the information! Give me a moment while I evaluate your proposal!"
+  utter_verify_form_inputs:
+  - text: "These are your inputs. Do they look correct? \n\n{form_inputs}"
+  utter_verified:
+  - text: "Thanks for waiting! Here's the evaluation outcome! \n\n {outcome}"
+  utter_ask_similar:
+  - text: "Would you like to view some precedent cases similar to yours?"
+  utter_affirm_similar:
+  - text: "Sure, give me a moment while I retrieve them!"
+  utter_deny_similar:
+  - text: "No worries, just let me know when you want to view them later on!"
+  utter_ask_feedback:
+  - text: "Did that help you?"
+  utter_explain_outcome:
+  - text: "Here's the explanation \n\n {explanation}"
+  utter_ask_submit:
+  - text: "Let me know if you would like to submit your application!"
+  utter_restaurant_before_submit:
+  - text: "Sure, but before that, I will need you to provide more details to improve your chances of approval!"
+  utter_others_before_submit:
+  - text: "Sure, your proposal looks good for now! I'll proceed to submit your application!"
+  utter_ask_opening_hours:
+  - text: "What are the opening hours for your restaurant?"
+  utter_ask_live_music:
+  - text: "Will there be live music?"
+  utter_ask_music_details:
+  - text: "What is the genre and the frequency?"
+  utter_ask_noise_mitigation:
+  - text: "What are the proposed noise mitigating measures?"
+  utter_ask_continue_verify:
+  - text: "Would you like to continue with the process?"
+  utter_ask_end_convo:
+  - text: "Hope I'd been a great help, is there anything else I can help you with?"
+
+
+actions:
+  - action_show_all_use_classes
+  - validate_verify_form
+  - action_get_addresses
+  - action_review_verify_form
+  - action_verify_proposal
+  - action_get_similar_cases
+  - action_get_more_similar_cases
+  - action_explain_outcome
+  - action_submit_proposal
+  - action_reset_slots
+  - action_set_live_music
+
+forms:
+  verify_form:
+    use_class:
+      - type: from_text
+    use_description:
+      - type: from_text
+    gross_floor_area:
+      - type: from_text
+    postal_code:
+      - type: from_text
+    lot_number:
+      - type: from_text
+    floor:
+      - type: from_text
+    unit:
+      - type: from_text
+  restaurant_form:
+    opening_hours:
+      - type: from_text
+    live_music:
+      - type: from_text
+  live_music_form:
+    music_details:
+      - type: from_text
+    noise_mitigation:
+      - type: from_text

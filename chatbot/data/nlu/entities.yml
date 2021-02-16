@@ -1,0 +1,69 @@
+version: "2.0"
+nlu:
+- synonym: postal_code
+  examples: |
+    - postal
+    - postalcode
+    - post code
+    - postal code
+    - Post
+    - Postal
+    - Postal Code
+    - Postal code
+    - Post code
+- synonym: floor
+  examples: |
+    - storey
+    - level
+    - floor number
+    - level number
+    - floor
+    - floor no
+    - Floor
+    - Level
+    - Floor number
+- synonym: lot_number
+  examples: |
+    - lot
+    - Lot
+    - lot number
+    - Lot number
+    - Lot Number
+    - Lot no
+- synonym: unit
+  examples: |
+    - unit number
+    - unit
+    - unit no
+    - Unit
+    - Unit Number
+- synonym: use_class
+  examples: |
+    - useclass
+    - business use
+    - business use type
+    - business use class
+    - uses
+    - proposed use class
+    - use class
+    - Use Class
+    - Proposed Use Class
+    - Use class
+- synonym: use_description
+  examples: |
+    - proposed use description
+    - use description
+    - description
+    - Use description
+    - Use Description
+    - Proposed Use Desc
+    - use desc
+    - desc
+    - Proposed Use Description
+    - Use desc
+- synonym: gross_floor_area
+  examples: |
+    - gross floor area
+    - gfa
+    - GFA
+    - Gross Floor Area
