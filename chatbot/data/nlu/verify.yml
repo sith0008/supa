@@ -85,32 +85,32 @@ nlu:
     - i'd like to proceed with submission
 - intent: enter_data
   examples: |
-    - postal code
-    - postal
-    - use class
-    - proposed use class
-    - description
-    - use description
-    - proposed use description
-    - unit number
-    - floor number
-    - unit
-    - floor
-    - level
-    - lot
-    - lot number
-    - unit no.
-    - unit no
-    - lot no
-    - lot no.
-    - floor no.
-    - gfa
-    - gross floor area
-    - Gross Floor Area
-    - GFA
-    - Use Class
-    - Postal
-    - Use description
-    - Unit
-    - Floor
+    - [postal code]{"entity":"postal_code"}
+    - [postal]{"entity":"postal_code"}
+    - [use class]{"entity":"use_class"}
+    - [proposed use class]{"entity":"use_class"}
+    - [description]{"entity":"use_description"}
+    - [use description]{"entity":"use_description"}
+    - [proposed use description]{"entity":"use_description"}
+    - [unit number]{"entity":"unit"}
+    - [floor number]{"entity":"floor"}
+    - [unit]{"entity":"unit"}
+    - [floor]{"entity":"floor"}
+    - [level]{"entity":"floor"}
+    - [lot]{"entity":"lot_number"}
+    - [lot number]{"entity":"lot_number"}
+    - [unit no]{"entity":"unit"}
+    - [unit no]{"entity":"unit"}
+    - [lot no]{"entity":"lot_number"}
+    - [lot no]{"entity":"lot_number"}
+    - [floor no]{"entity":"floor"}
+    - [gfa]{"entity":"gross_floor_area"}
+    - [gross floor area]{"entity":"gross_floor_area"}
+    - [Gross Floor Area]{"entity":"gross_floor_area"}
+    - [GFA]{"entity":"gross_floor_area"}
+    - [Use Class]{"entity":"use_class"}
+    - [Postal]{"entity":"postal_code"}
+    - [Use description]{"entity":"use_description"}
+    - [Unit]{"entity":"unit"}
+    - [Floor]{"entity":"floor"}
 

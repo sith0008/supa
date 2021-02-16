@@ -44,10 +44,10 @@ class ValidateVerifyForm(FormValidationAction):
                            domain: Dict[Text, Any]
                            ):
         if GeneralValidator.is_valid_float(value):
-            return {"gfa": value}
+            return {"gross_floor_rea": value}
         else:
             dispatcher.utter_message(template="utter_invalid_gfa")
-            return {"gfa": None}
+            return {"gross_floor_area": None}
     # TODO: uncomment after location DB is implemented
     # def validate_postal_code(self,
     #                        value: Text,
@@ -174,16 +174,18 @@ class ActionReviewVerifyForm(Action):
             ) -> List[EventType]:
         print("displaying slots")
         proposed_use_class = tracker.get_slot("use_class")
-        proposed_use_desc = tracker.get_slot("use_desc")
+        proposed_use_desc = tracker.get_slot("use_description")
         postal_code = tracker.get_slot("postal_code")
         floor = tracker.get_slot("floor")
         unit = tracker.get_slot("unit")
-        gfa = tracker.get_slot("gfa")
+        lot_number = tracker.get_slot("lot_number")
+        gfa = tracker.get_slot("gross_floor_area")
         response = f"Proposed use class:  {proposed_use_class} \n" \
                    f"Proposed use description: {proposed_use_desc} \n" \
                    f"Postal code: {postal_code} \n" \
                    f"Floor: {floor} \n" \
                    f"Unit: {unit} \n" \
+                   f"Lot number: {lot_number} \n" \
                    f"GFA: {gfa}"
         print(response)
         dispatcher.utter_message(template="utter_verify_form_inputs", form_inputs=response)
@@ -239,10 +241,15 @@ class ActionResetSlots(Action):
         tracker: Tracker,
         domain: "DomainDict",
     ) -> List[Dict[Text, Any]]:
-        data = tracker.latest_message["text"]
-        print(f"resetting slot {data}")
-        return [SlotSet(data), None]
-
+        # data = tracker.latest_message["text"]
+        # print(f"resetting slot {data}")
+        # return [SlotSet(data), None]
+        entities = tracker.latest_message["entities"]
+        slot_set_events = []
+        for entity in entities:
+            print(entity['entity'])
+            slot_set_events.append(SlotSet(entity['entity'], None))
+        return slot_set_events
 
 # class ActionSubmitProposal(Action):
 #     '''
