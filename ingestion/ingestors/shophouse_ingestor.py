@@ -59,15 +59,4 @@ class ShophouseIngestor:
                             })
                             print(payload)
                             r = requests.put(url=self.url, headers=self.headers, data=payload)
-                            # log.info("block " + block)
-                            # log.info("road " + road)
-                            # log.info("floor " + floor)
-                            # log.info("unit " + unit)
-                            # log.info("use_class " + use_class)
-                            # log.info("allowed " + allowed)
-                            # log.info("reason " + reason)
                             log.info(r.text)
-
-
-# test_ingestor = ShophouseIngestor()
-# test_ingestor.ingest('../Shophouse_Guidelines.json')
