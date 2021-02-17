@@ -10,6 +10,7 @@ from ingestors.guidelines_ingestor import GuidelinesIngestor  # noqa
 from ingestors.property_type_ingestor import PropertyTypeIngestor  # noqa
 from ingestors.ura_data_ingestor import URADataIngestor  # noqa
 from ingestors.location_ingestor import LocationIngestor  # noqa
+from ingestors.shophouse_ingestor import ShophouseIngestor  # noqa
 
 log = logging.getLogger('root')
 log.setLevel('DEBUG')
@@ -25,6 +26,7 @@ ura_data_ingestor = URADataIngestor(past_case_ingestor, location_ingestor)
 entity_pop_ingestor = EntityPopIngestor(BACKEND_HOST, "/entitypop")
 guidelines_ingestor = GuidelinesIngestor(BACKEND_HOST, "/guideline")
 property_type_ingestor = PropertyTypeIngestor(BACKEND_HOST, "/property_type")
+shophouse_ingestor = ShophouseIngestor(BACKEND_HOST, "/shophouse")
 
 
 def init_guidelines(guidelines_csv):
@@ -35,6 +37,11 @@ def init_guidelines(guidelines_csv):
 def init_property_type(postal_code_json, hdb_commercial_json, shophouse_json, land_use_json):
     log.info("Initialising property types")
     property_type_ingestor.ingest(postal_code_json, hdb_commercial_json, shophouse_json, land_use_json)
+
+
+def init_shophouse(shophouse_json):
+    log.info("Initialising shophouse")
+    shophouse_ingestor.ingest(shophouse_json)
 
 
 def init_use_class():
@@ -62,6 +69,7 @@ def main():
     HDB_COMMERCIAL_JSON_FILE = os.environ.get("HDB_COMMERCIAL_JSON_FILE")
     SHOPHOUSE_JSON_FILE = os.environ.get("SHOPHOUSE_JSON_FILE")
     LAND_USE_JSON_FILE = os.environ.get("LAND_USE_JSON_FILE")
+    SHOPHOUSE_GUIDELINES_JSON_FILE = os.environ.get("SHOPHOUSE_GUIDELINES_JSON_FILE")
 
     CASES_DATA_DIRECTORY = os.environ.get("INPUT_DATA_DIR")
 
@@ -69,6 +77,7 @@ def main():
         log.info("initialising sql database")
         init_guidelines(GUIDELINES_CSV_FILE)
         init_property_type(POSTAL_CODE_JSON_FILE, HDB_COMMERCIAL_JSON_FILE, SHOPHOUSE_JSON_FILE, LAND_USE_JSON_FILE)
+        init_shophouse(SHOPHOUSE_GUIDELINES_JSON_FILE)
 
     if os.environ.get("INIT_GRAPH", "true").lower() == "true":
         # TODO: call methdos from prop_type_ingestor, use_class_ingestor, past_case_ingestor, entity_pop_ingestor
