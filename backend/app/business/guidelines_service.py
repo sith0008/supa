@@ -1,4 +1,3 @@
-# TODO: add guideline service methods here
 from app.accessors.guidelines_accessor import GuidelinesAccessor  # noqa
 from app.models.guidelines import Guideline, OutcomePriority # noqa
 from sqlalchemy.orm import sessionmaker
@@ -12,7 +11,8 @@ class GuidelinesService:
     def __init__(self, engine):
         self.engine = engine
 
-    def fill_default(self, fields_map):
+    @staticmethod
+    def fill_default(fields_map):
         fields_map['unit_type'] = 'Normal' if 'unit_type' not in fields_map else fields_map['unit_type']
         fields_map['conditions'] = 'Normal' if 'conditions' not in fields_map else fields_map['conditions']
         return fields_map
