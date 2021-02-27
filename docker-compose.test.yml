@@ -38,6 +38,7 @@ services:
       HDB_COMMERCIAL_JSON_FILE: "HDB_Commercial.json"
       SHOPHOUSE_JSON_FILE: "Shophouse.json"
       LAND_USE_JSON_FILE: "Land_Use.json"
+      SHOPHOUSE_GUIDELINES_JSON_FILE: "Shophouse_Guidelines.json"
       CASES_DATA_DIRECTORY: ""
     networks:
       - supa-network

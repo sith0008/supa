@@ -39,8 +39,6 @@ class PropertyTypeIngestor:
         with open(land_use) as land_use_file:
             data_land_use = json.load(land_use_file)
 
-        print(len(list(data_land_use.keys())))
-
         for postal_code, infos in data_postal_code.items():
             infos = list(set([(info['BLK_NO'], info['ROAD_NAME']) for info in infos]))
             for block, road in infos:
