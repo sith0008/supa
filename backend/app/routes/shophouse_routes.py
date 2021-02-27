@@ -17,18 +17,18 @@ def get_shophouse():
 def insert_shophouse():
     fields = dict(request.get_json())
     shophouse_service.insert_shophouse(fields)
-    return f"Property_type {fields} inserted"
+    return f"Shophouse {fields} inserted"
 
 
 @supa.route("/shophouse", methods=['POST'])
 def update_shophouse():
     fields = dict(request.get_json())
     shophouse_service.update_shophouse(fields)
-    return f"Property_type {fields} updated"
+    return f"Shophouse {fields} updated"
 
 
 @supa.route("/shophouse", methods=['DELETE'])
 def delete_shophouse():
     fields = dict(request.get_json())
     shophouse_service.delete_shophouse(fields)
-    return f"Property_type {fields} deleted"
+    return f"Shophouse {fields} deleted"
