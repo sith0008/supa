@@ -19,7 +19,8 @@ intents:
 - ask_reason
 - submit_proposal
 - thanks
-- enter_data
+- enter_field_to_edit
+- enter_form_data
 
 entities:
 - use_class
@@ -29,6 +30,13 @@ entities:
 - lot_number
 - gross_floor_area
 - use_description
+- use_class_example
+- postal_code_example
+- floor_example
+- unit_example
+- lot_number_example
+- gross_floor_area_example
+- use_description_example
 
 slots:
   use_class:
@@ -83,7 +91,7 @@ responses:
   - text: "Sorry that I didn't help you. You may refer to the URA website for more information."
   utter_ask_cancel:
   - text: "Are you sure you want to end here?"
-  utter_ask_after_cancel:
+  utter_more_help:
   - text: "How can I help you now?"
   utter_ask_restart:
   - text: "Are you sure you want to restart?"
@@ -166,7 +174,8 @@ responses:
   - text: "Would you like to continue with the process?"
   utter_ask_end_convo:
   - text: "Hope I'd been a great help, is there anything else I can help you with?"
-
+  utter_ask_confirm_stop:
+  - text: "Are you sure you want to stop here?"
 
 actions:
   - action_show_all_use_classes
@@ -185,18 +194,43 @@ forms:
   verify_form:
     use_class:
       - type: from_text
+        intent: enter_form_data
+      - type: from_entity
+        entity: use_class_example
     use_description:
       - type: from_text
+        intent: enter_form_data
     gross_floor_area:
       - type: from_text
+        intent: enter_form_data
+      - type: from_entity
+        entity: gross_floor_area_example
+      - type: from_entity
+        entity: integer_example
     postal_code:
       - type: from_text
+        intent: enter_form_data
+      - type: from_entity
+        entity: postal_code_example
     lot_number:
       - type: from_text
+        intent: enter_form_data
+      - type: from_entity
+        entity: lot_number_example
     floor:
       - type: from_text
+        intent: enter_form_data
+      - type: from_entity
+        entity: floor_example
+      - type: from_entity
+        entity: integer_example
     unit:
       - type: from_text
+        intent: enter_form_data
+      - type: from_entity
+        entity: unit_example
+      - type: from_entity
+        entity: integer_example
   restaurant_form:
     opening_hours:
       - type: from_text

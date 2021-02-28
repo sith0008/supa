@@ -545,7 +545,7 @@ nlu:
     - how can you help me?
     - tell me what you can do
     - I don't know what to do
-- intent: restart
+- intent: restart_form
   examples: |
     - i want to restart the application
     - can i restart?
@@ -560,6 +560,7 @@ nlu:
     - restart plz
     - please start from the top
     - start from the top please
+    - restart the form please
 - intent: cancel
   examples: |
     - stop pls

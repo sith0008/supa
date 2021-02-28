@@ -1,5 +1,5 @@
 from rasa_sdk import Action, Tracker
-from rasa_sdk.forms import FormValidationAction
+from rasa_sdk.forms import FormValidationAction, REQUESTED_SLOT
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import (
     SlotSet,
@@ -8,7 +8,7 @@ from rasa_sdk.events import (
     EventType,
     FollowupAction,
 )
-from typing import Text, Dict, Any, List
+from typing import Text, Dict, Any, List, Optional
 from actions.api.knowledge_graph import KnowledgeGraphAPI # noqa
 from actions.api.location import LocationAPI # noqa
 from actions.api.validator import GeneralValidator # noqa
