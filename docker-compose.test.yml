@@ -69,6 +69,8 @@ services:
     ports:
       - "7474:7474"
       - "7687:7687"
+    volumes:
+      - neo4j-data:/data
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:7474"]
       interval: 30s
@@ -76,5 +78,7 @@ services:
       retries: 5
     networks:
       - supa-network
+
 volumes:
   ingestion-volume:
+  neo4j-data:
