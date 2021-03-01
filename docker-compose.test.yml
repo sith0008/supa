@@ -60,6 +60,8 @@ services:
       retries: 5
     networks:
       - supa-network
+    volumes:
+      - ingestion-volume:/var/lib/mysql
   neo4j-test:
     image: neo4j:4.0.8
     environment:
@@ -74,3 +76,5 @@ services:
       retries: 5
     networks:
       - supa-network
+volumes:
+  ingestion-volume:
