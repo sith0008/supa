@@ -26,6 +26,8 @@ class PastCaseIngestor:
         return json.dumps(req)
 
     def populate_location_key_data(self, req, location_data):
+        req["location"]["block"] = location_data["house_no"]
+        req["location"]["road"] = location_data["road_name"]
         req["location"]["postal_code"] = location_data["postal_code"]
         req["location"]["floor"] = location_data["level"]
         req["location"]["unit"] = location_data["unit_no"]
@@ -34,7 +36,7 @@ class PastCaseIngestor:
         req["case"]["case_id"] = proposal_data["submission_info"]["dc_ref"]
         req["case"]["proposed_use_desc"] = proposal_data["proposal_details_info"]["proposal_description"]
         req["case"]["evaluation"] = eval_data["evaluation"]
-        req["case"]["decision"] = eval_data["planningCont"]["decByAO"]
+        req["case"]["decision"] = eval_data["planningCont"][0]["decByAO"]
         cou_data =  proposal_data["change_of_use_info"]["cu_for_site_address"]["change_of_use"]
         req["case"]["gfa"] = float(cou_data["use_gfa"])
-        req["use_class"]["name"] = cou_data["proposed_use_desc"].title()
+        req["use_class"]["name"] = cou_data["proposed_use_desc"]

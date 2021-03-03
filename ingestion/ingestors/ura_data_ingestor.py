@@ -21,11 +21,11 @@ class URADataIngestor:
             data = json.load(f)
         if "bizTown" in data and "evalReport" in data:
             log.info(f"Inserting {json_file_path} into database")
-            eval_data, proposal_data = data["evalReport"], data["bizTown"]
+            eval_data, proposal_data = data["evalReport"][0], data["bizTown"][0]
             self.location_ingestor.ingest(proposal_data)
             self.past_case_ingestor.ingest(eval_data, proposal_data)
-
-        log.warning(f"{json_file_path} not added to database due to missing section")
+        else:
+            log.warning(f"{json_file_path} not added to database due to missing section")
 
 
 
