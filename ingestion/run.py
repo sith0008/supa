@@ -71,7 +71,7 @@ def main():
     LAND_USE_JSON_FILE = os.environ.get("LAND_USE_JSON_FILE")
     SHOPHOUSE_GUIDELINES_JSON_FILE = os.environ.get("SHOPHOUSE_GUIDELINES_JSON_FILE")
 
-    CASES_DATA_DIRECTORY = os.environ.get("INPUT_DATA_DIR")
+    CASES_DATA_DIRECTORY = os.environ.get("CASES_DATA_DIRECTORY")
 
     if os.environ.get("INIT_SQL", "true").lower() == "true":
         log.info("initialising sql database")

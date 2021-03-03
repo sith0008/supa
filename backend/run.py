@@ -18,7 +18,7 @@ log = logging.getLogger('root')
 log.setLevel('DEBUG')
 log.addHandler(CustomHandler())
 
-
+#
 def init_sql_db(app):
     with app.app_context():
         sql_db.drop_all()
@@ -26,7 +26,8 @@ def init_sql_db(app):
 
 
 if __name__ == "__main__":
-    init_sql_db(supa)
+    if os.environ.get("INGESTED").lower() == "false":
+        init_sql_db(supa)
     supa.config.from_pyfile('../config.py')
     supa.run(
         host=os.environ.get("BACKEND_HOST", "127.0.0.1"),

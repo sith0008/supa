@@ -15,6 +15,7 @@ services:
       GRAPH_DATABASE_URI: 'bolt://neo4j-test:7687'
       GRAPH_DATABASE_PASSWORD: 'password'
       SQL_DATABASE_URI: 'mysql://user:password@mysql-test:3306/supa'
+      INGESTED: "false"
     depends_on:
       - mysql-test
       - neo4j-test
@@ -39,7 +40,7 @@ services:
       SHOPHOUSE_JSON_FILE: "Shophouse.json"
       LAND_USE_JSON_FILE: "Land_Use.json"
       SHOPHOUSE_GUIDELINES_JSON_FILE: "Shophouse_Guidelines.json"
-      CASES_DATA_DIRECTORY: ""
+      CASES_DATA_DIRECTORY: "./sample/"
     networks:
       - supa-network
     command: ["./wait-for-it.sh", "backend:5000", "--", "python", "run.py"]
@@ -69,6 +70,8 @@ services:
     ports:
       - "7474:7474"
       - "7687:7687"
+    volumes:
+      - neo4j-data:/data
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:7474"]
       interval: 30s
@@ -76,5 +79,7 @@ services:
       retries: 5
     networks:
       - supa-network
+
 volumes:
   ingestion-volume:
+  neo4j-data:
