@@ -76,15 +76,15 @@ def main():
     if os.environ.get("INIT_SQL", "true").lower() == "true":
         log.info("initialising sql database")
         init_guidelines(GUIDELINES_CSV_FILE)
-        # init_postal_code(POSTAL_CODE_JSON_FILE, HDB_COMMERCIAL_JSON_FILE, SHOPHOUSE_JSON_FILE, LAND_USE_JSON_FILE)
-        # init_shophouse(SHOPHOUSE_GUIDELINES_JSON_FILE)
+        init_postal_code(POSTAL_CODE_JSON_FILE, HDB_COMMERCIAL_JSON_FILE, SHOPHOUSE_JSON_FILE, LAND_USE_JSON_FILE)
+        init_shophouse(SHOPHOUSE_GUIDELINES_JSON_FILE)
 
-    # if os.environ.get("INIT_GRAPH", "true").lower() == "true":
-    #     # TODO: call methdos from prop_type_ingestor, use_class_ingestor, past_case_ingestor, entity_pop_ingestor
-    #     log.info("initialising graph database")
-    #     init_use_class()
-    #     init_land_use()
-    #     init_past_cases(CASES_DATA_DIRECTORY)
+    if os.environ.get("INIT_GRAPH", "true").lower() == "true":
+        # TODO: call methdos from prop_type_ingestor, use_class_ingestor, past_case_ingestor, entity_pop_ingestor
+        log.info("initialising graph database")
+        init_use_class()
+        init_land_use()
+        init_past_cases(CASES_DATA_DIRECTORY)
 
 
 if __name__ == "__main__":
