@@ -17,13 +17,13 @@ class PostalCodeAccessor:
 
     def read(self, filter_map: Dict):
         log.info(f"Retrieving postal code")
-        log.info(filter_map)
         q = self.session.query(PostalCode)
         for k, v in filter_map.items():
             q = q.filter(getattr(PostalCode, k) == v)
         postal_codes = q.all()
         postal_codes = [g.as_dict() for g in postal_codes]
-        log.info(f"Successfully retrieved postal code")
+        for postal_code in postal_codes:
+            log.info(f"Successfully retrieved postal code" + str(postal_code))
         return postal_codes
 
     def update(self, pri_map: Dict, upd_map: Dict):
@@ -31,15 +31,21 @@ class PostalCodeAccessor:
         q = self.session.query(PostalCode)
         for k, v in pri_map.items():
             q = q.filter(getattr(PostalCode, k) == v)
+        postal_codes = q.all()
+        postal_codes = [g.as_dict() for g in postal_codes]
         q.update(upd_map)
         self.session.commit()
-        log.info(f"Successfully updated postal code")
+        for postal_code in postal_codes:
+            log.info(f"Successfully updated postal code" + str(postal_code))
 
     def delete(self, pri_map: Dict):
         log.info(f"Deleting postal code")
         q = self.session.query(PostalCode)
         for k, v in pri_map.items():
             q = q.filter(getattr(PostalCode, k) == v)
+        postal_codes = q.all()
+        postal_codes = [g.as_dict() for g in postal_codes]
         q.delete()
         self.session.commit()
-        log.info(f"Successfully deleted postal code")
+        for postal_code in postal_codes:
+            log.info(f"Successfully deleted postal code" + str(postal_code))
