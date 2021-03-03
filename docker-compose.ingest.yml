@@ -62,7 +62,7 @@ services:
     networks:
       - supa-network
     volumes:
-      - ingestion-volume:/var/lib/mysql
+      - ingestion-volume:/data
   neo4j-test:
     image: neo4j:4.0.8
     environment:

@@ -1,4 +1,3 @@
-import csv
 import requests
 import json
 import logging
@@ -6,7 +5,7 @@ import logging
 log = logging.getLogger('root')
 
 
-class PropertyTypeIngestor:
+class PostalCodeIngestor:
     def __init__(self, host, endpoint):
         self.url = host + endpoint
         self.headers = {'content-type': 'application/json'}
@@ -45,6 +44,8 @@ class PropertyTypeIngestor:
                 address = block + " " + road
                 property_type = None
 
+                land_use_type, land_use_detail = data_land_use[postal_code]
+
                 # Check if hdb_commercial
                 if postal_code in data_hdb_commercial and data_hdb_commercial[postal_code] == address:
                     property_type = 'HDB Commercial Premises'
@@ -54,8 +55,6 @@ class PropertyTypeIngestor:
                     property_type = 'Shophouses'
 
                 else:
-                    land_use_type, land_use_detail = data_land_use[postal_code]
-
                     # Handle conservation areas
                     if land_use_detail == 'Conservation Area':
                         property_type = 'Buildings within Historic Conservation Areas'
@@ -68,9 +67,9 @@ class PropertyTypeIngestor:
                     elif land_use_type in self.land_use_to_prop_type:
                         property_type = self.land_use_to_prop_type[land_use_type]
 
-                if property_type:
-                    payload = json.dumps({
-                        'block': block, 'road': road, 'postal_code': postal_code, 'property_type': property_type
-                    })
-                    r = requests.put(url=self.url, headers=self.headers, data=payload)
-                    log.info(r.text)
+                payload = json.dumps({
+                    'block': block, 'road': road, 'postal_code': postal_code,
+                    'land_use_type': land_use_type, 'property_type': property_type
+                })
+                r = requests.put(url=self.url, headers=self.headers, data=payload)
+                log.info(r.text)
