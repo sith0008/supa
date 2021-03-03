@@ -15,6 +15,7 @@ services:
       GRAPH_DATABASE_URI: 'bolt://neo4j-test:7687'
       GRAPH_DATABASE_PASSWORD: 'password'
       SQL_DATABASE_URI: 'mysql://user:password@mysql-test:3306/supa'
+      INGESTED: "false"
     depends_on:
       - mysql-test
       - neo4j-test
