@@ -16,14 +16,13 @@ class CasesAccessor:
             log.warning(f"Past case {case_id} does not exist")
         else:
             log.info(f"Retrieved case with case id {case_id}")
+        tx.commit()
         return past_case
 
     # TODO: look at other "get" cases (eg. get case by decision outcome)
     # def get_cases_by_attribute(self, key, value):
 
     def insert(self, past_case: PastCase):
-        if self.get_case_by_id(past_case.case_id) is not None:
-            raise Exception(f"Case id {past_case.case_id} already get_case_by_id.")
         log.info(f"Inserting case with case id {past_case.case_id}")
         log.debug(f"Past case fields: {past_case}")
         tx = self.graph.begin()
@@ -51,6 +50,7 @@ class CasesAccessor:
                                                   name=use_class_name).evaluate()
 
         tx.commit()
+
         log.info(f"Successfully inserted HAS_USE_CLASS relation for case {case_id} and use class {use_class_name}")
         return insert_has_use_class_relation_id
 

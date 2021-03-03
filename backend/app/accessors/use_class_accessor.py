@@ -1,6 +1,8 @@
 from app.models.past_case import PastCase # noqa
 from app.models.use_class import SpecificUseClass, GenericUseClass, SpecificUseClassEnum, GenericUseClassEnum # noqa
 import logging
+from copy import copy
+
 
 log = logging.getLogger('root')
 
@@ -14,6 +16,7 @@ class UseClassAccessor:
         use_classes = tx.run("MATCH (u: GenericUseClass) RETURN u").evaluate()
         log.info("Retrieved all generic use classes")
         log.debug(use_classes)
+        tx.commit()
         return use_classes
 
     def get_all_specific(self):
@@ -22,6 +25,7 @@ class UseClassAccessor:
         use_classes = tx.run("MATCH (u: SpecificUseClass) RETURN u").evaluate()
         log.info("Retrieved all specific use classes")
         log.debug(use_classes)
+        tx.commit()
         return use_classes
 
     def get_specific_by_generic(self, generic_use_class: str):
@@ -30,6 +34,7 @@ class UseClassAccessor:
         use_classes = tx.run("MATCH (:GenericUseClass {name: $generic_use_class})--(su: SpecificUseClass) RETURN su", generic_use_class=generic_use_class).evaluate()
         log.info(f"Retrieved all specific use classes for {generic_use_class}")
         log.debug(use_classes)
+        tx.commit()
         return use_classes
 
     def get_specific_by_name(self, use_class_name: str):
@@ -38,6 +43,7 @@ class UseClassAccessor:
         use_class = tx.run("MATCH (u: SpecificUseClass) WHERE u.name=$name RETURN u", name=use_class_name).evaluate()
         log.info(f"Retrieved specific use class {use_class_name}")
         log.debug(use_class)
+        tx.commit()
         return use_class
 
     def get_generic_by_name(self, use_class_name: str):
@@ -46,6 +52,7 @@ class UseClassAccessor:
         use_class = tx.run("MATCH (u: GenericUseClass) WHERE u.name=$name RETURN u", name=use_class_name).evaluate()
         log.info(f"Retrieved generic use class {use_class_name}")
         log.debug(use_class)
+        tx.commit()
         return use_class
 
     def get_generic_by_specific(self, specific_use_class_name: str):
@@ -58,6 +65,7 @@ class UseClassAccessor:
                                         ).evaluate()
         log.info(f"Retrieved parent of {specific_use_class_name}")
         log.debug(generic_use_class_name)
+        tx.commit()
         return generic_use_class_name
 
     def create_specific(self, use_class: SpecificUseClass):

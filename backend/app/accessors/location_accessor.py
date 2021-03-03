@@ -33,7 +33,7 @@ class LocationAccessor:
             log.warning(f"Location with {location_key} does not exist.")
         else:
             log.info(f"Retrieved location with location key {location_key}")
-
+        tx.commit()
         return location
 
     # def get_locations_related_to_land_use_type(self, land_use_type: SpecificPropTypeEnum):
