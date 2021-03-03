@@ -73,6 +73,8 @@ class CasesService:
             raise NotImplementedError
 
         location_key = LocationKey(
+            location_fields["block"],
+            location_fields["road"],
             location_fields["postal_code"],
             location_fields["floor"],
             location_fields["unit"]
