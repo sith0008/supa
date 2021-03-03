@@ -41,8 +41,8 @@ class PostalCodeService:
         session = Session()
         accessor = PostalCodeAccessor(session)
 
-        pri_map = {x: fields_map[x] for x in self.pri_keys}
-        upd_map = {x: fields_map[x] for x in self.upd_keys}
+        pri_map = {x: fields_map[x] for x in self.pri_keys if x in fields_map}
+        upd_map = {x: fields_map[x] for x in self.upd_keys if x in fields_map}
         accessor.update(pri_map, upd_map)
 
         session.close()
@@ -52,7 +52,7 @@ class PostalCodeService:
         session = Session()
         accessor = PostalCodeAccessor(session)
 
-        pri_map = {x: fields_map[x] for x in self.pri_keys}
+        pri_map = {x: fields_map[x] for x in self.pri_keys if x in fields_map}
         accessor.delete(pri_map)
 
         session.close()

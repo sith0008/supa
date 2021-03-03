@@ -14,7 +14,6 @@ OutcomePriority = {
 }
 
 
-# Declare Mapping
 class Guideline(sql_db.Model):
     # TODO: change fields accordingly, placeholder for testing
     __tablename__ = 'guidelines'
@@ -26,5 +25,5 @@ class Guideline(sql_db.Model):
     property_type = Column(VARCHAR(100), primary_key=True)
     unit_type = Column(VARCHAR(100), primary_key=True, default='Normal')
     conditions = Column(VARCHAR(100), primary_key=True, default='Normal')
-    outcome = VARCHAR(50)
+    outcome = Column(VARCHAR(50))
     remarks = Column(Text, default='No Remarks')
