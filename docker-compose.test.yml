@@ -39,7 +39,7 @@ services:
       SHOPHOUSE_JSON_FILE: "Shophouse.json"
       LAND_USE_JSON_FILE: "Land_Use.json"
       SHOPHOUSE_GUIDELINES_JSON_FILE: "Shophouse_Guidelines.json"
-      CASES_DATA_DIRECTORY: ""
+      CASES_DATA_DIRECTORY: "./sample/"
     networks:
       - supa-network
     command: ["./wait-for-it.sh", "backend:5000", "--", "python", "run.py"]
