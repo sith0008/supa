@@ -22,7 +22,8 @@ class ShophouseAccessor:
             q = q.filter(getattr(Shophouse, k) == v)
         shophouses = q.all()
         shophouses = [g.as_dict() for g in shophouses]
-        log.info(f"Successfully retrieved shophouse")
+        for shophouse in shophouses:
+            log.info(f"Successfully retrieved shophouse" + str(shophouse))
         return shophouses
 
     def update(self, pri_map: Dict, upd_map: Dict):
@@ -30,15 +31,21 @@ class ShophouseAccessor:
         q = self.session.query(Shophouse)
         for k, v in pri_map.items():
             q = q.filter(getattr(Shophouse, k) == v)
+        shophouses = q.all()
+        shophouses = [g.as_dict() for g in shophouses]
         q.update(upd_map)
         self.session.commit()
-        log.info(f"Successfully updated shophouse")
+        for shophouse in shophouses:
+            log.info(f"Successfully updated shophouse" + str(shophouse))
 
     def delete(self, pri_map: Dict):
         log.info(f"Deleting shophouse")
         q = self.session.query(Shophouse)
         for k, v in pri_map.items():
             q = q.filter(getattr(Shophouse, k) == v)
+        shophouses = q.all()
+        shophouses = [g.as_dict() for g in shophouses]
         q.delete()
         self.session.commit()
-        log.info(f"Successfully deleted shophouse")
+        for shophouse in shophouses:
+            log.info(f"Successfully deleted shophouse" + str(shophouse))

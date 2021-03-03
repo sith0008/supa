@@ -10,6 +10,8 @@ log = logging.getLogger('root')
 class GuidelinesService:
     def __init__(self, engine):
         self.engine = engine
+        self.pri_keys = ['business_use_type', 'property_type', 'unit_type', 'conditions']
+        self.upd_keys = ['outcome', 'remarks']
 
     @staticmethod
     def fill_default(fields_map):
@@ -46,9 +48,8 @@ class GuidelinesService:
         session = Session()
         accessor = GuidelinesAccessor(session)
 
-        fields_map = self.fill_default(fields_map)
-        pri_map = {x: fields_map[x] for x in ['business_use_type', 'property_type', 'unit_type', 'conditions']}
-        upd_map = {x: fields_map[x] for x in ['outcome', 'remarks']}
+        pri_map = {x: fields_map[x] for x in self.pri_keys if x in fields_map}
+        upd_map = {x: fields_map[x] for x in self.upd_keys if x in fields_map}
         accessor.update(pri_map, upd_map)
 
         session.close()
@@ -58,8 +59,7 @@ class GuidelinesService:
         session = Session()
         accessor = GuidelinesAccessor(session)
 
-        fields_map = self.fill_default(fields_map)
-        pri_map = {x: fields_map[x] for x in ['business_use_type', 'property_type', 'unit_type', 'conditions']}
+        pri_map = {x: fields_map[x] for x in self.pri_keys if x in fields_map}
         accessor.delete(pri_map)
 
         session.close()

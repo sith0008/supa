@@ -5,7 +5,6 @@ from sqlalchemy import (
 )
 
 
-# Declare Mapping
 class Shophouse(sql_db.Model):
     # TODO: change fields accordingly, placeholder for testing
     __tablename__ = 'shophouse'

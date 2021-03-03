@@ -1,13 +1,16 @@
 from app.accessors.location_accessor import LocationAccessor # noqa
+from app.accessors.postal_code_accessor import PostalCodeAccessor # noqa
 from app.models.location import Location, LocationKey # noqa
+from sqlalchemy.orm import sessionmaker
 from typing import Dict
 import json
 
 
 class LocationService:
-    def __init__(self, graph):
+    def __init__(self, graph, engine):
         self.graph = graph
         self.location_accessor = LocationAccessor(graph)
+        self.engine = engine
 
     @staticmethod
     def has_full_location_key(m: Dict):
@@ -105,7 +108,21 @@ class LocationService:
     def get_land_use_from_location(self, location_key: LocationKey):
         # TODO: implement function
         # Using: postal code
-        return "None"
+        Session = sessionmaker(bind=self.engine)
+        session = Session()
+        accessor = PostalCodeAccessor(session)
+
+        postal_code = accessor.read(
+            {
+                "block": location_key.block,
+                "road": location_key.road,
+                "postal_code": location_key.postal_code
+            }
+        )
+
+        session.close()
+
+        return postal_code[0]["land_use_type"]
 
     def is_shophouse(self, location_key: LocationKey):
         # TODO: implement function
