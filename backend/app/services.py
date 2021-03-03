@@ -27,7 +27,7 @@ with supa.app_context():
     validation_service = validation_service.ValidationService(neo4j_engine)
     use_class_service = use_class_service.UseClassService(neo4j_engine)
     land_use_type_service = land_use_type_service.LandUseTypeService(neo4j_engine)
-    location_service = location_service.LocationService(neo4j_engine)
+    location_service = location_service.LocationService(neo4j_engine, sql_engine)
     kg_chatbot_service = kg_chatbot_service.KnowledgeGraphChatbotService(
         neo4j_engine,
         sql_engine,

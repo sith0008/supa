@@ -18,7 +18,7 @@ log = logging.getLogger('root')
 log.setLevel('DEBUG')
 log.addHandler(CustomHandler())
 
-#
+
 def init_sql_db(app):
     with app.app_context():
         sql_db.drop_all()
