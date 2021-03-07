@@ -9,6 +9,11 @@ stories:
     - action: verify_form
     - active_loop: verify_form
     - active_loop: null
+    - action: action_get_addresses
+    - or:
+        - intent: enter_ordinal
+        - intent: affirm
+    - action: action_set_address_slots
     - action: action_review_verify_form
     - intent: affirm
     - action: utter_verifying
@@ -26,6 +31,11 @@ stories:
     - action: verify_form
     - active_loop: verify_form
     - active_loop: null
+    - action: action_get_addresses
+    - or:
+        - intent: enter_ordinal
+        - intent: affirm
+    - action: action_set_address_slots
     - action: action_review_verify_form
     - intent: affirm
     - action: utter_verifying
@@ -46,6 +56,11 @@ stories:
     - action: verify_form
     - active_loop: verify_form
     - active_loop: null
+    - action: action_get_addresses
+    - or:
+        - intent: enter_ordinal
+        - intent: affirm
+    - action: action_set_address_slots
     - action: action_review_verify_form
     - intent: affirm
     - action: utter_verifying
@@ -64,6 +79,11 @@ stories:
     - action: verify_form
     - active_loop: verify_form
     - active_loop: null
+    - action: action_get_addresses
+    - or:
+        - intent: enter_ordinal
+        - intent: affirm
+    - action: action_set_address_slots
     - action: action_review_verify_form
     - intent: affirm
     - action: utter_verifying
@@ -139,6 +159,11 @@ stories:
     - action: verify_form
     - active_loop: verify_form
     - active_loop: null
+    - action: action_get_addresses
+    - or:
+        - intent: enter_ordinal
+        - intent: affirm
+    - action: action_set_address_slots
     - action: action_review_verify_form
     - intent: affirm
     - action: utter_verifying
