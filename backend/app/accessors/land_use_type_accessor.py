@@ -14,6 +14,7 @@ class LandUseTypeAccessor:
         land_use_types = tx.run("MATCH (p: GenericLandUseType) RETURN p").evaluate()
         log.info("Retrieved all generic land use types")
         log.debug(land_use_types)
+        tx.commit()
         return land_use_types
 
     def get_all_specific(self):
@@ -22,6 +23,7 @@ class LandUseTypeAccessor:
         land_use_types = tx.run("MATCH (p: SpecificLandUseType) RETURN p").evaluate()
         log.info("Retrieved all specific land use types")
         log.debug(land_use_types)
+        tx.commit()
         return land_use_types
 
     def get_specific_by_generic(self, generic_land_use_type: str):
@@ -31,6 +33,7 @@ class LandUseTypeAccessor:
                              generic_land_use_type=generic_land_use_type).evaluate()
         log.info(f"Retrieved all specific land use types for {generic_land_use_type}")
         log.debug(land_use_types)
+        tx.commit()
         return land_use_types
 
     def get_specific_by_name(self, land_use_type_name: str):
@@ -39,6 +42,7 @@ class LandUseTypeAccessor:
         land_use_type = tx.run("MATCH (p: SpecificLandUseType) WHERE p.name=$name RETURN p", name=land_use_type_name).evaluate()
         log.info(f"Retrieved specific land use type {land_use_type_name}")
         log.debug(land_use_type)
+        tx.commit()
         return land_use_type
 
     def get_generic_by_name(self, land_use_type_name: str):
@@ -47,6 +51,7 @@ class LandUseTypeAccessor:
         land_use_type = tx.run("MATCH (p: GenericLandUseType) WHERE p.name=$name RETURN p", name=land_use_type_name).evaluate()
         log.info(f"Retrieved generic land use type {land_use_type_name}")
         log.debug(land_use_type)
+        tx.commit()
         return land_use_type
 
     def get_generic_by_specific(self, specific_land_use_type_name: str):
@@ -59,6 +64,7 @@ class LandUseTypeAccessor:
                                             ).evaluate()
         log.info(f"Retrieved parent of {specific_land_use_type_name}")
         log.debug(generic_land_use_type_name)
+        tx.commit()
         return generic_land_use_type_name
 
     def get_specific_by_location(self, postal_code: str):
@@ -72,6 +78,7 @@ class LandUseTypeAccessor:
                                              ).evaluate()
         log.info(f"Retrieved land use type of postal code {postal_code}")
         log.debug(specific_land_use_type_name)
+        tx.commit()
         return specific_land_use_type_name
 
     def create_specific(self, land_use_type: SpecificLandUseType):

@@ -16,7 +16,8 @@ def insert_case():
     fields = dict(request.get_json())
     case_fields = fields["case"]
     location_fields = fields["location"]
-    insert_case_id = cases_service.insert_case_with_location(case_fields, location_fields)
+    use_class_name = fields["use_class"]["name"]
+    insert_case_id = cases_service.insert_case_with_location(case_fields, location_fields, use_class_name)
     print(insert_case_id)
     return f"inserted case with node id {insert_case_id}"
 

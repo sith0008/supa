@@ -33,11 +33,11 @@ class LocationAccessor:
             log.warning(f"Location with {location_key} does not exist.")
         else:
             log.info(f"Retrieved location with location key {location_key}")
-
+        tx.commit()
         return location
 
-    # def get_locations_related_to_prop_type(self, prop_type: SpecificPropTypeEnum):
-    #     # MATCH ( (p: SpecificPropType) {name: $prop_type})--(l: Location) RETURN l
+    # def get_locations_related_to_land_use_type(self, land_use_type: SpecificPropTypeEnum):
+    #     # MATCH ( (p: SpecificPropType) {name: $land_use_type})--(l: Location) RETURN l
     #     raise NotImplementedError
 
     def insert(self, location: Location, location_key: LocationKey):
@@ -80,23 +80,25 @@ class LocationAccessor:
 
         return insert_location_id
 
-    def insert_has_prop_type_relation(self, location_key: LocationKey, prop_type_name: str):
+    def insert_has_land_use_type_relation(self, location_key: LocationKey, land_use_type_name: str):
         if self.get_location_by_key(location_key) is None:
             raise Exception(f"Location {location_key} does not exist.")
-        log.info(f"Inserting HAS_PROP_TYPE relation for location {location_key} and property type {prop_type_name}")
+        log.info(f"Inserting HAS_LAND_USE_TYPE relation for location {location_key} and land use type {land_use_type_name}")
         tx = self.graph.begin()
-        insert_has_prop_type_relation_id = tx.run("MATCH (l: Location), (p: SpecificPropType) "
-                                                  "WHERE l.postal_code=$postal_code AND l.floor=$floor AND l.unit=$unit AND p.name=$name "
-                                                  "CREATE (l)-[r: HAS_PROP_TYPE]->(p) "
-                                                  "RETURN id(r)",
-                                                  postal_code=location_key.postal_code,
-                                                  floor=location_key.floor,
-                                                  unit=location_key.unit,
-                                                  name=prop_type_name).evaluate()
+        insert_has_land_use_type_relation_id = tx.run("MATCH (l: Location), (p: SpecificLandUseType) "
+                                                      "WHERE l.postal_code=$postal_code AND l.floor=$floor AND l.unit=$unit AND p.name=$name "
+                                                      "CREATE (l)-[r: HAS_LAND_USE_TYPE]->(p) "
+                                                      "RETURN id(r)",
+                                                      block=location_key.block,
+                                                      road=location_key.road,
+                                                      postal_code=location_key.postal_code,
+                                                      floor=location_key.floor,
+                                                      unit=location_key.unit,
+                                                      name=land_use_type_name).evaluate()
 
         tx.commit()
-        log.info(f"Successfully inserted HAS_PROP_TYPE relation for location {location_key} and property type {prop_type_name}")
-        return insert_has_prop_type_relation_id
+        log.info(f"Successfully inserted HAS_LAND_USE_TYPE relation for location {location_key} and land use type {land_use_type_name}")
+        return insert_has_land_use_type_relation_id
 
     def update(self, location: Location, location_key: LocationKey):
         if self.get_location_by_key(location_key) is None:

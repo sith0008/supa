@@ -71,7 +71,7 @@ class LocationService:
         setattr(new_location, 'is_shophouse', self.is_shophouse(location_key))
         setattr(new_location, 'is_hdb_commercial', self.is_hdb_commercial(location_key))
         insert_location_id = self.location_accessor.insert(new_location, location_key)
-        self.location_accessor.insert_has_prop_type_relation(location_key, self.landUse(location_key))
+        self.location_accessor.insert_has_land_use_type_relation(location_key, self.get_land_use_from_location(location_key))
 
         return insert_location_id
 

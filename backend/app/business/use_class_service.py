@@ -16,18 +16,16 @@ class UseClassService:
         if query_type == "single":
             return self.get_by_name(query_param)
         elif query_type == "multiple":
-            if query_param in GenericUseClassEnum:
+            if query_param in [el.value for el in GenericUseClassEnum]:
                 return self.get_specific_by_generic(query_param)
             else:
                 return self.get_all_by_type(query_param)
 
-            SpecificUseClassEnum._member_names_
-
     def get_by_name(self, use_class_name: str):
         log.debug(f"Use class name: {use_class_name}")
-        if use_class_name in SpecificUseClassEnum:
+        if use_class_name in [el.value for el in SpecificUseClassEnum]:
             use_class = self.accessor.get_specific_by_name(use_class_name)
-        elif use_class_name in GenericUseClassEnum:
+        elif use_class_name in [el.value for el in GenericUseClassEnum]:
             use_class = self.accessor.get_generic_by_name(use_class_name)
         else:
             raise Exception("Invalid use class name")
