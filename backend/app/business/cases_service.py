@@ -24,47 +24,66 @@ class CasesService:
         else:
             raise NotImplementedError
 
-    def get_similar_case_exact(self, use_class, property_type):
-        log.info(f"Retrieving past cases with use class {use_class} and property type {property_type}")
+    def get_similar_case_exact(self, use_class, land_use_type):
+        log.info(f"Retrieving past cases with use class {use_class} and land_use type {land_use_type}")
         tx = self.graph.begin()
-        similar_cases_results = tx.run("MATCH (c:PastCase)--(l:Location)--(p:SpecificPropType), "
+        similar_cases_results = tx.run("MATCH (c:PastCase)--(l:Location)--(lu:SpecificLandUseType), "
                                        "(c:PastCase)--(u:SpecificUseClass) "
-                                       "WHERE p.name=$property_type AND u.name=$use_class "
+                                       "WHERE lu.name=$land_use_type AND u.name=$use_class "
                                        "RETURN c, l "
                                        "LIMIT 5",
-                                       property_type=property_type,
+                                       land_use_type=land_use_type,
                                        use_class=use_class
-                                       ).evaluate()
+                                       ).data()
+        # log.debug(similar_cases_results[0])
         if similar_cases_results:
-            log.info(f"Retrieved {len(similar_cases_results)} past cases with use class {use_class} and property type {property_type}")
+            log.info(f"Retrieved {len(similar_cases_results)} past cases with use class {use_class} and land_use type {land_use_type}")
         else:
             log.info(f"No similar cases found.")
-        return similar_cases_results
+        processed_results = [{"case": res["c"],
+                              "location": res["l"],
+                              "use_class": {"specific": use_class},
+                              "land_use_type": {"specific": land_use_type}}
+                             for res in similar_cases_results]
+        log.debug(processed_results)
+        return processed_results
 
     def get_similar_case_extended(self,
                                   specific_use_class,
                                   generic_use_class,
-                                  specific_property_type,
-                                  generic_property_type,
+                                  specific_land_use_type,
+                                  generic_land_use_type,
                                   ):
-        log.info(f"Retrieving past cases with generic use class {generic_use_class} and generic property type {generic_property_type}")
+        log.info(f"Retrieving past cases with generic use class {generic_use_class} and generic land_use type {generic_land_use_type}")
         tx = self.graph.begin()
-        similar_cases_results= tx.run("MATCH (c:PastCase)--(l:Location)--(sp:SpecificPropType)--(gp:GenericPropType), "
+        similar_cases_results = tx.run("MATCH (c:PastCase)--(l:Location)--(slu:SpecificLandUseType)--(glu:GenericLandUseType), "
                                       "(c:PastCase)--(su:SpecificUseClass)--(gu:GenericUseClass) "
-                                      "WHERE NOT (sp.name=$specific_property_type AND su.name=$specific_use_class) "
-                                      "AND (gp.name=$generic_property_type AND gu.name=$generic_use_class) "
-                                      "RETURN c, l, sp, gp, su, gu "
+                                      "WHERE NOT (slu.name=$specific_land_use_type AND su.name=$specific_use_class) "
+                                      "AND (glu.name=$generic_land_use_type AND gu.name=$generic_use_class) "
+                                      "RETURN c, l, su, gu, slu, glu "
                                       "LIMIT 5",
-                                      specific_property_type=specific_property_type,
-                                      generic_property_type=generic_property_type,
+                                      specific_land_use_type=specific_land_use_type,
+                                      generic_land_use_type=generic_land_use_type,
                                       specific_use_class=specific_use_class,
                                       generic_use_class=generic_use_class,
-                                      ).evaluate()
+                                      ).data()
         if similar_cases_results:
-            log.info(f"Retrieved {len(similar_cases_results)} past cases with generic use class {generic_use_class} and generic property type {generic_property_type}")
+            log.info(f"Retrieved {len(similar_cases_results)} past cases with generic use class {generic_use_class} and generic land_use type {generic_land_use_type}")
         else:
             log.info(f"No similar cases found.")
-        return similar_cases_results
+        processed_results = [{"case": res["c"],
+                              "location": res["l"],
+                              "use_class": {
+                                  "specific": res["su"]["name"],
+                                  "generic": res["gu"]["name"]
+                              },
+                              "land_use_type": {
+                                  "specific": res["slu"]["name"],
+                                  "generic": res["glu"]["name"]
+                              },
+                              } for res in similar_cases_results]
+        log.debug(processed_results)
+        return processed_results
 
 
     def insert_case_with_location(self, case_fields: Dict, location_fields: Dict, use_class_name: str):

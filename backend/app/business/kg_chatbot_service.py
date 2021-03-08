@@ -12,7 +12,8 @@ class KnowledgeGraphChatbotService:
                  location_service,
                  use_class_service,
                  land_use_type_service,
-                 guidelines_service
+                 guidelines_service,
+                 postal_code_service
                  ):
         self.graph = graph
         self.engine = sql_engine
@@ -21,6 +22,7 @@ class KnowledgeGraphChatbotService:
         self.use_class_service = use_class_service
         self.land_use_type_service = land_use_type_service
         self.guidelines_service = guidelines_service
+        self.postal_code_service = postal_code_service
 
     def get_similar_cases(self, params: Dict):
         try:
@@ -31,7 +33,15 @@ class KnowledgeGraphChatbotService:
                             "specific_use_class and postal_code")
         log.info("Retrieving past cases similar to application")
         # get land use type from location
-        specific_land_use_type = self.land_use_type_service.get_specific_by_location(postal_code)
+        location = self.postal_code_service.get_postal_code({"postal_code": postal_code})[0]
+        location_key = LocationKey(
+            location["block"],
+            location["road"],
+            location["postal_code"],
+            1,
+            1
+        )
+        specific_land_use_type = self.location_service.get_land_use_from_location(location_key)
         # get generics from specifics
         generic_land_use_type = self.land_use_type_service.get_generic_by_specific(specific_land_use_type)
         log.info(f"Address provided maps to specific land use type {specific_land_use_type} and generic land use type {generic_land_use_type}")
@@ -40,7 +50,6 @@ class KnowledgeGraphChatbotService:
         # get similar cases
         exact_similar_cases_result = self.cases_service.get_similar_case_exact(specific_use_class, specific_land_use_type)
         log.info(f"Retrieved similar cases with use class {specific_use_class} and land use type {specific_land_use_type}")
-        log.debug(exact_similar_cases_result)
         extended_similar_cases_result = self.cases_service.get_similar_case_extended(specific_use_class, generic_use_class, specific_land_use_type, generic_land_use_type)
         if not exact_similar_cases_result:
             return extended_similar_cases_result
