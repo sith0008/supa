@@ -69,7 +69,6 @@ class LocationService:
         )
 
         setattr(new_location, 'is_shophouse', self.is_shophouse(location_key))
-        setattr(new_location, 'is_hdb_commercial', self.is_hdb_commercial(location_key))
         insert_location_id = self.location_accessor.insert(new_location, location_key)
         self.location_accessor.insert_has_land_use_type_relation(location_key, self.get_land_use_from_location(location_key))
 
@@ -89,7 +88,6 @@ class LocationService:
         )
 
         setattr(new_location, 'is_shophouse', self.is_shophouse(location_key))
-        setattr(new_location, 'is_hdb_commercial', self.is_hdb_commercial(location_key))
         return self.location_accessor.update(new_location, location_key)
 
     def delete_location(self, fields_map: Dict):
@@ -125,13 +123,23 @@ class LocationService:
         return postal_code[0]["land_use_type"]
 
     def is_shophouse(self, location_key: LocationKey):
-        # TODO: implement function
-        # Using: address
-        return False
+        Session = sessionmaker(bind=self.engine)
+        session = Session()
+        accessor = PostalCodeAccessor(session)
 
-    def is_hdb_commercial(self, location_key: LocationKey):
-        # TODO: implement function
-        # Using: address/postal code?
-        return False
+        postal_code = accessor.read(
+            {
+                "block": location_key.block,
+                "road": location_key.road,
+                "postal_code": location_key.postal_code
+            }
+        )
+
+        session.close()
+
+        if postal_code and postal_code[0]["property_type"] == 'Shophouses':
+            return True
+        else:
+            return False
 
     # TODO: add is_pta, is_agu, is_pa methods
