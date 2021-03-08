@@ -15,7 +15,6 @@ class Location:
             longitude: float = None,
             lot_number: str = None,
             is_shophouse: bool = False,
-            is_hdb_commercial: bool = False,
     ):
         self.block = block
         self.road = road
@@ -27,7 +26,6 @@ class Location:
         self.longitude = longitude
         self.lot_number = lot_number
         self.is_shophouse = is_shophouse
-        self.is_hdb_commercial = is_hdb_commercial
 
 
 LocationKey = namedtuple(

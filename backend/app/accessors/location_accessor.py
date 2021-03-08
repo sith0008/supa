@@ -59,8 +59,7 @@ class LocationAccessor:
             "       l.latitude          =   $latitude, "
             "       l.longitude         =   $longitude, "
             "       l.lot_number        =   $lot_number, "
-            "       l.is_shophouse      =   $is_shophouse, "
-            "       l.is_hdb_commercial =   $is_hdb_commercial "
+            "       l.is_shophouse      =   $is_shophouse "
             "RETURN id(l)",
             block=location.block,
             road=location.road,
@@ -71,8 +70,7 @@ class LocationAccessor:
             latitude=location.latitude,
             longitude=location.longitude,
             lot_number=location.lot_number,
-            is_shophouse=location.is_shophouse,
-            is_hdb_commercial=location.is_hdb_commercial
+            is_shophouse=location.is_shophouse
         ).evaluate()
         tx.commit()
 
@@ -119,8 +117,7 @@ class LocationAccessor:
             "       l.latitude          =   $latitude, "
             "       l.longitude         =   $longitude, "
             "       l.lot_number        =   $lot_number, "
-            "       l.is_shophouse      =   $is_shophouse, "
-            "       l.is_hdb_commercial =   $is_hdb_commercial "
+            "       l.is_shophouse      =   $is_shophouse "
             "RETURN id(l)",
             block=location.block,
             road=location.road,
@@ -131,8 +128,7 @@ class LocationAccessor:
             latitude=location.latitude,
             longitude=location.longitude,
             lot_number=location.lot_number,
-            is_shophouse=location.is_shophouse,
-            is_hdb_commercial=location.is_hdb_commercial
+            is_shophouse=location.is_shophouse
         ).evaluate()
         tx.commit()
 
