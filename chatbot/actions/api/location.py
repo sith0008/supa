@@ -37,3 +37,11 @@ class LocationAPI:
         endpoint = "/postal_code"
         res = requests.get(url=self.url + endpoint, headers=headers, data=json.dumps(data))
         return res.json()[0]["property_type"]
+
+    # TODO: pending implementation in location service
+    def is_shophouse(self, block, road, postal_code):
+        raise NotImplementedError
+
+    # TODO: pending implementation in location service
+    def get_conditions_from_postal_code(self, postal_code):
+        raise NotImplementedError

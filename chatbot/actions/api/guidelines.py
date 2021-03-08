@@ -18,3 +18,7 @@ class GuidelinesAPI:
         res = requests.get(url=self.url + endpoint, headers=headers, data=json.dumps(data))
         # TODO:
         return res.json()[0]["outcome"]
+
+    # TODO: query shophouse service
+    def get_shophouse_eval_outcome(self, block, road, postal_code, use_class):
+        raise NotImplementedError
