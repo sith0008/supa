@@ -11,8 +11,6 @@ class Location:
             floor: int = None,
             unit: int = None,
             building: int = None,
-            latitude: float = None,
-            longitude: float = None,
             lot_number: str = None,
             is_shophouse: bool = False,
     ):
@@ -22,8 +20,6 @@ class Location:
         self.floor = floor
         self.unit = unit
         self.building = building
-        self.latitude = latitude
-        self.longitude = longitude
         self.lot_number = lot_number
         self.is_shophouse = is_shophouse
 

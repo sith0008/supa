@@ -17,3 +17,5 @@ class PostalCode(sql_db.Model):
     postal_code = Column(VARCHAR(6), primary_key=True)
     land_use_type = Column(VARCHAR(50))
     property_type = Column(VARCHAR(50))
+    latitude = Column(VARCHAR(50))
+    longitude = Column(VARCHAR(50))

@@ -104,8 +104,6 @@ class LocationService:
             raise NotImplementedError
 
     def get_land_use_from_location(self, location_key: LocationKey):
-        # TODO: implement function
-        # Using: postal code
         Session = sessionmaker(bind=self.engine)
         session = Session()
         accessor = PostalCodeAccessor(session)
@@ -121,6 +119,23 @@ class LocationService:
         session.close()
 
         return postal_code[0]["land_use_type"]
+
+    def get_coordinates(self, location_key: LocationKey):
+        Session = sessionmaker(bind=self.engine)
+        session = Session()
+        accessor = PostalCodeAccessor(session)
+
+        postal_code = accessor.read(
+            {
+                "block": location_key.block,
+                "road": location_key.road,
+                "postal_code": location_key.postal_code
+            }
+        )
+
+        session.close()
+
+        return postal_code[0]["latitude"], postal_code[0]["longitude"]
 
     def is_shophouse(self, location_key: LocationKey):
         Session = sessionmaker(bind=self.engine)
