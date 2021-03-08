@@ -68,6 +68,10 @@ class LocationService:
             fields_map["unit"]
         )
 
+        lat, lng = self.get_coordinates(location_key)
+        setattr(new_location, 'latitude', lat)
+        setattr(new_location, 'longitude', lng)
+
         setattr(new_location, 'is_shophouse', self.is_shophouse(location_key))
         setattr(new_location, 'is_hdb_commercial', self.is_hdb_commercial(location_key))
         insert_location_id = self.location_accessor.insert(new_location, location_key)
@@ -106,8 +110,6 @@ class LocationService:
             raise NotImplementedError
 
     def get_land_use_from_location(self, location_key: LocationKey):
-        # TODO: implement function
-        # Using: postal code
         Session = sessionmaker(bind=self.engine)
         session = Session()
         accessor = PostalCodeAccessor(session)
@@ -123,6 +125,23 @@ class LocationService:
         session.close()
 
         return postal_code[0]["land_use_type"]
+
+    def get_coordinates(self, location_key: LocationKey):
+        Session = sessionmaker(bind=self.engine)
+        session = Session()
+        accessor = PostalCodeAccessor(session)
+
+        postal_code = accessor.read(
+            {
+                "block": location_key.block,
+                "road": location_key.road,
+                "postal_code": location_key.postal_code
+            }
+        )
+
+        session.close()
+
+        return postal_code[0]["latitude"], postal_code[0]["longitude"]
 
     def is_shophouse(self, location_key: LocationKey):
         # TODO: implement function

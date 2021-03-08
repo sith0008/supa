@@ -39,37 +39,46 @@ class PostalCodeIngestor:
             data_land_use = json.load(land_use_file)
 
         for postal_code, infos in data_postal_code.items():
-            infos = list(set([(info['BLK_NO'], info['ROAD_NAME']) for info in infos]))
-            for block, road in infos:
-                address = block + " " + road
-                property_type = None
+            seen = set()
+            for info in infos:
+                if (info['BLK_NO'], info['ROAD_NAME']) not in seen:
+                    seen.add((info['BLK_NO'], info['ROAD_NAME']))
 
-                land_use_type, land_use_detail = data_land_use[postal_code]
+                    block = info['BLK_NO']
+                    road = info['ROAD_NAME']
+                    lat = info['LATITUDE']
+                    lng = info['LONGITUDE']
 
-                # Check if hdb_commercial
-                if postal_code in data_hdb_commercial and data_hdb_commercial[postal_code] == address:
-                    property_type = 'HDB Commercial Premises'
+                    address = block + " " + road
+                    property_type = None
 
-                # Check if shophouse
-                elif postal_code in data_shophouse and [block, road] in data_shophouse[postal_code]:
-                    property_type = 'Shophouses'
+                    land_use_type, land_use_detail = data_land_use[postal_code]
 
-                else:
-                    # Handle conservation areas
-                    if land_use_detail == 'Conservation Area':
-                        property_type = 'Buildings within Historic Conservation Areas'
+                    # Check if hdb_commercial
+                    if postal_code in data_hdb_commercial and data_hdb_commercial[postal_code] == address:
+                        property_type = 'HDB Commercial Premises'
 
-                    # Handle landed houses
-                    elif land_use_detail and 'landed' in land_use_detail.lower():
-                        property_type = 'Landed Houses'
+                    # Check if shophouse
+                    elif postal_code in data_shophouse and [block, road] in data_shophouse[postal_code]:
+                        property_type = 'Shophouses'
 
-                    # Map land use to property type
-                    elif land_use_type in self.land_use_to_prop_type:
-                        property_type = self.land_use_to_prop_type[land_use_type]
+                    else:
+                        # Handle conservation areas
+                        if land_use_detail == 'Conservation Area':
+                            property_type = 'Buildings within Historic Conservation Areas'
 
-                payload = json.dumps({
-                    'block': block, 'road': road, 'postal_code': postal_code,
-                    'land_use_type': land_use_type, 'property_type': property_type
-                })
-                r = requests.put(url=self.url, headers=self.headers, data=payload)
-                log.info(r.text)
+                        # Handle landed houses
+                        elif land_use_detail and 'landed' in land_use_detail.lower():
+                            property_type = 'Landed Houses'
+
+                        # Map land use to property type
+                        elif land_use_type in self.land_use_to_prop_type:
+                            property_type = self.land_use_to_prop_type[land_use_type]
+
+                    payload = json.dumps({
+                        'block': block, 'road': road, 'postal_code': postal_code,
+                        'land_use_type': land_use_type, 'property_type': property_type,
+                        'latitude': lat, 'longitude': lng
+                    })
+                    r = requests.put(url=self.url, headers=self.headers, data=payload)
+                    log.info(r.text)
