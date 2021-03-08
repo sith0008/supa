@@ -62,6 +62,8 @@ slots:
     type: list
   address_mention:
     type: text
+  address_checked:
+    type: bool
   similar_cases_list:
     type: list
   opening_hours:
@@ -126,7 +128,7 @@ responses:
   utter_multiple_address:
   - text: "Hmm, I've found the following address(es) for the given postal code. Can you tell me which one are you referring to?"
   utter_invalid_use_class:
-  - text: "Oops, I didn't recognise that use class! URA uses the following list, please choose the most appropriate one for your use case."
+  - text: "Oops, I didn't recognise that use class! URA uses the following list, please choose the most appropriate one for your use case. \n {use_class_list}"
   utter_similar_use_class:
   - text: "Did you mean '{use_class}'?"
   utter_invalid_postal_code:
