@@ -5,15 +5,17 @@ pipeline:
   - name: WhitespaceTokenizer
   - name: RegexFeaturizer
   - name: LexicalSyntacticFeaturizer
-  - name: CountVectorsFeaturizer
-  - name: CountVectorsFeaturizer
-    analyzer: "char_wb"
-    min_ngram: 1
-    max_ngram: 4
+#  - name: CountVectorsFeaturizer
+#    analyzer: "char_wb"
+#    min_ngram: 1
+#    max_ngram: 4
+  - name: LanguageModelFeaturizer
+    model_name: "bert"
+    model_weights: "rasa/LaBSE"
   - name: DIETClassifier
     epochs: 100
   - name: EntitySynonymMapper
-  - name: ResponseSelector
+#  - name: ResponseSelector
     epochs: 100
 
 # Configuration for Rasa Core.

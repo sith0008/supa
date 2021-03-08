@@ -35,6 +35,7 @@ with supa.app_context():
         location_service,
         use_class_service,
         land_use_type_service,
-        guidelines_service
+        guidelines_service,
+        postal_code_service
     )
 

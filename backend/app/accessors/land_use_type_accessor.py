@@ -11,20 +11,20 @@ class LandUseTypeAccessor:
     def get_all_generic(self):
         log.info("Retrieving all generic land use types")
         tx = self.graph.begin()
-        land_use_types = tx.run("MATCH (p: GenericLandUseType) RETURN p").evaluate()
+        land_use_types = tx.run("MATCH (l: GenericLandUseType) RETURN l").data()
         log.info("Retrieved all generic land use types")
         log.debug(land_use_types)
         tx.commit()
-        return land_use_types
+        return [lu['l']['name'] for lu in land_use_types]
 
     def get_all_specific(self):
         log.info("Retrieving all specific land use types")
         tx = self.graph.begin()
-        land_use_types = tx.run("MATCH (p: SpecificLandUseType) RETURN p").evaluate()
+        land_use_types = tx.run("MATCH (l: SpecificLandUseType) RETURN l").data()
         log.info("Retrieved all specific land use types")
         log.debug(land_use_types)
         tx.commit()
-        return land_use_types
+        return  [lu['l']['name'] for lu in land_use_types]
 
     def get_specific_by_generic(self, generic_land_use_type: str):
         log.info(f"Retrieving all specific land use type for {generic_land_use_type}")
@@ -34,7 +34,7 @@ class LandUseTypeAccessor:
         log.info(f"Retrieved all specific land use types for {generic_land_use_type}")
         log.debug(land_use_types)
         tx.commit()
-        return land_use_types
+        return [lu['s']['name'] for lu in land_use_types]
 
     def get_specific_by_name(self, land_use_type_name: str):
         log.info(f"Retrieving specific land use type {land_use_type_name}")

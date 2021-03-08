@@ -83,7 +83,7 @@ nlu:
     - I want to submit my [application]
     - I would like to submit
     - i'd like to proceed with submission
-- intent: enter_data
+- intent: enter_field_to_edit
   examples: |
     - [postal code]{"entity":"postal_code"}
     - [postal]{"entity":"postal_code"}
@@ -114,3 +114,51 @@ nlu:
     - [Unit]{"entity":"unit"}
     - [Floor]{"entity":"floor"}
 
+- intent: enter_form_data
+  examples: |
+    - [305711]{"entity":"postal_code"}
+    - [309686]{"entity":"postal_code"}
+    - [057895]{"entity":"postal_code"}
+    - [049386]{"entity":"postal_code"}
+    - [204697]{"entity":"postal_code"}
+    - [203578]{"entity":"postal_code"}
+    - [restaurant]{"entity":"use_class_example"}
+    - [Bar/Pub]{"entity":"use_class_example"}
+    - [Pet Shop]{"entity":"use_class_example"}
+    - [Office]{"entity":"use_class_example"}
+    - [Laundromat]{"entity":"use_class_example"}
+    - [Industrial Canteeen]{"entity":"use_class_example"}
+    - [Pet Boarding]{"entity":"use_class_example"}
+    - [amusement centre]{"entity":"use_class_example"}
+    - [fitness centre]{"entity":"use_class_example"}
+    - [Religious activities]{"entity":"use_class_example"}
+    - [community centre]{"entity":"use_class_example"}
+    - [Hotel]{"entity":"use_class_example"}
+    - [change of use from pet shop to restaurant]{"entity":"use_description_example"}
+    - [change of use from hotel to backpacker hostel]{"entity":"use_description_example"}
+    - [change of use from food shop to cafeteria]{"entity":"use_description_example"}
+    - [change of use from hostel to gym]{"entity":"use_description_example"}
+    - [change of use from restaurant to hair salon]{"entity":"use_description_example"}
+    - change of use
+    - placeholder
+    - testing
+    - proposal to change restaurant to pet shop
+    - proposal to change gym to bar
+    - [B1]{"entity":"floor_example"}
+    - [B4]{"entity":"floor_example"}
+    - [16A]{"entity":"unit_example"}
+    - [65B]{"entity":"unit_example"}
+    - [24.64]{"entity":"gross_floor_area_example"}
+    - [163 sq ft]{"entity":"gross_floor_area_example"}
+    - [12.66 square metre]{"entity":"gross_floor_area_example"}
+    - [80 sq m]{"entity":"gross_floor_area_example"}
+    - [676 square feet]{"entity":"gross_floor_area_example"}
+    - [53.53 sq metre]{"entity":"gross_floor_area_example"}
+    - [1]{"entity":"integer_example"}
+    - [20]{"entity":"integer_example"}
+    - [15]{"entity":"integer_example"}
+    - [2]{"entity":"integer_example"}
+    - [65]{"entity":"integer_example"}
+    - [42]{"entity":"integer_example"}
+    - [7]{"entity":"integer_example"}
+    - [9]{"entity":"integer_example"}

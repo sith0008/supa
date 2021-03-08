@@ -13,29 +13,29 @@ class UseClassAccessor:
     def get_all_generic(self):
         log.info("Retrieving all generic use classes")
         tx = self.graph.begin()
-        use_classes = tx.run("MATCH (u: GenericUseClass) RETURN u").evaluate()
+        use_classes = tx.run("MATCH (u: GenericUseClass) RETURN u").data()
         log.info("Retrieved all generic use classes")
         log.debug(use_classes)
         tx.commit()
-        return use_classes
+        return [uc['u']['name'] for uc in use_classes]
 
     def get_all_specific(self):
         log.info("Retrieving all specific use classes")
         tx = self.graph.begin()
-        use_classes = tx.run("MATCH (u: SpecificUseClass) RETURN u").evaluate()
+        use_classes = tx.run("MATCH (u: SpecificUseClass) RETURN u").data()
         log.info("Retrieved all specific use classes")
         log.debug(use_classes)
         tx.commit()
-        return use_classes
+        return [uc['u']['name'] for uc in use_classes]
 
     def get_specific_by_generic(self, generic_use_class: str):
         log.info(f"Retrieving all specific use classes for {generic_use_class}")
         tx = self.graph.begin()
-        use_classes = tx.run("MATCH (:GenericUseClass {name: $generic_use_class})--(su: SpecificUseClass) RETURN su", generic_use_class=generic_use_class).evaluate()
+        use_classes = tx.run("MATCH (:GenericUseClass {name: $generic_use_class})--(su: SpecificUseClass) RETURN su", generic_use_class=generic_use_class).data()
         log.info(f"Retrieved all specific use classes for {generic_use_class}")
         log.debug(use_classes)
         tx.commit()
-        return use_classes
+        return [uc['su']['name'] for uc in use_classes]
 
     def get_specific_by_name(self, use_class_name: str):
         log.info(f"Retrieving specific use class {use_class_name}")

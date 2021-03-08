@@ -67,3 +67,123 @@ nlu:
     - gfa
     - GFA
     - Gross Floor Area
+
+- synonym: use_class_example
+  examples: |
+    - Restaurant
+    - Bar/Pub
+    - Restaurant and Bar
+    - Nightclub
+    - Shop
+    - Office
+    - Laundromat
+    - Massage Establishment
+    - Medical Clinic
+    - Pet Shop
+    - Pet Boarding
+    - Commercial school
+    - Childcare
+    - Fitness Centre
+    - Amusement Centre
+    - Backpacker Hostel
+    - Hotel
+    - Student Hostel
+    - Service Apartment
+    - Worker Dormitory
+    - Light Industrial use
+    - General Industrial Use
+    - Industrial Training
+    - Warehouse
+    - Industrial Canteen
+    - Showroom
+    - E-Business
+    - Core Media Activities
+    - Community Club
+    - Religious Activities
+    - Limited Religious Use
+
+- synonym: use_description_example
+  examples: |
+    - Change of use from restaurant to pet shop
+    - change of use from tuition centre to dance school
+    - Change of use from industrial canteen to food shop
+    - change of use from community club to recreational centre
+
+- synonym: gross_floor_area_example
+  examples: |
+    - 1.5
+    - 26 square metres
+    - 120 square feet
+    - 683 sq feet
+    - 153.2
+    - 12.0
+    - 75 sq feet
+    - 124 sq ft
+    - 6 m2
+    - 6 sq m
+    - 90 sq metre
+    - 84 sq ft
+    - 53.3
+    - 23.67 sq ft
+    - 69.3 square metre
+
+- synonym: postal_code_example
+  examples: |
+    - 464694
+    - 649401
+    - 123445
+    - 660423
+    - 309581
+    - 689402
+    - 120953
+    - 932042
+    - 207435
+    - 350973
+    - 017014
+    - 302567
+    - 130578
+    - 109473
+    - 039751
+
+- synonym: lot_number_example
+  examples : |
+    - TS55
+
+- synonym: floor_example
+  examples : |
+    - B1
+    - B2
+    - B3
+
+- synonym: unit_example
+  examples: |
+    - 15A
+    - 67B
+    - 54C
+    - 16A
+
+- synonym: integer_example
+  examples: |
+    - 1
+    - 6
+    - 12
+    - 6
+    - 308
+    - 66
+    - 14
+    - 64
+    - 2
+    - 5
+    - 10
+    - 12
+    - 15
+    - 9
+    - 64
+    - 305
+    - 694
+    - 42
+    - 246
+    - 35
+
+
+

@@ -36,3 +36,9 @@ stories:
       - action: utter_verify
       - action: verify_form
       - active_loop: verify_form
+  - story: after thanks
+    steps:
+      - intent: thanks
+      - action: utter_more_help
+      - intent: deny
+      - action: utter_goodbye
