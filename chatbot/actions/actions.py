@@ -33,9 +33,9 @@ class ValidateVerifyForm(FormValidationAction):
                            domain: Dict[Text, Any]
                            ):
         if knowledge_graph_api.is_valid_use_class(value):
-            return {"use_class": value}
+            return {"use_class": value.title()}
         else:
-            dispatcher.utter_message(template="utter_invalid_use_class")
+            dispatcher.utter_message(template="utter_invalid_use_class", use_class_list=knowledge_graph_api.get_all_use_classes())
             return {"use_class": None}
 
     # TODO: uncomment after GeneralValidator is implemented
@@ -148,7 +148,7 @@ class ActionGetAddresses(Action):
                 text=f"I found the following address for this postal code. "
                      f"Could you confirm if this is correct? \n\n {processed}"
             )
-        return [SlotSet("address_list", address_list)]
+        return [SlotSet("address_list", address_list), SlotSet("address_checked", False)]
 
 
 class ActionSetAddressSlots(Action):
@@ -176,7 +176,7 @@ class ActionSetAddressSlots(Action):
             ordinal = self.resolve_ordinal(tracker.latest_message["text"])
         address_list = tracker.get_slot("address_list")
         address = address_list[ordinal]
-        return [SlotSet("block", address["block"]), SlotSet("road", address["road"])]
+        return [SlotSet("block", address["block"]), SlotSet("road", address["road"]), SlotSet("address_checked", True)]
 
 class ActionReviewVerifyForm(Action):
     '''
@@ -239,6 +239,11 @@ class ActionVerifyProposal(Action):
         postal_code = tracker.get_slot("postal_code")
         use_class = tracker.get_slot("use_class")
         property_type = location_api.get_property_type_from_postal_code(postal_code)
+        print(f"use_class: {use_class}")
+        print(f"property_type: {property_type}")
+        if not property_type:
+            dispatcher.utter_message(template="utter_verified", outcome="Not allowed.")
+            return []
         outcome = guidelines_api.get_eval_outcome(property_type, use_class)
         dispatcher.utter_message(template="utter_verified", outcome=outcome)
         return []

@@ -14,6 +14,7 @@ class GuidelinesAPI:
             "business_use_type": use_class,
             "property_type": property_type
         }
-        endpoint = "/guidelines"
+        endpoint = "/guideline"
         res = requests.get(url=self.url + endpoint, headers=headers, data=json.dumps(data))
-        return res.json()["outcome"]
+        # TODO:
+        return res.json()[0]["outcome"]
