@@ -56,8 +56,6 @@ class LocationAccessor:
             "       l.floor             =   $floor, "
             "       l.unit              =   $unit, "
             "       l.building          =   $building, "
-            "       l.latitude          =   $latitude, "
-            "       l.longitude         =   $longitude, "
             "       l.lot_number        =   $lot_number, "
             "       l.is_shophouse      =   $is_shophouse "
             "RETURN id(l)",
@@ -67,8 +65,6 @@ class LocationAccessor:
             floor=location.floor,
             unit=location.unit,
             building=location.building,
-            latitude=location.latitude,
-            longitude=location.longitude,
             lot_number=location.lot_number,
             is_shophouse=location.is_shophouse
         ).evaluate()
@@ -114,8 +110,6 @@ class LocationAccessor:
             "       l.floor             =   $floor "
             "       l.unit              =   $unit "
             "SET    l.building          =   $building, "
-            "       l.latitude          =   $latitude, "
-            "       l.longitude         =   $longitude, "
             "       l.lot_number        =   $lot_number, "
             "       l.is_shophouse      =   $is_shophouse "
             "RETURN id(l)",
@@ -125,8 +119,6 @@ class LocationAccessor:
             floor=location.floor,
             unit=location.unit,
             building=location.building,
-            latitude=location.latitude,
-            longitude=location.longitude,
             lot_number=location.lot_number,
             is_shophouse=location.is_shophouse
         ).evaluate()
