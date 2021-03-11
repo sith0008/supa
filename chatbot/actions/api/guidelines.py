@@ -16,9 +16,40 @@ class GuidelinesAPI:
         }
         endpoint = "/guideline"
         res = requests.get(url=self.url + endpoint, headers=headers, data=json.dumps(data))
-        # TODO:
-        return res.json()[0]["outcome"]
+        return self.process_eval_outcome(res.json()[0])
 
     # TODO: query shophouse service
-    def get_shophouse_eval_outcome(self, block, road, postal_code, use_class):
-        raise NotImplementedError
+    def get_shophouse_eval_outcome(self, block, road, floor, unit, use_class):
+        headers = {
+            'content-type': 'application/json'
+        }
+        data = {
+            "block": block,
+            "road": road,
+            "floor": floor,
+            "unit": unit,
+            "use_class": use_class
+        }
+        endpoint = "/shophouse"
+        res = requests.get(url=self.url + endpoint, headers=headers, params=data)
+
+        return self.process_shophouse_eval_outcome(res.json())
+
+    def process_eval_outcome(self, result):
+        outcome = result["outcome"]
+        remark = result["remark"]
+        processed = f"Evaluation outcome: {outcome} \n" \
+                    f"Remarks: {remark} \n"
+        return processed
+
+    def process_shophouse_eval_outcome(self, result):
+        outcome_map = {
+            "Y": "Allowed",
+            "N": "Not allowed",
+            "M": "Submit for evaluation"
+        }
+        outcome = outcome_map[result["allowed"]]
+        remark = result["reason"]
+        processed = f"Evaluation outcome: {outcome} \n" \
+                    f"Remarks: {remark} \n"
+        return processed

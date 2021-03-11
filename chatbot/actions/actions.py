@@ -159,11 +159,11 @@ class ActionSetAddressSlots(Action):
         return "action_set_address_slots"
 
     def resolve_ordinal(self, text):
-        if any(s in text.lower() for s in ["first", "1st", "one"]):
+        if any(s in text.lower() for s in ["first", "1st", "1"]):
             return 0
-        elif any(s in text.lower() for s in ["second", "2nd", "two"]):
+        elif any(s in text.lower() for s in ["second", "2nd", "two", "2"]):
             return 1
-        elif any(s in text.lower() for s in ["third", "3rd", "three"]):
+        elif any(s in text.lower() for s in ["third", "3rd", "three", "3"]):
             return 2
     def run(self,
             dispatcher: CollectingDispatcher,
@@ -242,9 +242,19 @@ class ActionVerifyProposal(Action):
         print(f"use_class: {use_class}")
         print(f"property_type: {property_type}")
         if not property_type:
-            dispatcher.utter_message(template="utter_verified", outcome="Not allowed.")
+            outcome = "Evaluation outcome: Not allowed \n " \
+                      "Remarks: The use cannot be allowed as it is not in line with the planning intention of the site. \n"
+            dispatcher.utter_message(template="utter_verified", outcome=outcome)
             return []
-        outcome = guidelines_api.get_eval_outcome(property_type, use_class)
+        if property_type == 'Shophouses':
+            block = tracker.get_slot("block")
+            road = tracker.get_slot("road")
+            floor = tracker.get_slot("floor")
+            unit = tracker.get_slot("unit")
+            outcome = guidelines_api.get_shophouse_eval_outcome(block, road, floor, unit, use_class)
+        else:
+            outcome = guidelines_api.get_eval_outcome(property_type, use_class)
+
         dispatcher.utter_message(template="utter_verified", outcome=outcome)
         return []
 
