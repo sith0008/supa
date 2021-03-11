@@ -37,7 +37,7 @@ class GuidelinesAPI:
 
     def process_eval_outcome(self, result):
         outcome = result["outcome"]
-        remark = result["remark"]
+        remark = result["remarks"]
         processed = f"Evaluation outcome: {outcome} \n" \
                     f"Remarks: {remark} \n"
         return processed
