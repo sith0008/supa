@@ -21,3 +21,9 @@ def delete_use_class():
     fields = dict(request.get_json())
     use_class_service.delete(fields['name'], fields['type'])
     return f"deleted {fields['type']} use class {fields['name']}"
+
+@supa.route("/useclass/example", methods=['PUT'])
+def insert_use_class_example():
+    fields = dict(request.get_json())
+    insert_use_class_example_id = use_class_service.create_specific_example(fields)
+    return f"inserted use class example with node id {insert_use_class_example_id}"

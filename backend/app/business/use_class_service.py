@@ -1,5 +1,5 @@
 from app.accessors.use_class_accessor import UseClassAccessor # noqa
-from app.models.use_class import SpecificUseClass, GenericUseClass, SpecificUseClassEnum, GenericUseClassEnum, UseClassType # noqa
+from app.models.use_class import SpecificUseClass, GenericUseClass, SpecificUseClassEnum, GenericUseClassEnum, UseClassType, SpecificUseClassExample # noqa
 from typing import Union, Dict
 import logging
 
@@ -84,3 +84,13 @@ class UseClassService:
             self.accesor.delete_generic(use_class_name)
         else:
             raise Exception(f"Invalid use class type {use_class_type}")
+
+    def create_specific_example(self, fields_map: Dict):
+        new_use_class_example = SpecificUseClassExample()
+        specific_use_class_name = fields_map["specific_use_class"]
+        del fields_map["specific_use_class"]
+        for k, v in fields_map.items():
+            setattr(new_use_class_example, k, v)
+        new_use_class_example_id = self.accessor.create_specific_example(new_use_class_example)
+        relation_id = self.accessor.create_example_is_a_relation(new_use_class_example.name, specific_use_class_name)
+        return new_use_class_example_id

@@ -18,8 +18,10 @@ class SpecificUseClass:
 class SpecificUseClassExample:
     def __init__(self,
                  name: str = None,
+                 category: str = None,
                  ):
         self.name = name
+        self.category = category
 
 class UseClassType(Enum):
     Generic = "Generic"
