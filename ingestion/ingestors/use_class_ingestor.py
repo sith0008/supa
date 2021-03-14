@@ -55,7 +55,7 @@ class UseClassIngestor:
             if "examples" in info:
                 for ex in info["examples"]:
                     data["name"] = ex
-                    res = requests.put(self.url, headers=headers, data=json.dumps(data))
+                    res = requests.put(self.url + "/example", headers=headers, data=json.dumps(data))
                     log.debug(f"request body: {res.request.body}")
                     log.debug(f"status code: {res.status_code}")
 
