@@ -1,4 +1,4 @@
-from ingestors.use_class import generic_use_classes, specific_use_class_map  # noqa
+from ingestors.use_class import generic_use_classes, specific_use_class_map, use_class_details  # noqa
 import requests
 import json
 import logging
@@ -33,6 +33,30 @@ class UseClassIngestor:
                 'name': specific,
                 'generic': generic
             }
+            if specific in use_class_details:
+                info = use_class_details[specific]
+                if "definition" in info:
+                    data["definition"] = info["definition"]
+                if "requirements" in info:
+                    data["requirements"] = info["requirements"]
+
             res = requests.put(self.url, headers=headers, data=json.dumps(data))
             log.debug(f"request body: {res.request.body}")
             log.debug(f"status code: {res.status_code}")
+
+    def ingest_specific_examples(self):
+        headers = {
+            'content-type': 'application/json'
+        }
+        for uc, info in use_class_details.items():
+            data = {
+                "specific_use_class": uc
+            }
+            if "examples" in info:
+                for ex in info["examples"]:
+                    data["name"] = ex
+                    res = requests.put(self.url, headers=headers, data=json.dumps(data))
+                    log.debug(f"request body: {res.request.body}")
+                    log.debug(f"status code: {res.status_code}")
+
+

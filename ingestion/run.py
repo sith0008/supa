@@ -49,6 +49,8 @@ def init_use_class():
     use_class_ingestor.insert_generic()
     log.info("Initialising specific use classes")
     use_class_ingestor.insert_specific()
+    log.info("Initialising examples for specific use classes")
+    use_class_ingestor.insert_specific_examples()
 
 
 def init_land_use():
