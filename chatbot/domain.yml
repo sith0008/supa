@@ -190,14 +190,16 @@ responses:
   - text: "Hope I'd been a great help, is there anything else I can help you with?"
   utter_ask_confirm_stop:
   - text: "Are you sure you want to stop here?"
+  utter_use_classes:
+  - text: "Here is the full list of use classes. \n {use_classes}"
   utter_definition:
   - text: "Here is the definition for {use_class}. \n {definition}"
   utter_examples:
-    - text: "Here are some examples for {use_class}. \n {examples}"
+  - text: "Here are some examples for {use_class}. \n {examples}"
   utter_requirements:
-    - text: "Here are the requirements for {use_class}. \n {requirements}"
+  - text: "Here are the requirements for {use_class}. \n {requirements}"
   utter_differences:
-    - text: "Here are the differences between {use_class_one} and {use_class_two}. \n {differences}"
+  - text: "Here are the differences between {use_class_one} and {use_class_two}. \n {differences}"
 
 actions:
   - action_show_all_use_classes
