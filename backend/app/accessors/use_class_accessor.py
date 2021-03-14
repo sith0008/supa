@@ -151,6 +151,18 @@ class UseClassAccessor:
         log.info(f"Successfully deleted generic use class {name}")
         tx.commit()
 
+    def get_specific_examples(self, specific_use_class_name: str):
+        log.info(f"Retrieving specific examples of use class {specific_use_class_name}")
+        tx = self.graph.begin()
+        specific_use_class_examples = tx.run("MATCH (:SpecificUseClass {name: $specific_use_class})--(ex: SpecificUseClassExample) "
+                                             "RETURN ex",
+                                             specific_use_class=specific_use_class_name).data()
+        log.info(f"Retrieved all examples for {specific_use_class_name}")
+        log.debug(specific_use_class_examples)
+        tx.commit()
+        return [example['ex']['name'] for example in specific_use_class_examples]
+
+
     def create_specific_example(self, use_class_example: SpecificUseClassExample):
         log.info(f"Creating use class example {use_class_example.name}")
         tx = self.graph.begin()
