@@ -52,11 +52,24 @@ class UseClassIngestor:
             data = {
                 "specific_use_class": uc
             }
+            log.debug("inserting examples")
             if "examples" in info:
-                for ex in info["examples"]:
-                    data["name"] = ex
-                    res = requests.put(self.url + "/example", headers=headers, data=json.dumps(data))
-                    log.debug(f"request body: {res.request.body}")
-                    log.debug(f"status code: {res.status_code}")
+                log.debug(info["examples"])
+                if type(info["examples"]) == list:
+                    for ex in info["examples"]:
+                        data["name"] = ex
+                        res = requests.put(self.url + "/example", headers=headers, data=json.dumps(data))
+                        log.debug(f"request body: {res.request.body}")
+                        log.debug(f"status code: {res.status_code}")
+                elif type(info["examples"]) == dict:
+                    for category, examples in info["examples"].items():
+                        for ex in examples:
+                            data["name"] = ex
+                            data["category"] = category
+                            res = requests.put(self.url + "/example", headers=headers, data=json.dumps(data))
+                            log.debug(f"request body: {res.request.body}")
+                            log.debug(f"status code: {res.status_code}")
+                else:
+                    raise NotImplementedError
 
 

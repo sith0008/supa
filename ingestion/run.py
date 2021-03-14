@@ -50,7 +50,7 @@ def init_use_class():
     log.info("Initialising specific use classes")
     use_class_ingestor.insert_specific()
     log.info("Initialising examples for specific use classes")
-    use_class_ingestor.insert_specific_examples()
+    use_class_ingestor.ingest_specific_examples()
 
 
 def init_land_use():
@@ -82,7 +82,6 @@ def main():
         init_shophouse(SHOPHOUSE_GUIDELINES_JSON_FILE)
 
     if os.environ.get("INIT_GRAPH", "true").lower() == "true":
-        # TODO: call methdos from prop_type_ingestor, use_class_ingestor, past_case_ingestor, entity_pop_ingestor
         log.info("initialising graph database")
         init_use_class()
         init_land_use()

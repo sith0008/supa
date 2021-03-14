@@ -64,21 +64,15 @@ use_class_details = {
         "definition": "Shops are premises used for any trade or business "
                       "where its primary purpose is the sale of goods or foodstuff by retail or provision of services.",
         "requirements": "",
-        "examples": ["Retail Shop", "Service", "Takeaway Foodshop"]
-    },
-    "Retail Shop": {
-        "examples": ["Departmental Store", "Supermarket", "Provision Shop", "Minimart", "Pawnshop",
+        "examples": {
+            "Retail Shop": ["Departmental Store", "Supermarket", "Provision Shop", "Minimart", "Pawnshop",
                      "Fashion Boutique", "Florist", "Gift Shop", "Furniture Shop"
-                     ]
-    },
-    "Service": {
-        "examples": ["Barber Shop", "Beauty Salon", "Photo Studio", "Tailor Shop",
+                     ],
+            "Service": ["Barber Shop", "Beauty Salon", "Photo Studio", "Tailor Shop",
                      "Foot Reflexology", "Travel Agency", "Money Changer", "Acupuncturist"
-                     ]
-    },
-    "Takeaway Foodshop": {
-        "definition": "Shops selling curry puffs, rice dumplings, pastries, buns, bubble tea, ice-cream, barbeque meat, etc. "
-                      "purely for takeaway and without tables and chairs for dining at the premises."
+                     ],
+            "Takeaway Foodshop": ["Pastry Shop", "Bubble Tea Shop", "Bakery", "Ice Cream Shop"]
+        }
     },
     "Amusement Centre": {
         "definition": "Amusement Centres are premises with game machines (e.g. jackpot machines, pin-bill machines, darts machines) for entertainment.",
