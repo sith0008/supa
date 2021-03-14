@@ -185,5 +185,44 @@ nlu:
     - 246
     - 35
 
+- synonym: restaurant
+  examples: |
+    - Restaurant
+    - restaurant
+    - restarant
+    - Restaurantt
+
+- synonym: barpub
+  examples: |
+    - bar/pub
+    - Bar/Pub
+    - bar & pub
+    - Bar
+    - Bar
+    - Pub
+    - pub
+    - bar and pub
+    - Bar and Pub
+
+- synonym: shop
+  examples: |
+    - shop
+    - shops
+    - Shop
+
+- synonym: amusement_centre
+  examples: |
+    - amusement centre
+    - entertainment centre
+    - Amusement
+    - Amusement Centre
+
+- synonym: massage_establishment
+  examples: |
+    - Massage
+    - massage establishment
+    - Massage Establishment
+    - Massage place
+
 
 
