@@ -22,7 +22,12 @@ intents:
 - enter_field_to_edit
 - enter_form_data
 - enter_ordinal
-
+- list_all_use_classes
+- ask_definition
+- ask_requirements
+- ask_examples
+- ask_difference
+- enter_use_class
 entities:
 - use_class
 - postal_code
@@ -38,7 +43,11 @@ entities:
 - lot_number_example
 - gross_floor_area_example
 - use_description_example
-
+- restaurant
+- shop
+- barpub
+- amusement_centre
+- massage_establishment
 slots:
   use_class:
     type: text
@@ -73,6 +82,8 @@ slots:
   music_details:
     type: text
   noise_mitigation:
+    type: text
+  current_use_class:
     type: text
 
 
@@ -179,6 +190,14 @@ responses:
   - text: "Hope I'd been a great help, is there anything else I can help you with?"
   utter_ask_confirm_stop:
   - text: "Are you sure you want to stop here?"
+  utter_definition:
+  - text: "Here is the definition for {use_class}. \n {definition}"
+  utter_examples:
+    - text: "Here are some examples for {use_class}. \n {examples}"
+  utter_requirements:
+    - text: "Here are the requirements for {use_class}. \n {requirements}"
+  utter_differences:
+    - text: "Here are the differences between {use_class_one} and {use_class_two}. \n {differences}"
 
 actions:
   - action_show_all_use_classes
@@ -193,6 +212,11 @@ actions:
   - action_submit_proposal
   - action_reset_slots
   - action_set_live_music
+  - action_get_all_use_classes
+  - action_get_definition
+  - action_get_requirements
+  - action_get_examples
+  - action_get_difference
 
 forms:
   verify_form:
