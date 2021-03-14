@@ -85,6 +85,10 @@ class UseClassService:
         else:
             raise Exception(f"Invalid use class type {use_class_type}")
 
+    def get_specific_examples(self, filter_map:Dict):
+        specific_use_class_name = filter_map["specific_use_class"]
+        return self.accessor.get_specific_examples(specific_use_class_name)
+
     def create_specific_example(self, fields_map: Dict):
         new_use_class_example = SpecificUseClassExample()
         specific_use_class_name = fields_map["specific_use_class"]
