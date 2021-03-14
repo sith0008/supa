@@ -288,12 +288,105 @@ class ActionResetSlots(Action):
             slot_set_events.append(SlotSet(entity['entity'], None))
         return slot_set_events
 
-# class ActionSubmitProposal(Action):
-#     '''
-#
-#     '''
-#
-# class ActionSetLiveMusic(Action):
-#     '''
-#     set live music slot to true/false
-#     '''
+class ActionGetAllUseClasses(Action):
+    def name(self) -> Text:
+        return "action_get_all_use_classes"
+
+    def run(
+        self,
+        dispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> List[Dict[Text, Any]]:
+        use_classes = knowledge_graph_api.get_all_use_classes()
+        dispatcher.utter_message(template="utter_use_classes",
+                                 use_class_list=use_classes)
+        return []
+
+
+class ActionGetDefinition(Action):
+    def name(self) -> Text:
+        return "action_get_definition"
+
+    def get_use_class_from_entity(self, entity):
+        entity_to_use_class_map = {
+            "restaurant": "Restaurant",
+            "barpub": "Bar/Pub",
+            "shop": "Shop",
+            "amusement_centre": "Amusement Centre",
+            "massage_establishment": "Massage Establishment"
+        }
+        if entity in entity_to_use_class_map:
+            return entity_to_use_class_map[entity]
+        return None
+
+    def run(
+            self,
+            dispatcher,
+            tracker: Tracker,
+            domain: "DomainDict",
+    ) -> List[Dict[Text, Any]]:
+        entities = tracker.latest_message["entities"]
+        slot_set_event = None
+        for entity in entities:
+            use_class = self.get_use_class_from_entity(entity['entity'])
+            if use_class:
+                slot_set_event = SlotSet("current_use_class", use_class)
+                definition = knowledge_graph_api.get_definition(use_class)
+                dispatcher.utter_message(template="utter_definition",
+                                         definition=definition)
+            else:
+                dispatcher.utter_message(text=f"Sorry, I didn't understand the use class {entity['entity']}")
+        return [slot_set_event] if slot_set_event else []
+
+
+class ActionGetRequirements(Action):
+    def name(self) -> Text:
+        return "action_get_requirements"
+
+    def run(
+            self,
+            dispatcher,
+            tracker: Tracker,
+            domain: "DomainDict",
+    ) -> List[Dict[Text, Any]]:
+        current_use_class = tracker.get_slot("current_use_class")
+        if not current_use_class:
+            dispatcher.utter_message(text="Please specify a use class!")
+        else:
+            requirements = knowledge_graph_api.get_requirements(current_use_class)
+            dispatcher.utter_message(template="utter_requirements", requirements=requirements)
+        return []
+
+
+class ActionGetExamples(Action):
+    def name(self) -> Text:
+        return "action_get_examples"
+
+    def run(
+            self,
+            dispatcher,
+            tracker: Tracker,
+            domain: "DomainDict",
+    ) -> List[Dict[Text, Any]]:
+        current_use_class = tracker.get_slot("current_use_class")
+        if not current_use_class:
+            dispatcher.utter_message(text="Please specify a use class!")
+        else:
+            examples = knowledge_graph_api.get_examples(current_use_class)
+            dispatcher.utter_message(template="utter_examples", examples=examples)
+        return []
+
+
+class ActionGetDifferences(Action):
+    def name(self) -> Text:
+        return "action_get_differences"
+
+    def run(
+            self,
+            dispatcher,
+            tracker: Tracker,
+            domain: "DomainDict",
+    ) -> List[Dict[Text, Any]]:
+        # entities = tracker.latest_message["entities"]
+        raise NotImplementedError
