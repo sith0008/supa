@@ -40,6 +40,7 @@ services:
       SHOPHOUSE_JSON_FILE: "Shophouse.json"
       LAND_USE_JSON_FILE: "Land_Use.json"
       SHOPHOUSE_GUIDELINES_JSON_FILE: "Shophouse_Guidelines.json"
+      PROBLEMATIC_AREA_JSON_FILE: "Problematic_Area.json"
       CASES_DATA_DIRECTORY: "./sample/"
     networks:
       - supa-network

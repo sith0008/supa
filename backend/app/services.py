@@ -6,6 +6,7 @@ from app.business import (
     guidelines_service,
     postal_code_service,
     shophouse_service,
+    problematic_area_service,
     use_class_service,
     land_use_type_service,
     location_service,
@@ -23,6 +24,7 @@ with supa.app_context():
     guidelines_service = guidelines_service.GuidelinesService(sql_engine)
     postal_code_service = postal_code_service.PostalCodeService(sql_engine)
     shophouse_service = shophouse_service.ShophouseService(sql_engine)
+    problematic_area_service = problematic_area_service.ProblematicAreaService(sql_engine)
     resolution_service = resolution_service.ResolutionService(neo4j_engine)
     validation_service = validation_service.ValidationService(neo4j_engine)
     use_class_service = use_class_service.UseClassService(neo4j_engine)
