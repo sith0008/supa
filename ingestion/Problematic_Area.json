@@ -1,7 +1,7 @@
 {
   "Balestier": {
     "subzone": "BALESTIER",
-    "planning": "NOVENA",
+    "planning_area": "NOVENA",
     "coords": [
       [
         [
@@ -529,7 +529,7 @@
   },
   "Boat Quay": {
     "subzone": "BOAT QUAY",
-    "planning": "SINGAPORE RIVER",
+    "planning_area": "SINGAPORE RIVER",
     "coords": [
       [
         [
@@ -729,7 +729,7 @@
   },
   "Cairnhill": {
     "subzone": "CAIRNHILL",
-    "planning": "NEWTON",
+    "planning_area": "NEWTON",
     "coords": [
       [
         [
@@ -1821,7 +1821,7 @@
   },
   "Chinatown": {
     "subzone": "CHINATOWN",
-    "planning": "OUTRAM",
+    "planning_area": "OUTRAM",
     "coords": [
       [
         [
@@ -2741,7 +2741,7 @@
   },
   "Geylang": {
     "subzone": "",
-    "planning": "GEYLANG",
+    "planning_area": "GEYLANG",
     "coords": [
       [
         [
@@ -4949,7 +4949,7 @@
   },
   "Kampong Glam": {
     "subzone": "KAMPONG GLAM",
-    "planning": "ROCHOR",
+    "planning_area": "ROCHOR",
     "coords": [
       [
         [
@@ -5069,7 +5069,7 @@
   },
   "Little India": {
     "subzone": "LITTLE INDIA",
-    "planning": "ROCHOR",
+    "planning_area": "ROCHOR",
     "coords": [
       [
         [
@@ -5285,7 +5285,7 @@
   },
   "Tiong Bahru": {
     "subzone": "TIONG BAHRU",
-    "planning": "BUKIT MERAH",
+    "planning_area": "BUKIT MERAH",
     "coords": [
       [
         [
@@ -5485,7 +5485,7 @@
   },
   "Cuppage Plaza": {
     "subzone": "SOMERSET",
-    "planning": "ORCHARD",
+    "planning_area": "ORCHARD",
     "coords": [
       [
         [
@@ -5601,7 +5601,7 @@
   },
   "Golden Sultan Plaza": {
     "subzone": "CRAWFORD",
-    "planning": "KALLANG",
+    "planning_area": "KALLANG",
     "coords": [
       [
         [
@@ -5705,7 +5705,7 @@
   },
   "Parklane Mall": {
     "subzone": "SELEGIE",
-    "planning": "ROCHOR",
+    "planning_area": "ROCHOR",
     "coords": [
       [
         [
@@ -5753,7 +5753,7 @@
   },
   "Lucky Plaza": {
     "subzone": "BOULEVARD",
-    "planning": "ORCHARD",
+    "planning_area": "ORCHARD",
     "coords": [
       [
         [
@@ -5813,7 +5813,7 @@
   },
   "The Adelphi": {
     "subzone": "CITY HALL",
-    "planning": "DOWNTOWN CORE",
+    "planning_area": "DOWNTOWN CORE",
     "coords": [
       [
         [
@@ -5869,7 +5869,7 @@
   },
   "People's Park Centre": {
     "subzone": "PEARL'S HILL",
-    "planning": "OUTRAM",
+    "planning_area": "OUTRAM",
     "coords": [
       [
         [
@@ -5925,7 +5925,7 @@
   },
   "Golden Mile Complex": {
     "subzone": "NICOLL",
-    "planning": "DOWNTOWN CORE",
+    "planning_area": "DOWNTOWN CORE",
     "coords": [
       [
         [
@@ -5985,7 +5985,7 @@
   },
   "Textile Centre": {
     "subzone": "CRAWFORD",
-    "planning": "KALLANG",
+    "planning_area": "KALLANG",
     "coords": [
       [
         [
@@ -6053,7 +6053,7 @@
   },
   "People's Park Complex": {
     "subzone": "PEARL'S HILL",
-    "planning": "OUTRAM",
+    "planning_area": "OUTRAM",
     "coords": [
       [
         [
@@ -6093,7 +6093,7 @@
   },
   "Orchard Plaza": {
     "subzone": "SOMERSET",
-    "planning": "ORCHARD",
+    "planning_area": "ORCHARD",
     "coords": [
       [
         [
@@ -6141,7 +6141,7 @@
   },
   "Peace Centre": {
     "subzone": "SELEGIE",
-    "planning": "ROCHOR",
+    "planning_area": "ROCHOR",
     "coords": [
       [
         [
@@ -6213,7 +6213,7 @@
   },
   "Orchard Towers": {
     "subzone": "BOULEVARD",
-    "planning": "ORCHARD",
+    "planning_area": "ORCHARD",
     "coords": [
       [
         [

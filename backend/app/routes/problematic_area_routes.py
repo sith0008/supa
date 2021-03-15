@@ -35,7 +35,7 @@ def delete_problematic_area():
 
 
 @supa.route("/problematic_area/within", methods=['GET'])
-def get_within():
+def within_problematic_area():
     fields = dict(request.get_json())
     problematic_area = problematic_area_service.get_within(fields)
     return jsonify(problematic_area)
