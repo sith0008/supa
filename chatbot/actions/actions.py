@@ -427,7 +427,7 @@ class ActionGetExamples(Action):
                                          examples=examples)
         return [slot_set_event] if slot_set_event else []
 
-
+# TODO: to implement in v5
 class ActionGetDifferences(Action):
     def name(self) -> Text:
         return "action_get_differences"

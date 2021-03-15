@@ -98,3 +98,5 @@ class UseClassService:
         new_use_class_example_id = self.accessor.create_specific_example(new_use_class_example)
         relation_id = self.accessor.create_example_is_a_relation(new_use_class_example.name, specific_use_class_name)
         return new_use_class_example_id
+
+# TODO: add create and read operation for difference relationship
