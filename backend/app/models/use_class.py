@@ -6,8 +6,22 @@ class GenericUseClass:
         self.name = name
 
 class SpecificUseClass:
-    def __init__(self, name: str = None):
+    def __init__(self,
+                 name: str = None,
+                 definition: str = None,
+                 requirements: str = None
+                 ):
         self.name = name
+        self.definition = definition
+        self.requirements = requirements
+
+class SpecificUseClassExample:
+    def __init__(self,
+                 name: str = None,
+                 category: str = None,
+                 ):
+        self.name = name
+        self.category = category
 
 class UseClassType(Enum):
     Generic = "Generic"

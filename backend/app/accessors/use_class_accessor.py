@@ -1,5 +1,5 @@
 from app.models.past_case import PastCase # noqa
-from app.models.use_class import SpecificUseClass, GenericUseClass, SpecificUseClassEnum, GenericUseClassEnum # noqa
+from app.models.use_class import SpecificUseClass, GenericUseClass, SpecificUseClassEnum, GenericUseClassEnum, SpecificUseClassExample # noqa
 import logging
 from copy import copy
 
@@ -73,7 +73,13 @@ class UseClassAccessor:
             raise Exception(f"Specific use class {use_class} already exists.")
         log.info(f"Creating specific use class {use_class.name}")
         tx = self.graph.begin()
-        use_class_node_id = tx.run("CREATE (u: SpecificUseClass) SET u.name=$name RETURN id(u)", name=use_class.name).evaluate()
+        use_class_node_id = tx.run("CREATE (u: SpecificUseClass) "
+                                   "SET u.name=$name, u.definition=$definition, u.requirements=$requirements "
+                                   "RETURN id(u)",
+                                   name=use_class.name,
+                                   definition=use_class.definition,
+                                   requirements=use_class.requirements
+                                   ).evaluate()
         tx.commit()
         log.info(f"Created specific use class {use_class.name} with node id {use_class_node_id}")
         return use_class_node_id
@@ -145,3 +151,37 @@ class UseClassAccessor:
         log.info(f"Successfully deleted generic use class {name}")
         tx.commit()
 
+    def get_specific_examples(self, specific_use_class_name: str):
+        log.info(f"Retrieving specific examples of use class {specific_use_class_name}")
+        tx = self.graph.begin()
+        specific_use_class_examples = tx.run("MATCH (:SpecificUseClass {name: $specific_use_class})--(ex: SpecificUseClassExample) "
+                                             "RETURN ex",
+                                             specific_use_class=specific_use_class_name).data()
+        log.info(f"Retrieved all examples for {specific_use_class_name}")
+        log.debug(specific_use_class_examples)
+        tx.commit()
+        return [example['ex']['name'] for example in specific_use_class_examples]
+
+
+    def create_specific_example(self, use_class_example: SpecificUseClassExample):
+        log.info(f"Creating use class example {use_class_example.name}")
+        tx = self.graph.begin()
+        use_class_example_node_id = tx.run("CREATE (e: SpecificUseClassExample) SET e.name=$name, e.category=$category RETURN id(e)",
+                                           name=use_class_example.name,
+                                           category=use_class_example.category
+                                           ).evaluate()
+        tx.commit()
+        log.info(f"Created use class example {use_class_example.name} with node id {use_class_example_node_id}")
+        return use_class_example_node_id
+
+    def create_example_is_a_relation(self, use_class_example_name: str, specific_use_class_name: str):
+        log.info(f"Creating IS_A relation between {use_class_example_name} and {specific_use_class_name}")
+        tx = self.graph.begin()
+        is_a_relation_id = tx.run("MATCH (e: SpecificUseClassExample), (s: SpecificUseClass) "
+                                  "WHERE e.name=$use_class_example_name AND s.name=$specific_use_class_name "
+                                  "CREATE (e)-[r: IS_A]->(s) RETURN id(r)",
+                                  use_class_example_name=use_class_example_name,
+                                  specific_use_class_name=specific_use_class_name).evaluate()
+        tx.commit()
+        log.info(f"Created IS_A relation between {use_class_example_name} and {specific_use_class_name} with id {is_a_relation_id}")
+        return is_a_relation_id
