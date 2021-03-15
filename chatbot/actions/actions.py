@@ -300,7 +300,7 @@ class ActionGetAllUseClasses(Action):
     ) -> List[Dict[Text, Any]]:
         use_classes = knowledge_graph_api.get_all_use_classes()
         dispatcher.utter_message(template="utter_use_classes",
-                                 use_class_list=use_classes)
+                                 use_classes=use_classes)
         return []
 
 
@@ -334,6 +334,7 @@ class ActionGetDefinition(Action):
                 slot_set_event = SlotSet("current_use_class", use_class)
                 definition = knowledge_graph_api.get_definition(use_class)
                 dispatcher.utter_message(template="utter_definition",
+                                         uc=use_class,
                                          definition=definition)
             else:
                 dispatcher.utter_message(text=f"Sorry, I didn't understand the use class {entity['entity']}")
@@ -344,38 +345,87 @@ class ActionGetRequirements(Action):
     def name(self) -> Text:
         return "action_get_requirements"
 
+    def get_use_class_from_entity(self, entity):
+        entity_to_use_class_map = {
+            "restaurant": "Restaurant",
+            "barpub": "Bar/Pub",
+            "shop": "Shop",
+            "amusement_centre": "Amusement Centre",
+            "massage_establishment": "Massage Establishment"
+        }
+        if entity in entity_to_use_class_map:
+            return entity_to_use_class_map[entity]
+        return None
+
     def run(
             self,
             dispatcher,
             tracker: Tracker,
             domain: "DomainDict",
     ) -> List[Dict[Text, Any]]:
-        current_use_class = tracker.get_slot("current_use_class")
-        if not current_use_class:
-            dispatcher.utter_message(text="Please specify a use class!")
-        else:
+        entities = tracker.latest_message["entities"]
+        slot_set_event = None
+        if len(entities) > 0:
+            current_use_class = self.get_use_class_from_entity(entities[0]['entity'])
+            slot_set_event = SlotSet("current_use_class", current_use_class)
             requirements = knowledge_graph_api.get_requirements(current_use_class)
-            dispatcher.utter_message(template="utter_requirements", requirements=requirements)
-        return []
+            dispatcher.utter_message(template="utter_requirements",
+                                     uc=current_use_class,
+                                     requirements=requirements)
+        else:
+            current_use_class = tracker.get_slot("current_use_class")
+            if not current_use_class:
+                dispatcher.utter_message(text="Please specify a use class!")
+            else:
+                requirements = knowledge_graph_api.get_requirements(current_use_class)
+                dispatcher.utter_message(template="utter_requirements",
+                                         uc=current_use_class,
+                                         requirements=requirements)
+        return [slot_set_event] if slot_set_event else []
 
 
 class ActionGetExamples(Action):
     def name(self) -> Text:
         return "action_get_examples"
 
+    def get_use_class_from_entity(self, entity):
+        entity_to_use_class_map = {
+            "restaurant": "Restaurant",
+            "barpub": "Bar/Pub",
+            "shop": "Shop",
+            "amusement_centre": "Amusement Centre",
+            "massage_establishment": "Massage Establishment"
+        }
+        if entity in entity_to_use_class_map:
+            return entity_to_use_class_map[entity]
+        return None
+
     def run(
             self,
             dispatcher,
             tracker: Tracker,
             domain: "DomainDict",
     ) -> List[Dict[Text, Any]]:
-        current_use_class = tracker.get_slot("current_use_class")
-        if not current_use_class:
-            dispatcher.utter_message(text="Please specify a use class!")
-        else:
+        entities = tracker.latest_message["entities"]
+        slot_set_event = None
+        if len(entities) > 0:
+            current_use_class = self.get_use_class_from_entity(entities[0]['entity'])
+            print(current_use_class)
+            slot_set_event = SlotSet("current_use_class", current_use_class)
             examples = knowledge_graph_api.get_examples(current_use_class)
-            dispatcher.utter_message(template="utter_examples", examples=examples)
-        return []
+            dispatcher.utter_message(template="utter_examples",
+                                     uc=current_use_class,
+                                     examples=examples)
+        else:
+            current_use_class = tracker.get_slot("current_use_class")
+            if not current_use_class:
+                dispatcher.utter_message(text="Please specify a use class!")
+            else:
+                examples = knowledge_graph_api.get_examples(current_use_class)
+                dispatcher.utter_message(template="utter_examples",
+                                         uc=current_use_class,
+                                         examples=examples)
+        return [slot_set_event] if slot_set_event else []
 
 
 class ActionGetDifferences(Action):
