@@ -22,12 +22,13 @@ intents:
 - enter_field_to_edit
 - enter_form_data
 - enter_ordinal
-- list_all_use_classes
+- list_all_use_class
 - ask_definition
 - ask_requirements
 - ask_examples
 - ask_difference
 - enter_use_class
+- clarify
 entities:
 - use_class
 - postal_code
@@ -120,8 +121,6 @@ responses:
   - text: "Which field do you want to edit?"
   utter_verify:
   - text: "Sure, let me help you with that! I will first need some information from you."
-  utter_clarify:
-  - text: "Sure, what would you like to clarify?"
   utter_ask_use_class:
   - text: "What will be the proposed use class?"
   utter_ask_use_description:
@@ -190,14 +189,16 @@ responses:
   - text: "Hope I'd been a great help, is there anything else I can help you with?"
   utter_ask_confirm_stop:
   - text: "Are you sure you want to stop here?"
+  utter_clarify:
+  - text: "Sure, currently I can only help to clarify your doubts regarding the definitions of some use classes, their requirements and some examples. What would you like to know?"
   utter_use_classes:
   - text: "Here is the full list of use classes. \n {use_classes}"
   utter_definition:
-  - text: "Here is the definition for {use_class}. \n {definition}"
+  - text: "Here is the definition for {uc}. \n {definition}"
   utter_examples:
-  - text: "Here are some examples for {use_class}. \n {examples}"
+  - text: "Here are some examples for {uc}. \n {examples}"
   utter_requirements:
-  - text: "Here are the requirements for {use_class}. \n {requirements}"
+  - text: "Here are the requirements for {uc}. \n {requirements}"
   utter_differences:
   - text: "Here are the differences between {use_class_one} and {use_class_two}. \n {differences}"
 
@@ -227,6 +228,16 @@ forms:
         intent: enter_form_data
       - type: from_entity
         entity: use_class_example
+      - type: from_entity
+        entity: restaurant
+      - type: from_entity
+        entity: shop
+      - type: from_entity
+        entity: massage_establishment
+      - type: from_entity
+        entity: barpub
+      - type: from_entity
+        entity: amusement_centre
     use_description:
       - type: from_text
         intent: enter_form_data
