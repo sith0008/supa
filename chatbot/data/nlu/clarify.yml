@@ -1,5 +1,14 @@
 version: "2.0"
 nlu:
+- intent: clarify
+  examples: |
+    - clarify please
+    - i want to clarify some doubts
+    - can i clarify my doubts?
+    - i need help with crafting my proposal
+    - im not clear on the use classes
+    - i need more info regarding the use classes
+
 - intent: list_all_use_class
   examples: |
     - Show me all use classes
@@ -105,33 +114,18 @@ nlu:
     - list the examples
     - pls list the examples
     - Show me some examples of a [restaurant]{"entity": "restaurant"} ?
-    - Show me some examples of a [bar/pub]{"entity": "barpub"} ?
-    - Show me some examples of a [bar]{"entity": "barpub"} ?
-    - Show me some examples of a [pub]{"entity": "barpub"} ?
     - Show me some examples of a [shop]{"entity": "shop"} ?
     - Show me some examples of a [amusement centre]{"entity": "amusement_centre"} ?
     - Show me some examples of a [shop]{"entity": "shop"} ?
     - What are some examples of a [restaurant]{"entity": "restaurant"} ?
-    - What are some examples of a [bar/pub]{"entity": "barpub"} ?
-    - What are some examples of a [bar]{"entity": "barpub"} ?
-    - What are some examples of a [pub]{"entity": "barpub"} ?
     - What are some examples of a [shop]{"entity": "shop"} ?
     - What are some examples of a [amusement centre]{"entity": "amusement_centre"} ?
-    - What are some examples of a [massage establishment]{"entity": "massage_establishment"} ?
     - Examples of a [restaurant]{"entity": "restaurant"}
-    - Examples of a [bar/pub]{"entity": "barpub"}
-    - Examples of a [bar]{"entity": "barpub"}
-    - Examples of a [pub]{"entity": "barpub"}
     - Examples of a [shop]{"entity": "shop"}
     - Examples of a [amusement centre]{"entity": "amusement_centre"} ?
-    - Examples of a [massage establishment]{"entity": "massage_establishment"}
     - list examples of [restaurant]{"entity": "restaurant"}
-    - list examples of [bar/pub]{"entity": "barpub"}
-    - list examples of [bar]{"entity": "barpub"}
-    - list examples of [pub]{"entity": "barpub"}
     - list examples of [shop]{"entity": "shop"}
     - list examples of [amusement centre]{"entity": "amusement_centre"}
-    - list examples of [massage establishment]{"entity": "massage_establishment"}
 
 - intent: ask_difference
   examples: |
