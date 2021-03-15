@@ -69,3 +69,41 @@ class KnowledgeGraphAPI:
         # query location DB, check booleans + land_use_type (rs)
         # create in-memory map here
         raise NotImplementedError
+
+    def get_definition(self, use_class):
+        headers = {
+            'content-type': 'application/json'
+        }
+        data = {
+            "type": "single",
+            "query": use_class,
+        }
+        endpoint = "/useclass"
+        res = requests.get(url=self.url+endpoint, headers=headers, params=data)
+        return res.json()["definition"]
+
+    def get_requirements(self, use_class):
+        headers = {
+            'content-type': 'application/json'
+        }
+        data = {
+            "type": "single",
+            "query": use_class,
+        }
+        endpoint = "/useclass"
+        res = requests.get(url=self.url+endpoint, headers=headers, params=data)
+        return res.json()["requirements"]
+
+    def get_examples(self, use_class):
+        headers = {
+            'content-type': 'application/json'
+        }
+        data = {
+            "specific_use_class": use_class
+        }
+        endpoint = "/useclass/example"
+        res = requests.get(url=self.url+endpoint, headers=headers, params=data)
+        examples_str = ""
+        for i, ex in enumerate(res.json()):
+            examples_str += f"{i+1}. {ex} \n"
+        return examples_str

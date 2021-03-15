@@ -1,0 +1,154 @@
+version: "2.0"
+nlu:
+- intent: clarify
+  examples: |
+    - clarify please
+    - i want to clarify some doubts
+    - can i clarify my doubts?
+    - i need help with crafting my proposal
+    - im not clear on the use classes
+    - i need more info regarding the use classes
+
+- intent: list_all_use_class
+  examples: |
+    - Show me all use classes
+    - Show me all business uses
+    - List all use class
+    - Give me every use class
+    - I want to see all the business use types
+    - I want to see all use class
+    - What is the list of use classes
+    - What use classes are there?
+    - what are the use classes?
+
+- intent: ask_definition
+  examples: |
+    - Define [restaurant]{"entity": "restaurant"}
+    - Define [bar/pub]{"entity": "barpub"}
+    - Define [bar]{"entity": "barpub"}
+    - Define [pub]{"entity": "barpub"}
+    - Define [shop]{"entity": "shop"}
+    - Define [amusement centre]{"entity": "amusement_centre"}
+    - Define [massage establishment]{"entity": "massage_establishment"}
+    - What is a [restaurant]{"entity": "restaurant"} ?
+    - What is a [bar/pub]{"entity": "barpub"} ?
+    - What is a [bar]{"entity": "barpub"} ?
+    - What is a [pub]{"entity": "barpub"} ?
+    - What is a [shop]{"entity": "shop"} ?
+    - What is a [amusement centre]{"entity": "amusement_centre"} ?
+    - What is a [massage establishment]{"entity": "massage_establishment"} ?
+    - Can you define [restaurant]{"entity": "restaurant"} ?
+    - Can you define [bar/pub]{"entity": "barpub"} ?
+    - Can you define [bar]{"entity": "barpub"} ?
+    - Can you define [pub]{"entity": "barpub"} ?
+    - Can you define [shop]{"entity": "shop"} ?
+    - Can you define [amusement centre]{"entity": "amusement_centre"} ?
+    - Can you define [massage establishment]{"entity": "massage_establishment"} ?
+    - Could you tell me what is a [restaurant]{"entity": "restaurant"} ?
+    - Could you tell me what is a [bar/pub]{"entity": "barpub"} ?
+    - Could you tell me what is a [bar]{"entity": "barpub"} ?
+    - Could you tell me what is a [pub]{"entity": "barpub"} ?
+    - Could you tell me what is a [shop]{"entity": "shop"} ?
+    - Could you tell me what is a [amusement centre]{"entity": "amusement_centre"} ?
+    - Could you tell me what is a [massage establishment]{"entity": "massage_establishment"} ?
+    - What is definition of a [restaurant]{"entity": "restaurant"} ?
+    - What is definition of a [bar/pub]{"entity": "barpub"} ?
+    - What is definition of a [bar]{"entity": "barpub"} ?
+    - What is definition of a [pub]{"entity": "barpub"} ?
+    - What is definition of a [shop]{"entity": "shop"} ?
+    - What is definition of a [amusement centre]{"entity": "amusement_centre"} ?
+    - What is definition of a [shop]{"entity": "shop"} ?
+    - Definition of [restaurant]{"entity": "restaurant"}
+    - Definition of [bar/pub]{"entity": "barpub"}
+    - Definition of [bar]{"entity": "barpub"}
+    - Definition of [pub]{"entity": "barpub"}
+    - Definition of [shop]{"entity": "shop"}
+    - Definition of [amusement centre]{"entity": "amusement_centre"}
+    - Definition of [massage establishment]{"entity": "massage_establishment"}
+- intent: ask_requirements
+  examples: |
+    - what are the requirements?
+    - requirements please
+    - list the requirements
+    - pls list the requirements
+    - What are the requirements for a [restaurant]{"entity": "restaurant"} ?
+    - What are the requirements for a [bar/pub]{"entity": "barpub"} ?
+    - What are the requirements for a [bar]{"entity": "barpub"} ?
+    - What are the requirements for a [pub]{"entity": "barpub"} ?
+    - What are the requirements for a [shop]{"entity": "shop"} ?
+    - What are the requirements for a [amusement centre]{"entity": "amusement_centre"} ?
+    - What are the requirements for a [massage establishment]{"entity": "massage_establishment"} ?
+    - What is definition of a [restaurant]{"entity": "restaurant"} ?
+    - What is required for a [bar/pub]{"entity": "barpub"} ?
+    - What is required for a [bar]{"entity": "barpub"} ?
+    - What is required for a [pub]{"entity": "barpub"} ?
+    - What is required for a [shop]{"entity": "shop"} ?
+    - What is required for a [amusement centre]{"entity": "amusement_centre"} ?
+    - What is required for a [massage establishment]{"entity": "massage_establishment"} ?
+    - Can you list the requirements for a [restaurant]{"entity": "restaurant"} ?
+    - Can you list the requirements for a [bar/pub]{"entity": "barpub"} ?
+    - Can you list the requirements for a [bar]{"entity": "barpub"} ?
+    - Can you list the requirements for a [pub]{"entity": "barpub"} ?
+    - Can you list the requirements for a [shop]{"entity": "shop"} ?
+    - Can you list the requirements for a [amusement centre]{"entity": "amusement_centre"} ?
+    - Can you list the requirements for a [massage establishment]{"entity": "massage_establishment"} ?
+    - is there any specific requirement for a [restaurant]{"entity": "restaurant"} ?
+    - is there any specific requirement for a [bar/pub]{"entity": "barpub"} ?
+    - is there any specific requirement for a [bar]{"entity": "barpub"} ?
+    - is there any specific requirement for a [pub]{"entity": "barpub"} ?
+    - is there any specific requirement for a [shop]{"entity": "shop"} ?
+    - is there any specific requirement for a [amusement centre]{"entity": "amusement_centre"} ?
+    - is there any specific requirement for a [massage establishment]{"entity": "massage_establishment"} ?
+    - requirements for a [restaurant]{"entity": "restaurant"}
+    - requirements for a [bar/pub]{"entity": "barpub"}
+    - requirements for a [bar]{"entity": "barpub"}
+    - requirements for a [pub]{"entity": "barpub"}
+    - requirements for a [shop]{"entity": "shop"}
+    - requirements for a [amusement centre]{"entity": "amusement_centre"}
+    - requirements for a [massage establishment]{"entity": "massage_establishment"} ?
+
+- intent: ask_examples
+  examples: |
+    - what are the examples?
+    - examples please
+    - list the examples
+    - pls list the examples
+    - Show me some examples of a [restaurant]{"entity": "restaurant"} ?
+    - Show me some examples of a [shop]{"entity": "shop"} ?
+    - Show me some examples of a [amusement centre]{"entity": "amusement_centre"} ?
+    - Show me some examples of a [shop]{"entity": "shop"} ?
+    - What are some examples of a [restaurant]{"entity": "restaurant"} ?
+    - What are some examples of a [shop]{"entity": "shop"} ?
+    - What are some examples of a [amusement centre]{"entity": "amusement_centre"} ?
+    - Examples of a [restaurant]{"entity": "restaurant"}
+    - Examples of a [shop]{"entity": "shop"}
+    - Examples of a [amusement centre]{"entity": "amusement_centre"} ?
+    - list examples of [restaurant]{"entity": "restaurant"}
+    - list examples of [shop]{"entity": "shop"}
+    - list examples of [amusement centre]{"entity": "amusement_centre"}
+
+- intent: ask_difference
+  examples: |
+    - what is the difference between [restaurant]{"entity": "restaurant"} and [bar/pub]{"entity": "barpub"} ?
+    - difference between [restaurant]{"entity": "restaurant"} and [bar]{"entity": "barpub"}
+    - is there any difference between [restaurant]{"entity": "restaurant"} and [pub]{"entity": "barpub"} ?
+    - Tell me the difference between [restaurant]{"entity": "restaurant"} and [bar]{"entity": "barpub"}
+
+- intent: enter_use_class
+  examples: |
+    - [restaurant]{"entity": "restaurant"}
+    - [bar/pub]{"entity": "barpub"}
+    - [bar]{"entity": "barpub"}
+    - [pub]{"entity": "barpub"}
+    - [shop]{"entity": "shop"}
+    - [amusement centre]{"entity": "amusement_centre"}
+    - [massage establishment]{"entity": "massage_establishment"}
+    - [shop]{"entity": "shop"}
+    - [Restaurant]{"entity": "restaurant"}
+    - [Pub]{"entity": "barpub"}
+    - [Bar and pub]{"entity": "barpub"}
+    - [bar/pub]{"entity": "barpub"}
+    - [Shop]{"entity": "shop"}
+    - [Amusement Centre]{"entity": "amusement_centre"}
+    - [Massage Establishment]{"entity": "massage_establishment"}
+

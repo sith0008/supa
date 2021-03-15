@@ -1,0 +1,41 @@
+version: "2.0"
+stories:
+  - story: clarify general
+    steps:
+    - intent: clarify
+    - action: utter_clarify
+
+  - story: list use classes
+    steps:
+#    - intent: greet
+#    - action: utter_greet
+    - intent: list_all_use_class
+    - action: action_get_all_use_classes
+
+  - story: ask definition
+    steps:
+#    - intent: greet
+#    - action: utter_greet
+    - intent: ask_definition
+    - action: action_get_definition
+
+  - story: ask requirements
+    steps:
+#    - intent: greet
+#    - action: utter_greet
+    - intent: ask_requirements
+    - action: action_get_requirements
+
+  - story: ask examples
+    steps:
+#    - intent: greet
+#    - action: utter_greet
+    - intent: ask_examples
+    - action: action_get_examples
+
+  - story: ask difference
+    steps:
+#    - intent: greet
+#    - action: utter_greet
+    - intent: ask_difference
+    - action: action_get_difference
