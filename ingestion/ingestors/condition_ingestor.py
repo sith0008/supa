@@ -12,15 +12,13 @@ class ConditionIngestor:
         self.url = host + endpoint
         self.headers = {'content-type': 'application/json'}
 
-    def ingest(self, problematic_area):
+    def ingest(self, problematic_area, problematic_traffic_area_json):
 
-        i = 0
+        # Problematic Traffic Areas
+        with open(problematic_traffic_area_json) as problematic_traffic_area_file:
+            data_problematic_traffic_area = json.load(problematic_traffic_area_file)
 
-        with open(problematic_area) as problematic_area_file:
-            data_problematic_area = json.load(problematic_area_file)
-
-        for area, info in data_problematic_area.items():
-            i += 1
+        for area, info in data_problematic_traffic_area.items():
             print(area)
             geom = shape(
                 {
@@ -31,7 +29,27 @@ class ConditionIngestor:
             print(geom.wkt)
             print()
             payload = json.dumps({
-                'pa_id': i, 'name': area, 'subzone': info['subzone'], 'planning_area': info['planning'],
+                'name': area, 'subzone': info['subzone'], 'planning_area': info['planning_area'],
+                'polygon': geom.wkt
+            })
+            r = requests.put(url=self.host + '/problematic_traffic_area', headers=self.headers, data=payload)
+            log.info(r.text)
+
+        # Problematic Areas
+        with open(problematic_area) as problematic_area_file:
+            data_problematic_area = json.load(problematic_area_file)
+
+        for area, info in data_problematic_area.items():
+            geom = shape(
+                {
+                    "coordinates": info['coords'],
+                    "type": "Polygon"
+                }
+            )
+            print(geom.wkt)
+            print()
+            payload = json.dumps({
+                'name': area, 'subzone': info['subzone'], 'planning_area': info['planning_area'],
                 'polygon': geom.wkt
             })
             r = requests.put(url=self.host + '/problematic_area', headers=self.headers, data=payload)

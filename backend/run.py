@@ -6,6 +6,7 @@ from app.routes.guideline_routes import *  # noqa
 from app.routes.postal_code_routes import *  # noqa
 from app.routes.shophouse_routes import *  # noqa
 from app.routes.problematic_area_routes import *  # noqa
+from app.routes.problematic_traffic_area_routes import *  # noqa
 from app.routes.use_class_routes import * # noqa
 from app.routes.land_use_type_routes import * # noqa
 from app.routes.location_routes import * # noqa
