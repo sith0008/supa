@@ -6,7 +6,6 @@ from sqlalchemy import (
 
 
 class PostalCode(sql_db.Model):
-    # TODO: change fields accordingly, placeholder for testing
     __tablename__ = 'postal_code'
 
     def as_dict(self):
