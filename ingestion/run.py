@@ -26,7 +26,7 @@ ura_data_ingestor = URADataIngestor(past_case_ingestor, location_ingestor)
 entity_pop_ingestor = EntityPopIngestor(BACKEND_HOST, "/entitypop")
 guidelines_ingestor = GuidelinesIngestor(os.environ.get("GUIDELINES_CSV_FILE"))
 postal_code_ingestor = PostalCodeIngestor(BACKEND_HOST, "/postal_code")
-shophouse_ingestor = ShophouseIngestor(BACKEND_HOST, "/shophouse")
+shophouse_ingestor = ShophouseIngestor(os.environ.get("SHOPHOUSE_GUIDELINES_JSON_FILE"))
 
 
 def init_guidelines():
@@ -39,9 +39,9 @@ def init_postal_code(postal_code_json, hdb_commercial_json, shophouse_json, land
     postal_code_ingestor.ingest(postal_code_json, hdb_commercial_json, shophouse_json, land_use_json)
 
 
-def init_shophouse(shophouse_json):
+def init_shophouse():
     log.info("Initialising shophouse")
-    shophouse_ingestor.ingest(shophouse_json)
+    shophouse_ingestor.ingest()
 
 
 def init_use_class():
@@ -70,7 +70,6 @@ def main():
     HDB_COMMERCIAL_JSON_FILE = os.environ.get("HDB_COMMERCIAL_JSON_FILE")
     SHOPHOUSE_JSON_FILE = os.environ.get("SHOPHOUSE_JSON_FILE")
     LAND_USE_JSON_FILE = os.environ.get("LAND_USE_JSON_FILE")
-    SHOPHOUSE_GUIDELINES_JSON_FILE = os.environ.get("SHOPHOUSE_GUIDELINES_JSON_FILE")
 
     CASES_DATA_DIRECTORY = os.environ.get("CASES_DATA_DIRECTORY")
 
@@ -79,6 +78,7 @@ def main():
         init_guidelines()
         init_postal_code(POSTAL_CODE_JSON_FILE, HDB_COMMERCIAL_JSON_FILE, SHOPHOUSE_JSON_FILE, LAND_USE_JSON_FILE)
         init_shophouse(SHOPHOUSE_GUIDELINES_JSON_FILE)
+        init_shophouse()
 
     if os.environ.get("INIT_GRAPH", "true").lower() == "true":
         log.info("initialising graph database")
