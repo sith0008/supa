@@ -15,7 +15,6 @@ OutcomePriority = {
 
 
 class Guideline(sql_db.Model):
-    # TODO: change fields accordingly, placeholder for testing
     __tablename__ = 'guidelines'
 
     def as_dict(self):

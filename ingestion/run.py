@@ -25,15 +25,15 @@ past_case_ingestor = PastCaseIngestor(BACKEND_HOST, "/case")
 location_ingestor = LocationIngestor(BACKEND_HOST, "/location")
 ura_data_ingestor = URADataIngestor(past_case_ingestor, location_ingestor)
 entity_pop_ingestor = EntityPopIngestor(BACKEND_HOST, "/entitypop")
-guidelines_ingestor = GuidelinesIngestor(BACKEND_HOST, "/guideline")
+guidelines_ingestor = GuidelinesIngestor(os.environ.get("GUIDELINES_CSV_FILE"))
 postal_code_ingestor = PostalCodeIngestor(BACKEND_HOST, "/postal_code")
 shophouse_ingestor = ShophouseIngestor(BACKEND_HOST, "/shophouse")
 condition_ingestor = ConditionIngestor(BACKEND_HOST, "/condition")
 
 
-def init_guidelines(guidelines_csv):
+def init_guidelines():
     log.info("Initialising guidelines")
-    guidelines_ingestor.ingest(guidelines_csv)
+    guidelines_ingestor.ingest()
 
 
 def init_postal_code(postal_code_json, hdb_commercial_json, shophouse_json, land_use_json):
@@ -73,7 +73,6 @@ def init_past_cases(cases_directory):
 
 
 def main():
-    GUIDELINES_CSV_FILE = os.environ.get("GUIDELINES_CSV_FILE")
     POSTAL_CODE_JSON_FILE = os.environ.get("POSTAL_CODE_JSON_FILE")
     HDB_COMMERCIAL_JSON_FILE = os.environ.get("HDB_COMMERCIAL_JSON_FILE")
     SHOPHOUSE_JSON_FILE = os.environ.get("SHOPHOUSE_JSON_FILE")
@@ -87,7 +86,7 @@ def main():
 
     if os.environ.get("INIT_SQL", "true").lower() == "true":
         log.info("initialising sql database")
-        init_guidelines(GUIDELINES_CSV_FILE)
+        init_guidelines()
         init_postal_code(POSTAL_CODE_JSON_FILE, HDB_COMMERCIAL_JSON_FILE, SHOPHOUSE_JSON_FILE, LAND_USE_JSON_FILE)
         init_shophouse(SHOPHOUSE_GUIDELINES_JSON_FILE)
         init_condition(PROBLEMATIC_AREA_JSON_FILE, PROBLEMATIC_TRAFFIC_AREA_JSON_FILE, ACTIVITY_GENERATING_USE_JSON_FILE)
