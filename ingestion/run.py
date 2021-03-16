@@ -26,7 +26,13 @@ location_ingestor = LocationIngestor(BACKEND_HOST, "/location")
 ura_data_ingestor = URADataIngestor(past_case_ingestor, location_ingestor)
 entity_pop_ingestor = EntityPopIngestor(BACKEND_HOST, "/entitypop")
 guidelines_ingestor = GuidelinesIngestor(os.environ.get("GUIDELINES_CSV_FILE"))
-postal_code_ingestor = PostalCodeIngestor(BACKEND_HOST, "/postal_code")
+postal_code_ingestor = PostalCodeIngestor(
+    os.environ.get("POSTAL_CODE_JSON_FILE"),
+    os.environ.get("HDB_COMMERCIAL_JSON_FILE"),
+    os.environ.get("CONSERVED_BUILDING_JSON_FILE"),
+    os.environ.get("SHOPHOUSE_JSON_FILE"),
+    os.environ.get("LAND_USE_JSON_FILE")
+)
 shophouse_ingestor = ShophouseIngestor(os.environ.get("SHOPHOUSE_GUIDELINES_JSON_FILE"))
 condition_ingestor = ConditionIngestor(BACKEND_HOST, "/condition")
 
@@ -36,9 +42,9 @@ def init_guidelines():
     guidelines_ingestor.ingest()
 
 
-def init_postal_code(postal_code_json, hdb_commercial_json, shophouse_json, land_use_json):
+def init_postal_code():
     log.info("Initialising postal codes")
-    postal_code_ingestor.ingest(postal_code_json, hdb_commercial_json, shophouse_json, land_use_json)
+    postal_code_ingestor.ingest()
 
 
 def init_shophouse():

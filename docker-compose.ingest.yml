@@ -37,6 +37,7 @@ services:
       GUIDELINES_CSV_FILE: "Guidelines_Criteria.csv"
       POSTAL_CODE_JSON_FILE: "Postal_Code.json"
       HDB_COMMERCIAL_JSON_FILE: "HDB_Commercial.json"
+      CONSERVED_BUILDING_JSON_FILE: "Conserved_Building.json"
       SHOPHOUSE_JSON_FILE: "Shophouse.json"
       LAND_USE_JSON_FILE: "Land_Use.json"
       SHOPHOUSE_GUIDELINES_JSON_FILE: "Shophouse_Guidelines.json"
