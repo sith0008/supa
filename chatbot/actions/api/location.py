@@ -30,7 +30,6 @@ class LocationAPI:
         is_agu = requests.get(url=self.url + "/activity_generating_use/within", headers=headers, data=json.dumps(data))
         is_pta = requests.get(url=self.url + "/problematic_traffic_area/within", headers=headers, data=json.dumps(data))
         is_pa = requests.get(url=self.url + "/problematic_area/within", headers=headers, data=json.dumps(data))
-
         return is_agu, is_pta, is_pa
 
     def is_valid_postal_code(self, postal_code):
