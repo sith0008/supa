@@ -1,32 +1,51 @@
-import csv
-import requests
 import json
 import logging
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import (
+    Column,
+    VARCHAR
+)
 
 log = logging.getLogger('root')
 
+supa = Flask(__name__)
+supa.config["SQLALCHEMY_DATABASE_URI"] = 'mysql://user:password@mysql-test:3306/supa'
+sql_db = SQLAlchemy()
+sql_db.init_app(supa)
+with supa.app_context():
+    engine = sql_db.engine
+
+
+class Shophouse(sql_db.Model):
+    __tablename__ = 'shophouse'
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
+    block = Column(VARCHAR(20), primary_key=True)
+    road = Column(VARCHAR(50), primary_key=True)
+    # postal_code = Column(VARCHAR(6), primary_key=True)
+    floor = Column(VARCHAR(10), primary_key=True)
+    unit = Column(VARCHAR(10), primary_key=True)
+    use_class = Column(VARCHAR(50), primary_key=True)
+    allowed = Column(VARCHAR(1), default='N')
+    reason = Column(VARCHAR(1500), default='NIL')
+
 
 class ShophouseIngestor:
-    def __init__(self, host, endpoint):
-        self.url = host + endpoint
-        self.headers = {'content-type': 'application/json'}
-        self.use_type_mapping = {
-            'Industrial Showroom': 'Showroom',
-            "Workers' Dormitory": "Workers' Dormitories",
-            'Gym / Fitness Centre': 'Fitness Centre/Gymnasium',
-            'Massage establishment / Spa': 'Massage Establishment',
-            'Religious Use': 'Limited & Non-Exclusive Religious Use',
-            'Bar': 'Bar/Pub',
-            'Pet Shop / Vet Clinic': 'Pet Shop',
-        }
+    def __init__(self, shophouse):
+        self.shophouse = shophouse
 
-    def ingest(self, shophouse):
-
-        with open(shophouse) as shophouse_file:
+    def ingest(self):
+        with open(self.shophouse) as shophouse_file:
             data_shophouse = json.load(shophouse_file)
+
+        shophouses = []
 
         for address, info in data_shophouse.items():
             block, road = address.split(' ', maxsplit=1)
+            seen = set()
             for storey in info['StoreyList']:
                 if ',' not in storey['storey']:  # ignore those with comma for now
                     floor, unit = (storey['storey'].split('-', maxsplit=1) + ['0'])[:2]
@@ -53,10 +72,20 @@ class ShophouseIngestor:
                             allowed = allowable['allowed']
                             reason = allowable['allowedReason']
 
-                            payload = json.dumps({
-                                'block': block, 'road': road, 'floor': floor, 'unit': unit,
-                                'use_class': use_class, 'allowed': allowed, 'reason': reason
-                            })
-                            print(payload)
-                            r = requests.put(url=self.url, headers=self.headers, data=payload)
-                            log.info(r.text)
+                            if (floor, unit, use_class) not in seen:
+                                seen.add((floor, unit, use_class))
+
+                                payload = {
+                                    'block': block, 'road': road, 'floor': floor, 'unit': unit,
+                                    'use_class': use_class, 'allowed': allowed, 'reason': reason
+                                }
+                                shophouses.append(payload)
+
+        conn = engine.connect()
+        conn.execute(
+            Shophouse.__table__.insert(),
+            [
+                shophouse
+                for shophouse in shophouses
+            ],
+        )

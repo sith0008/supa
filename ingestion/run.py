@@ -27,7 +27,7 @@ ura_data_ingestor = URADataIngestor(past_case_ingestor, location_ingestor)
 entity_pop_ingestor = EntityPopIngestor(BACKEND_HOST, "/entitypop")
 guidelines_ingestor = GuidelinesIngestor(os.environ.get("GUIDELINES_CSV_FILE"))
 postal_code_ingestor = PostalCodeIngestor(BACKEND_HOST, "/postal_code")
-shophouse_ingestor = ShophouseIngestor(BACKEND_HOST, "/shophouse")
+shophouse_ingestor = ShophouseIngestor(os.environ.get("SHOPHOUSE_GUIDELINES_JSON_FILE"))
 condition_ingestor = ConditionIngestor(BACKEND_HOST, "/condition")
 
 
@@ -41,9 +41,9 @@ def init_postal_code(postal_code_json, hdb_commercial_json, shophouse_json, land
     postal_code_ingestor.ingest(postal_code_json, hdb_commercial_json, shophouse_json, land_use_json)
 
 
-def init_shophouse(shophouse_json):
+def init_shophouse():
     log.info("Initialising shophouse")
-    shophouse_ingestor.ingest(shophouse_json)
+    shophouse_ingestor.ingest()
 
 
 def init_condition(problematic_area_json, problematic_traffic_area_json, activity_generating_use_json):
@@ -73,11 +73,6 @@ def init_past_cases(cases_directory):
 
 
 def main():
-    POSTAL_CODE_JSON_FILE = os.environ.get("POSTAL_CODE_JSON_FILE")
-    HDB_COMMERCIAL_JSON_FILE = os.environ.get("HDB_COMMERCIAL_JSON_FILE")
-    SHOPHOUSE_JSON_FILE = os.environ.get("SHOPHOUSE_JSON_FILE")
-    LAND_USE_JSON_FILE = os.environ.get("LAND_USE_JSON_FILE")
-    SHOPHOUSE_GUIDELINES_JSON_FILE = os.environ.get("SHOPHOUSE_GUIDELINES_JSON_FILE")
     PROBLEMATIC_AREA_JSON_FILE = os.environ.get("PROBLEMATIC_AREA_JSON_FILE")
     PROBLEMATIC_TRAFFIC_AREA_JSON_FILE = os.environ.get("PROBLEMATIC_TRAFFIC_AREA_JSON_FILE")
     ACTIVITY_GENERATING_USE_JSON_FILE = os.environ.get("ACTIVITY_GENERATING_USE_JSON_FILE")
@@ -87,8 +82,8 @@ def main():
     if os.environ.get("INIT_SQL", "true").lower() == "true":
         log.info("initialising sql database")
         init_guidelines()
-        init_postal_code(POSTAL_CODE_JSON_FILE, HDB_COMMERCIAL_JSON_FILE, SHOPHOUSE_JSON_FILE, LAND_USE_JSON_FILE)
-        init_shophouse(SHOPHOUSE_GUIDELINES_JSON_FILE)
+        init_postal_code()
+        init_shophouse()
         init_condition(PROBLEMATIC_AREA_JSON_FILE, PROBLEMATIC_TRAFFIC_AREA_JSON_FILE, ACTIVITY_GENERATING_USE_JSON_FILE)
 
     if os.environ.get("INIT_GRAPH", "true").lower() == "true":
