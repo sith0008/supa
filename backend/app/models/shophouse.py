@@ -6,7 +6,6 @@ from sqlalchemy import (
 
 
 class Shophouse(sql_db.Model):
-    # TODO: change fields accordingly, placeholder for testing
     __tablename__ = 'shophouse'
 
     def as_dict(self):
