@@ -33,11 +33,11 @@ class Guideline(sql_db.Model):
 
 
 class GuidelinesIngestor:
-    def __init__(self, guidelines_file):
-        self.guidelines_file = guidelines_file
+    def __init__(self, guidelines_csv):
+        self.guidelines_csv = guidelines_csv
 
     def ingest(self):
-        csv_data = csv.reader(open(self.guidelines_file))
+        csv_data = csv.reader(open(self.guidelines_csv))
         title = list(map(str.lower, next(csv_data)))
 
         conn = engine.connect()

@@ -34,11 +34,11 @@ class Shophouse(sql_db.Model):
 
 
 class ShophouseIngestor:
-    def __init__(self, shophouse):
-        self.shophouse = shophouse
+    def __init__(self, shophouse_json):
+        self.shophouse_json = shophouse_json
 
     def ingest(self):
-        with open(self.shophouse) as shophouse_file:
+        with open(self.shophouse_json) as shophouse_file:
             data_shophouse = json.load(shophouse_file)
 
         shophouses = []

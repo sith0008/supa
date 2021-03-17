@@ -33,12 +33,12 @@ class PostalCode(sql_db.Model):
 
 
 class PostalCodeIngestor:
-    def __init__(self, postal_code, hdb_commercial, conserved_building, shophouse, land_use):
-        self.postal_code = postal_code
-        self.hdb_commercial = hdb_commercial
-        self.conserved_building = conserved_building
-        self.shophouse = shophouse
-        self.land_use = land_use
+    def __init__(self, postal_code_json, hdb_commercial_json, conserved_building_json, shophouse_json, land_use_json):
+        self.postal_code_json = postal_code_json
+        self.hdb_commercial_json = hdb_commercial_json
+        self.conserved_building_json = conserved_building_json
+        self.shophouse_json = shophouse_json
+        self.land_use_json = land_use_json
 
         self.land_use_to_prop_type = {
             'COMMERCIAL': 'Commercial Buildings',
@@ -57,19 +57,19 @@ class PostalCodeIngestor:
         }
 
     def ingest(self):
-        with open(self.postal_code) as postal_code_file:
+        with open(self.postal_code_json) as postal_code_file:
             data_postal_code = json.load(postal_code_file)
 
-        with open(self.hdb_commercial) as hdb_commercial_file:
+        with open(self.hdb_commercial_json) as hdb_commercial_file:
             data_hdb_commercial = json.load(hdb_commercial_file)
 
-        with open(self.conserved_building) as conserved_building_file:
+        with open(self.conserved_building_json) as conserved_building_file:
             data_conserved_building = json.load(conserved_building_file)
 
-        with open(self.shophouse) as shophouse_file:
+        with open(self.shophouse_json) as shophouse_file:
             data_shophouse = json.load(shophouse_file)
 
-        with open(self.land_use) as land_use_file:
+        with open(self.land_use_json) as land_use_file:
             data_land_use = json.load(land_use_file)
 
         postal_codes = []
