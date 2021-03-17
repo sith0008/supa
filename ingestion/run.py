@@ -34,7 +34,11 @@ postal_code_ingestor = PostalCodeIngestor(
     os.environ.get("LAND_USE_JSON_FILE")
 )
 shophouse_ingestor = ShophouseIngestor(os.environ.get("SHOPHOUSE_GUIDELINES_JSON_FILE"))
-condition_ingestor = ConditionIngestor(BACKEND_HOST, "/condition")
+condition_ingestor = ConditionIngestor(
+    os.environ.get("PROBLEMATIC_AREA_JSON_FILE"),
+    os.environ.get("PROBLEMATIC_TRAFFIC_AREA_JSON_FILE"),
+    os.environ.get("ACTIVITY_GENERATING_USE_JSON_FILE")
+)
 
 
 def init_guidelines():
@@ -52,9 +56,9 @@ def init_shophouse():
     shophouse_ingestor.ingest()
 
 
-def init_condition(problematic_area_json, problematic_traffic_area_json, activity_generating_use_json):
+def init_condition():
     log.info("Initialising condition")
-    condition_ingestor.ingest(problematic_area_json, problematic_traffic_area_json, activity_generating_use_json)
+    condition_ingestor.ingest()
 
 
 def init_use_class():
@@ -79,10 +83,6 @@ def init_past_cases(cases_directory):
 
 
 def main():
-    PROBLEMATIC_AREA_JSON_FILE = os.environ.get("PROBLEMATIC_AREA_JSON_FILE")
-    PROBLEMATIC_TRAFFIC_AREA_JSON_FILE = os.environ.get("PROBLEMATIC_TRAFFIC_AREA_JSON_FILE")
-    ACTIVITY_GENERATING_USE_JSON_FILE = os.environ.get("ACTIVITY_GENERATING_USE_JSON_FILE")
-
     CASES_DATA_DIRECTORY = os.environ.get("CASES_DATA_DIRECTORY")
 
     if os.environ.get("INIT_SQL", "true").lower() == "true":
@@ -90,7 +90,7 @@ def main():
         init_guidelines()
         init_postal_code()
         init_shophouse()
-        init_condition(PROBLEMATIC_AREA_JSON_FILE, PROBLEMATIC_TRAFFIC_AREA_JSON_FILE, ACTIVITY_GENERATING_USE_JSON_FILE)
+        init_condition()
 
     if os.environ.get("INIT_GRAPH", "true").lower() == "true":
         log.info("initialising graph database")

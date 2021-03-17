@@ -1,5 +1,4 @@
 from app.database import sql_db  # noqa
-# from geoalchemy2 import Geometry
 from sqlalchemy import (
     Column,
     VARCHAR,
@@ -10,7 +9,6 @@ from app.models.geometry import Geometry  # noqa
 
 
 class ProblematicTrafficArea(sql_db.Model):
-    # TODO: change fields accordingly, placeholder for testing
     __tablename__ = 'problematic_traffic_area'
 
     def as_dict(self):
