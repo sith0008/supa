@@ -88,3 +88,5 @@ use_class_details = {
                         "before committing to a tenancy agreement or starting the renovation works.",
     }
 }
+
+# TODO: add difference relationship

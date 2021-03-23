@@ -185,3 +185,5 @@ class UseClassAccessor:
         tx.commit()
         log.info(f"Created IS_A relation between {use_class_example_name} and {specific_use_class_name} with id {is_a_relation_id}")
         return is_a_relation_id
+
+# TODO: add create and read operation for difference relationship
