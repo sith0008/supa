@@ -159,11 +159,11 @@ class ActionSetAddressSlots(Action):
         return "action_set_address_slots"
 
     def resolve_ordinal(self, text):
-        if any(s in text.lower() for s in ["first", "1st", "one"]):
+        if any(s in text.lower() for s in ["first", "1st", "1"]):
             return 0
-        elif any(s in text.lower() for s in ["second", "2nd", "two"]):
+        elif any(s in text.lower() for s in ["second", "2nd", "two", "2"]):
             return 1
-        elif any(s in text.lower() for s in ["third", "3rd", "three"]):
+        elif any(s in text.lower() for s in ["third", "3rd", "three", "3"]):
             return 2
     def run(self,
             dispatcher: CollectingDispatcher,
@@ -221,8 +221,31 @@ class ActionReviewVerifyForm(Action):
         print(response)
         dispatcher.utter_message(template="utter_verify_form_inputs", form_inputs=response)
         return []
+'''
+problematic area: 
+- commercial and residential
+- massage establishment
+true: 329930
+103.849333260971, 1.32553664342364
+false: 328176
+103.864653117895, 1.32321071362831
 
+problematic traffic area:
+- commercial
+- Restaurant and Bar
+true: 389274
+103.876838231027, 1.31192603334149
+false: 419714
+103.900132277641, 1.31635267671865
 
+activity generating use:
+- commercial
+- bar/pub
+true: 049869
+103.849143324756, 1.2884323407382
+false: 049959
+103.8482272158, 1.28315431065232
+'''
 class ActionVerifyProposal(Action):
     '''
     Using filled slots, query guideline DB to get outcome
@@ -238,13 +261,32 @@ class ActionVerifyProposal(Action):
             ) -> List[EventType]:
         postal_code = tracker.get_slot("postal_code")
         use_class = tracker.get_slot("use_class")
+        block = tracker.get_slot("block")
+        road = tracker.get_slot("road")
+        floor = tracker.get_slot("floor")
+        unit = tracker.get_slot("unit")
         property_type = location_api.get_property_type_from_postal_code(postal_code)
         print(f"use_class: {use_class}")
         print(f"property_type: {property_type}")
         if not property_type:
-            dispatcher.utter_message(template="utter_verified", outcome="Not allowed.")
+            outcome = "Evaluation outcome: Not allowed \n " \
+                      "Remarks: The use cannot be allowed as it is not in line with the planning intention of the site. \n"
+            dispatcher.utter_message(template="utter_verified", outcome=outcome)
             return []
-        outcome = guidelines_api.get_eval_outcome(property_type, use_class)
+        if property_type == 'Shophouses':
+            outcome = guidelines_api.get_shophouse_eval_outcome(block, road, floor, unit, use_class)
+        else:
+            lat, lng = location_api.get_coordinates_from_postal_code(block, road, postal_code)
+            is_agu, is_pta, is_pa = location_api.get_conditions(lat, lng)
+            if is_agu:
+                dispatcher.utter_message(text="Note: your location is an Activity Generating Use area, checking for additional guideliens ...")
+            if is_pta:
+                dispatcher.utter_message(text="Note: your location is a Problematic Traffic Area, checking for additional guideliens ...")
+            if is_pa:
+                dispatcher.utter_message(text="Note: your location is a Problematic Area, checking for additional guideliens ...")
+
+            outcome = guidelines_api.get_eval_outcome(property_type, use_class, is_agu, is_pta, is_pa)
+
         dispatcher.utter_message(template="utter_verified", outcome=outcome)
         return []
 
