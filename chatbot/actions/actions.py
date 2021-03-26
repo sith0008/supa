@@ -26,12 +26,21 @@ class ValidateVerifyForm(FormValidationAction):
     def name(self):
         return "validate_verify_form"
 
+    def get_use_class_from_entity(self, value):
+        m = {
+            "massage_establishment": "Massage Establishment",
+            "amusement_centre": "Amusement Centre",
+            "barpub": "Bar/Pub"
+        }
+        return m[value] if value in m else value
+
     def validate_use_class(self,
                            value: Text,
                            dispatcher: CollectingDispatcher,
                            tracker: Tracker,
                            domain: Dict[Text, Any]
                            ):
+        value = self.get_use_class_from_entity(value)
         if knowledge_graph_api.is_valid_use_class(value):
             return {"use_class": value.title()}
         else:
