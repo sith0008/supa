@@ -276,8 +276,15 @@ class ActionVerifyProposal(Action):
         if property_type == 'Shophouses':
             outcome = guidelines_api.get_shophouse_eval_outcome(block, road, floor, unit, use_class)
         else:
-            lat, lng = guidelines_api.get_coord_from_postal_code(postal_code)
+            lat, lng = location_api.get_coordinates_from_postal_code(block, road, postal_code)
             is_agu, is_pta, is_pa = location_api.get_conditions(lat, lng)
+            if is_agu:
+                dispatcher.utter_message(text="Note: your location is an Activity Generating Use area, checking for additional guideliens ...")
+            if is_pta:
+                dispatcher.utter_message(text="Note: your location is a Problematic Traffic Area, checking for additional guideliens ...")
+            if is_pa:
+                dispatcher.utter_message(text="Note: your location is a Problematic Area, checking for additional guideliens ...")
+
             outcome = guidelines_api.get_eval_outcome(property_type, use_class, is_agu, is_pta, is_pa)
 
         dispatcher.utter_message(template="utter_verified", outcome=outcome)

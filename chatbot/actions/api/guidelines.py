@@ -26,7 +26,7 @@ class GuidelinesAPI:
                 outcomes.append(outcome)
             if is_pa and outcome["conditions"] == 'Problematic Area':
                 outcomes.append(outcome)
-            if outcome["conditions"] == 'Normal':
+            if outcome["conditions"] == 'Normal' or outcome["conditions"] == '':
                 normal_outcome = outcome
         if not outcomes:
             outcomes.append(normal_outcome)
@@ -55,6 +55,8 @@ class GuidelinesAPI:
             if not worst_outcome or self.compare_outcomes(outcome["outcome"], worst_outcome):
                 worst_outcome = outcome["outcome"]
                 worst_remark = outcome["remarks"]
+        if not worst_remark and worst_outcome == "Submit Change of Use Application":
+            worst_remark = "To be evaluated on a case-by-case basis."
         processed = f"Evaluation outcome: {worst_outcome} \n" \
                     f"Remarks: {worst_remark} \n"
         return processed

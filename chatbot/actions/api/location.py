@@ -16,7 +16,7 @@ class LocationAPI:
         }
         endpoint = "/postal_code"
         res = requests.get(url=self.url + endpoint, headers=headers, data=json.dumps(data))
-        lat, lng = res.json()["latitude"], res.json()['longitude']
+        lat, lng = res.json()[0]["latitude"], res.json()[0]['longitude']
         return lat, lng
 
     def get_conditions(self, lat, lng):
@@ -24,13 +24,13 @@ class LocationAPI:
             'content-type': 'application/json'
         }
         data = {
-            "latitude": lat,
-            "longitude": lng
+            "lat": lat,
+            "lng": lng
         }
         is_agu = requests.get(url=self.url + "/activity_generating_use/within", headers=headers, data=json.dumps(data))
         is_pta = requests.get(url=self.url + "/problematic_traffic_area/within", headers=headers, data=json.dumps(data))
         is_pa = requests.get(url=self.url + "/problematic_area/within", headers=headers, data=json.dumps(data))
-        return is_agu, is_pta, is_pa
+        return is_agu.json(), is_pta.json(), is_pa.json()
 
     def is_valid_postal_code(self, postal_code):
         headers = {
