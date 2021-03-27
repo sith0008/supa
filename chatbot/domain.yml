@@ -220,6 +220,7 @@ actions:
   - action_get_requirements
   - action_get_examples
   - action_get_difference
+  - action_reset_all_slots
 
 forms:
   verify_form:

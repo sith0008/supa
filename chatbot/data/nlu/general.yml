@@ -574,6 +574,10 @@ nlu:
     - i want to stop here
     - I want to end the current application
     - please stop
+    - cancel please
+    - cancel pls
+    - end
+    - cancel
 - intent: edit_form
   examples: |
     - can i make changes?

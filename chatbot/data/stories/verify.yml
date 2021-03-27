@@ -179,6 +179,7 @@ stories:
     - intent: cancel
     - action: utter_ask_confirm_stop
     - intent: affirm
+    - action: action_reset_all_slots
     - action: action_deactivate_loop
     - active_loop: null
     - action: utter_more_help
@@ -188,6 +189,7 @@ stories:
     - intent: cancel
     - action: utter_ask_confirm_stop
     - intent: affirm
+    - action: action_reset_all_slots
     - action: utter_more_help
   - story: cancel form then deny cancel
     steps:
