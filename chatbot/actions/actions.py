@@ -1,12 +1,13 @@
-from rasa_sdk import Action, Tracker
-from rasa_sdk.forms import FormValidationAction, REQUESTED_SLOT
-from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import (
-    SlotSet,
-    UserUtteranceReverted,
-    ConversationPaused,
-    EventType,
-    FollowupAction,
+from rasa_sdk import Action, Tracker # noqa
+from rasa_sdk.forms import FormValidationAction, REQUESTED_SLOT # noqa
+from rasa_sdk.executor import CollectingDispatcher # noqa
+from rasa_sdk.events import ( # noqa
+    SlotSet, # noqa
+    UserUtteranceReverted, # noqa
+    ConversationPaused, # noqa
+    EventType, # noqa
+    FollowupAction, # noqa
+    AllSlotsReset # noqa
 )
 from typing import Text, Dict, Any, List, Optional
 from actions.api.knowledge_graph import KnowledgeGraphAPI # noqa
@@ -339,6 +340,20 @@ class ActionResetSlots(Action):
             slot_set_events.append(SlotSet(entity['entity'], None))
         return slot_set_events
 
+
+class ActionResetAllSlots(Action):
+    def name(self) -> Text:
+        return "action_reset_all_slots"
+
+    def run(
+        self,
+        dispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> List[Dict[Text, Any]]:
+        return [AllSlotsReset()]
+
+
 class ActionGetAllUseClasses(Action):
     def name(self) -> Text:
         return "action_get_all_use_classes"
@@ -477,6 +492,7 @@ class ActionGetExamples(Action):
                                          uc=current_use_class,
                                          examples=examples)
         return [slot_set_event] if slot_set_event else []
+
 
 
 class ActionGetDifferences(Action):
