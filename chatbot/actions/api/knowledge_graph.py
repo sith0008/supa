@@ -9,7 +9,7 @@ class KnowledgeGraphAPI:
     def process_case_results(self, similar_case_results):
         processed_list = "\n"
         for i, res in enumerate(similar_case_results):
-            processed = f"{i+1}. Case {res['case']['case_id']}: {res['case']['proposed_use_desc']} \n\n"
+            processed = f"{i+1}. Case {res['case']['case_id']}: {res['case']['proposed_use_desc']} \n"
             processed += f"Address: {res['location']['block']} {res['location']['road']}, {res['location']['postal_code']} \n"
             processed += f"Land use type: {res['land_use_type']['specific']} \n"
             processed += f"Proposed use class: {res['use_class']['specific']} \n"
